@@ -21,7 +21,8 @@
     "import-spacing": true,
     "indent": [
       true,
-      "spaces"
+      "spaces",
+      4
     ],
     "interface-over-type-literal": true,
     "label-position": true,
@@ -88,13 +89,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "pd",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "pd",
       "kebab-case"
     ],
     "use-input-property-decorator": true,
@@ -109,12 +110,13 @@
     "no-access-missing-member": true,
     "templates-use-public": true,
     "invoke-injectable": true,
-
     "nx-enforce-module-boundaries": [
       true,
       {
         "npmScope": "price-depo-ui",
-        "lazyLoad": [],
+        "lazyLoad": [
+          "profile"
+        ],
         "allow": []
       }
     ]
