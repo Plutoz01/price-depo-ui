@@ -17,6 +17,10 @@ export class UserBase {
   }
 
   hasPermission( desiredPermission: string ): boolean {
-    return this.permissions.some( ( ownedPermission ) => ownedPermission === desiredPermission );
+    return this.permissions.some( ( ownedPermission:string ) => ownedPermission === desiredPermission );
+  }
+
+  hasAnyRole( acceptedRoles: UserRole[] ):boolean {
+    return acceptedRoles.some( ( acceptedRole: UserRole ) => acceptedRole === this.role );
   }
 }
