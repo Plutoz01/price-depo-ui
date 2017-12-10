@@ -1,3 +1,9 @@
 <nav id="page-header" class="pd-navbar fixed-top">
   <a class="navbar-brand" routerLink="/">Price depo</a>
+  <ng-container  *ngIf="isAnonymous$ | async">
+    <span class="navbar-text" > Anonymous user</span>
+    <button class="btn" (click)="switchToTestUser()" *ngIf="isAnonymous$ | async">Switch to bob</button>
+  </ng-container>
+
+  <p class="navbar-text" *pdUserAuthenticated>Authenticated</p>
 </nav>
