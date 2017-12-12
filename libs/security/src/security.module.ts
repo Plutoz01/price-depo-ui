@@ -4,6 +4,7 @@ import { StoreModule } from "@ngrx/store";
 import { securityInitState } from "@price-depo-ui/security/src/+state/security.init";
 import { securityReducer } from "@price-depo-ui/security/src/+state/security.reducer";
 import { directives } from "@price-depo-ui/security/src/directives";
+import { guards } from "@price-depo-ui/security/src/guards";
 
 @NgModule( {
   imports: [
@@ -12,6 +13,9 @@ import { directives } from "@price-depo-ui/security/src/directives";
   ],
   declarations: [
     ...directives,
+  ],
+  providers: [
+    ...guards
   ],
   exports: [
     ...directives
