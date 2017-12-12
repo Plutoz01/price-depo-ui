@@ -28,11 +28,14 @@ import { AppComponent } from './components/app.component';
         {
           path: 'profile',
           loadChildren: '@price-depo-ui/profile#ProfileModule'
-        },
+        }, {
+          path: 'product',
+          loadChildren: '@price-depo-ui/product#ProductModule'
+        }
       ],
       { initialNavigation: 'enabled' } ),
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot( {} ),
+    EffectsModule.forRoot( [] ),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     StoreModule.forFeature( 'core', appReducer, { initialState: appInitialState } ),

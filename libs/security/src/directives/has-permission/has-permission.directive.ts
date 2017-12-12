@@ -14,8 +14,8 @@ import { UserBase } from "@price-depo-ui/security/src/models/user-base.class";
 } )
 export class HasPermissionDirective implements OnDestroy {
 
-  private updateSubscription: Subscription;
-  private desiredPermissionSource = new BehaviorSubject<string>( '' );
+  private readonly updateSubscription: Subscription;
+  private readonly desiredPermissionSource = new BehaviorSubject<string>( '' );
   private hasView = false;
 
   constructor( private templateRef: TemplateRef<any>,

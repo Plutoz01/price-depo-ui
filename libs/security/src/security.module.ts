@@ -4,8 +4,6 @@ import { StoreModule } from "@ngrx/store";
 import { securityInitState } from "@price-depo-ui/security/src/+state/security.init";
 import { securityReducer } from "@price-depo-ui/security/src/+state/security.reducer";
 import { directives } from "@price-depo-ui/security/src/directives";
-import { HasPermissionDirective } from './directives/has-permission/has-permission.directive';
-import { HasAnyRoleDirective } from './directives/has-any-role/has-any-role.directive';
 
 @NgModule( {
   imports: [
@@ -14,8 +12,6 @@ import { HasAnyRoleDirective } from './directives/has-any-role/has-any-role.dire
   ],
   declarations: [
     ...directives,
-    HasPermissionDirective,
-    HasAnyRoleDirective
   ],
   exports: [
     ...directives
