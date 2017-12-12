@@ -32,6 +32,12 @@
       }
     },
     {
+      "name": "product",
+      "root": "libs/product/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "profile",
       "root": "libs/profile/src",
       "test": "../../../test.js",

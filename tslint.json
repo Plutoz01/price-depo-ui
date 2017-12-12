@@ -115,7 +115,8 @@
       {
         "npmScope": "price-depo-ui",
         "lazyLoad": [
-          "profile"
+          "profile",
+          "product"
         ],
         "allow": []
       }
