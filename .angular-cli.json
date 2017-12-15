@@ -3,7 +3,7 @@
   "project": {
     "name": "price-depo-ui",
     "npmScope": "price-depo-ui",
-    "latestMigration": "20171129-change-schema"
+    "latestMigration": "20171205-remove-npmscope-from-tslintjson"
   },
   "apps": [
     {
