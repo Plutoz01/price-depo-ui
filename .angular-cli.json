@@ -32,6 +32,12 @@
       }
     },
     {
+      "name": "data-handling",
+      "root": "libs/data-handling/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "product",
       "root": "libs/product/src",
       "test": "../../../test.js",
