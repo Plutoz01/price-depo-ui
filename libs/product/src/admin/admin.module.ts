@@ -1,10 +1,19 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { components } from "@price-depo-ui/product/src/admin/components";
+import { SharedModule } from "@price-depo-ui/shared";
 
-@NgModule({
+@NgModule( {
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
-  declarations: []
-})
-export class AdminModule { }
+  declarations: [
+    ...components
+  ],
+  exports: [
+
+  ]
+} )
+export class AdminModule {
+}

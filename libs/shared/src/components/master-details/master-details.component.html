@@ -1,0 +1,8 @@
+<div class="pd-master-details">
+  <pd-data-table [columns]="columns" [items]="items" (select)="onSelect( $event )"></pd-data-table>
+  <pd-dynamic-form *ngIf="selectedItem"
+                   [item]="selectedItem"
+                   [formDefinitions]="formDefinitions"
+                   (save)="save.emit( $event )"
+  ></pd-dynamic-form>
+</div>
