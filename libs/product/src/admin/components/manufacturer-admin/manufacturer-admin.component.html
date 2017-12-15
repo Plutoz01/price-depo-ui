@@ -1,0 +1,8 @@
+<h1>Manufacturer administration</h1>
+
+<pd-master-details [columns]="manufacturerColumns"
+                   [formDefinitions]="manufacturerFormElementDefinitions"
+                   [items]="manufacturers$ | async"
+                   (save)="onSave( $event )"
+                   (delete)="onDelete( $event )">
+</pd-master-details>

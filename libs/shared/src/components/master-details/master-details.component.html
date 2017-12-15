@@ -1,8 +1,19 @@
 <div class="pd-master-details">
   <pd-data-table [columns]="columns" [items]="items" (select)="onSelect( $event )"></pd-data-table>
-  <pd-dynamic-form *ngIf="selectedItem"
-                   [item]="selectedItem"
-                   [formDefinitions]="formDefinitions"
-                   (save)="save.emit( $event )"
-  ></pd-dynamic-form>
+  <div class="actions-container">
+    <button type="button" class="btn btn-primary" (click)="onNew()">Create new</button>
+  </div>
+
+  <ng-container *ngIf="selectedItem">
+    <hr>
+    <h3 *ngIf="selectedItem.id">Edit selected</h3>
+    <h3 *ngIf="!selectedItem.id">Edit new</h3>
+
+    <pd-dynamic-form [item]="selectedItem"
+                     [formDefinitions]="formDefinitions"
+                     (save)="save.emit( $event )"
+                     (delete)="delete.emit( $event )"
+    ></pd-dynamic-form>
+  </ng-container>
+
 </div>

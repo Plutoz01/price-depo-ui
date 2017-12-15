@@ -13,6 +13,7 @@
   </div>
 
   <div class="actions-container">
-    <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
+    <button type="button" class="btn btn-primary" (click)="onSave()" [disabled]="editorForm.invalid">Save</button>
+    <button type="button" class="btn btn-danger" (click)="onDelete()" [disabled]="!isDeletable">Delete</button>
   </div>
 </form>

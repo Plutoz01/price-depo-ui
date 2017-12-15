@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MasterDetailsComponent } from './master-details.component';
 
 describe( 'MasterDetailsComponent', () => {
-  let component: MasterDetailsComponent;
-  let fixture: ComponentFixture<MasterDetailsComponent>;
+  let component: MasterDetailsComponent<any>;
+  let fixture: ComponentFixture<MasterDetailsComponent<any>>;
 
   beforeEach( async( () => {
     TestBed.configureTestingModule( {

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ValidatorFn, Validators } from "@angular/forms";
+import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
 import { FormElementDefinition } from "libs/shared/src/models/form-element-definition.inteface";
 
 @Component( {
@@ -7,18 +8,19 @@ import { FormElementDefinition } from "libs/shared/src/models/form-element-defin
   templateUrl: './dynamic-form.component.html',
   styleUrls: [ './dynamic-form.component.scss' ]
 } )
-export class DynamicFormComponent implements OnChanges {
+export class DynamicFormComponent<T extends Identifiable<any>> implements OnChanges {
 
-  @Input() item?: Object;
+  @Input() item?: T;
   @Input() formDefinitions: FormElementDefinition[];
-  @Output() save = new EventEmitter<Object>();
+  @Output() save = new EventEmitter<T>();
+  @Output() delete = new EventEmitter<T>();
 
   editorForm: FormGroup;
 
   static createFormGroup( formDefinitions: FormElementDefinition[] ): FormGroup {
     const formBuilder = new FormBuilder();
 
-    const result = formBuilder.group( {} );
+    const result = formBuilder.group( { id: null } );
     formDefinitions.forEach( ( formDef: FormElementDefinition ) => {
       const validators: ValidatorFn[] = [];
       if ( formDef.required ) {
@@ -48,6 +50,16 @@ export class DynamicFormComponent implements OnChanges {
       // TODO: scroll to first invalid field
       console.log( 'form is still invalid' );
     }
+  }
+
+  onDelete() {
+    if( !!this.item.id ) {
+      this.delete.emit( this.item );
+    }
+  }
+
+  get isDeletable(): boolean {
+    return !!this.item && this.item.id;
   }
 
 }
