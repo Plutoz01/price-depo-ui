@@ -8,8 +8,9 @@ describe( 'core App', () => {
     page = new AppPage();
   } );
 
-  it( 'should display profile page by default', () => {
-    page.navigateTo();
-    expect( page.getCurrentUrl() ).toBe(  browser.baseUrl + 'profile' );
+  it( 'should display profile page by default', async () => {
+    await page.navigateTo();
+    const currentUrl = await page.getCurrentUrl();
+    expect( currentUrl ).toEqual(  browser.baseUrl + 'profile' );
   } );
 } );
