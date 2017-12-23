@@ -7,12 +7,45 @@
   },
   "apps": [
     {
-      "name": "core",
-      "root": "apps/core/src",
-      "outDir": "dist/apps/core",
+      "name": "admin",
+      "root": "apps/admin/src",
+      "outDir": "dist/apps/admin",
       "assets": [
-        "assets",
-        "favicon.ico"
+        {
+          "input": "../../../libs/shared-assets/",
+          "output": "assets/",
+          "glob": "**/*"
+        },
+        "assets"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "../../../test.js",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "../../../tsconfig.spec.json",
+      "prefix": "pd",
+      "styles": [
+        "styles.scss"
+      ],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
+      "name": "main-ui",
+      "root": "apps/main-ui/src",
+      "outDir": "dist/apps/main-ui",
+      "assets": [
+        {
+          "input": "../../../libs/shared-assets/",
+          "output": "assets/",
+          "glob": "**/*"
+        },
+        "assets"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -76,6 +109,14 @@
     },
     {
       "project": "./tsconfig.e2e.json"
+    },
+    {
+      "project": "apps/admin/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/admin/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
     }
   ],
   "test": {

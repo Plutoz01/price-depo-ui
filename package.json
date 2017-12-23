@@ -6,6 +6,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:main-ui": "ng serve --app=main-ui -p=4300",
+    "start:admin": "ng serve --app=admin -p=4301",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

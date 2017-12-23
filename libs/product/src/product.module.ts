@@ -3,7 +3,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DataHandlingModule } from "@price-depo-ui/data-handling";
-import { repositories } from "@price-depo-ui/product/src/common/repositories";
+import { repositories } from "@price-depo-ui/product/src/services/repositories/index";
 import { SecurityModule } from "@price-depo-ui/security";
 
 @NgModule( {
@@ -12,14 +12,7 @@ import { SecurityModule } from "@price-depo-ui/security";
     HttpClientModule,
     SecurityModule,
     DataHandlingModule,
-
-    RouterModule.forChild( [
-      {
-        path: 'admin',
-        loadChildren: '@price-depo-ui/product/src/admin#ProductAdminModule',
-        // TODO: canActivate based on permission
-      }
-    ] ) ],
+  ],
   providers: [
     ...repositories
   ]
