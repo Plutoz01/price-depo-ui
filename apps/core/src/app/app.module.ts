@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -14,32 +14,30 @@ import { appReducer } from './+state/app.reducer';
 import { Components } from "./components";
 import { AppComponent } from './components/app.component';
 
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/profile',
+    pathMatch: 'full'
+  },
+  {
+    path: 'profile',
+    loadChildren: '@price-depo-ui/profile#ProfileModule'
+  }, {
+    path: 'product',
+    loadChildren: '@price-depo-ui/product#ProductModule'
+  }
+];
+
 @NgModule( {
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     NxModule.forRoot(),
-    RouterModule.forRoot( [
-        {
-          path: '',
-          redirectTo: '/profile',
-          pathMatch: 'full'
-        },
-        {
-          path: 'profile',
-          loadChildren: '@price-depo-ui/profile#ProfileModule'
-        }, {
-          path: 'product',
-          loadChildren: '@price-depo-ui/product#ProductModule'
-        }
-      ],
-      { initialNavigation: 'enabled' } ),
-    StoreModule.forRoot( {} ),
-    EffectsModule.forRoot( [] ),
+    RouterModule.forRoot( routes, { initialNavigation: 'enabled' } ),
+    StoreModule.forRoot( appReducer, { initialState: appInitialState } ),
+    EffectsModule.forRoot( [ AppEffects ] ),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-
-    StoreModule.forFeature( 'core', appReducer, { initialState: appInitialState } ),
-    EffectsModule.forFeature( [ AppEffects ] ),
 
     SecurityModule
   ],
