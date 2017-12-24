@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 import { Effect } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { DataPersistence } from "@nrwl/nx";
-import { Manufacturer } from "@price-depo-ui/product/src/models/manufacturer.interface";
-import { ManufacturerHttpRepository } from "@price-depo-ui/product/src/services/repositories/manufacturer.http.repository";
-import { LOAD_MANUFACTURER, LoadManufacturerAction, ManufacturerLoadedAction } from "../admin.actions";
-import { AppState } from "../admin.interfaces";
+import { Manufacturer } from "libs/product/src/models/manufacturer.interface";
+import { ManufacturerHttpRepository } from "libs/product/src/services/repositories/manufacturer.http.repository";
+import { AdminAppState } from "../../../+state/admin.interfaces";
+import { LOAD_MANUFACTURER, LoadManufacturerAction, ManufacturerLoadedAction } from "../manufacturers.actions";
 
 @Injectable()
 export class LoadManufacturerEffect {
@@ -21,7 +21,7 @@ export class LoadManufacturerEffect {
     }
   } );
 
-  constructor( private dataPersistence: DataPersistence<AppState>,
+  constructor( private dataPersistence: DataPersistence<AdminAppState>,
                private manufacturerRepository: ManufacturerHttpRepository ) {
   }
 }

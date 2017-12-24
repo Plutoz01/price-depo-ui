@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { Manufacturer } from "@price-depo-ui/product/src/models/manufacturer.interface";
-import { FormElementDefinition } from "@price-depo-ui/shared/src/models/form-element-definition.inteface";
+import { Manufacturer } from "libs/product/src/models/manufacturer.interface";
+import { FormElementDefinition } from "libs/shared/src/models/form-element-definition.inteface";
 import { Observable } from "rxjs/Observable";
-import { DeleteManufacturerAction, SaveManufacturerAction } from "../../+state/admin.actions";
-import { AppState } from "../../+state/admin.interfaces";
-import { getManufacturerSelector } from "../../+state/admin.selectors";
+import { DeleteManufacturerAction, SaveManufacturerAction } from "../../+state/manufacturers.actions";
+import { getManufacturerSelector } from "../../+state/manufacturers.selectors";
+import { AdminAppState } from "../../../+state/admin.interfaces";
 
 @Component( {
   selector: 'pd-manufacturer-details',
@@ -14,7 +14,7 @@ import { getManufacturerSelector } from "../../+state/admin.selectors";
   styleUrls: [ './manufacturer-details.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 } )
-export class ManufacturerDetailsComponent {
+export class ManufacturerDetailsPageComponent {
 
   readonly manufacturerFormElementDefinitions: FormElementDefinition[] = [
     { key: 'name', label: 'Name', type: 'text', placeholder: 'Enter manufacturer name', required: true },
@@ -26,7 +26,7 @@ export class ManufacturerDetailsComponent {
 
   readonly manufacturer$: Observable<Manufacturer>;
 
-  constructor( private store: Store<AppState>, private router: Router ) {
+  constructor( private store: Store<AdminAppState>, private router: Router ) {
     this.manufacturer$ = store.select( getManufacturerSelector );
   }
 

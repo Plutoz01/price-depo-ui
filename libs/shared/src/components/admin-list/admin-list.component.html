@@ -1,0 +1,5 @@
+<h1>{{ title }}</h1>
+
+<button class="btn btn-primary create-new" (click)="onCreateNew()">Create new</button>
+
+<pd-data-table [columns]="columnDefinitions" [items]="items" (select)="onSelect( $event )"></pd-data-table>

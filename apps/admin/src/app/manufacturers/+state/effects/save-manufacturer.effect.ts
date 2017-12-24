@@ -3,18 +3,18 @@ import { Router } from "@angular/router";
 import { Actions, Effect } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { DataPersistence } from "@nrwl/nx";
-import { ManufacturerHttpRepository } from "@price-depo-ui/product/src/services/repositories/manufacturer.http.repository";
+import { ManufacturerHttpRepository } from "libs/product/src/services/repositories/manufacturer.http.repository";
 import { Observable } from "rxjs/Observable";
 import { tap } from "rxjs/operators";
-import { MANUFACTURER_SAVED, ManufacturerSavedAction, SAVE_MANUFACTURER, SaveManufacturerAction } from "../admin.actions";
-import { AppState } from "../admin.interfaces";
+import { MANUFACTURER_SAVED, ManufacturerSavedAction, SAVE_MANUFACTURER, SaveManufacturerAction } from "../manufacturers.actions";
+import { ManufacturersModuleState } from "../manufacturers.interfaces";
 
 @Injectable()
 export class SaveManufacturerEffect {
 
   @Effect() saveManufacturer$ = this.dataPersistence.pessimisticUpdate<SaveManufacturerAction>( SAVE_MANUFACTURER, {
     run: action => {
-      return this.manufacturerRepository.save( action.manufacturer )
+      return this.manufacturerRepository.save( action.saveable )
         .map( savedManufacturer => new ManufacturerSavedAction( savedManufacturer ) );
     },
     onError: ( a: Action, error ) => {
@@ -29,7 +29,7 @@ export class SaveManufacturerEffect {
   );
 
   constructor( private actions$: Actions,
-               private dataPersistence: DataPersistence<AppState>,
+               private dataPersistence: DataPersistence<ManufacturersModuleState>,
                private router: Router,
                private manufacturerRepository: ManufacturerHttpRepository ) {
   }

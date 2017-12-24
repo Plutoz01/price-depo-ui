@@ -1,7 +1,11 @@
 import { Action } from "@ngrx/store";
 import { Manufacturer } from "@price-depo-ui/product/src/models/manufacturer.interface";
+import {
+  DeleteAction, DeleteSuccessAction, LoadByIdAction, LoadByIdSuccessAction, LoadAllSuccessAction, SaveAction,
+  SaveSuccessAction
+} from "../../../../../../libs/data-handling/src/models/crud-state-base.actions";
 
-export const LOAD_MANUFACTURERS = 'LOAD_MANUFACTURERS';
+export const LOAD_ALL_MANUFACTURERS = 'LOAD_ALL_MANUFACTURERS';
 export const MANUFACTURERS_LOADED = 'MANUFACTURERS_LOADED';
 export const LOAD_MANUFACTURER = 'LOAD_MANUFACTURER';
 export const MANUFACTURER_LOADED = 'MANUFACTURER_LOADED';
@@ -11,60 +15,45 @@ export const MANUFACTURER_SAVED = 'MANUFACTURER_SAVED';
 export const DELETE_MANUFACTURER = 'DELETE_MANUFACTURER';
 export const MANUFACTURER_DELETED = 'MANUFACTURER_DELETED';
 
-export class LoadManufacturersAction implements Action {
-  readonly type = LOAD_MANUFACTURERS;
+export class LoadAllManufacturersAction implements Action {
+  readonly type = LOAD_ALL_MANUFACTURERS;
 }
 
-export class ManufacturersLoadedAction implements Action {
+export class ManufacturersLoadedAction extends LoadAllSuccessAction<Manufacturer> {
   readonly type = MANUFACTURERS_LOADED;
-
-  constructor( public readonly manufacturers: Manufacturer[] ){}
 }
 
-export class LoadManufacturerAction implements Action {
+export class LoadManufacturerAction extends LoadByIdAction<string> {
   readonly type = LOAD_MANUFACTURER;
-
-  constructor( public readonly id?: string ){}
 }
 
-export class ManufacturerLoadedAction implements Action {
+export class ManufacturerLoadedAction extends LoadByIdSuccessAction<Manufacturer> {
   readonly type = MANUFACTURER_LOADED;
-
-  constructor( public readonly manufacturer?: Manufacturer ) {}
 }
 
 export class NewManufacturerAction implements Action {
   readonly type = NEW_MANUFACTURER;
 }
 
-export class SaveManufacturerAction implements Action {
+export class SaveManufacturerAction extends SaveAction<Manufacturer> {
   readonly type = SAVE_MANUFACTURER;
-
-  constructor( public readonly manufacturer: Manufacturer ) {}
 }
 
-export class ManufacturerSavedAction implements Action {
+export class ManufacturerSavedAction extends SaveSuccessAction<Manufacturer> {
   readonly type = MANUFACTURER_SAVED;
-
-  constructor( public readonly savedManufacturer: Manufacturer ) {
-  }
 }
 
-export class DeleteManufacturerAction implements Action {
+export class DeleteManufacturerAction extends DeleteAction<Manufacturer> {
   readonly type = DELETE_MANUFACTURER;
-
-  constructor( public readonly manufacturer: Manufacturer ) {}
 }
 
-export class ManufacturerDeletedAction implements Action {
+export class ManufacturerDeletedAction extends DeleteSuccessAction<string> {
   readonly type = MANUFACTURER_DELETED;
-
-  constructor( public readonly deletedManufacturerId: string ) {}
 }
 
-export type AdminAction
+export type ManufacturerActions
   = DeleteManufacturerAction
-  | LoadManufacturersAction
+  | LoadManufacturerAction
   | LoadManufacturerAction
   | ManufacturerDeletedAction
   | ManufacturerSavedAction

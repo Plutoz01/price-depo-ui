@@ -39,7 +39,6 @@ export abstract class CrudHttpBaseRepository<T extends Identifiable<ID>, ID> imp
   }
 
   save( entity: T ): Observable<T> {
-    console.log( 'should save inside repo:', entity );
     return this.isEntityNew( entity ) ?
       this.create( entity ) :
       this.update( entity );

@@ -1,1 +1,7 @@
-<a routerLink="manufacturers" *pdHasPermission="'product.admin.manufacturer'">Manufacturer administration</a>
+<ng-container *pdHasPermission="'product.admin.manufacturer'">
+  <a routerLink="manufacturers">Manufacturer administration</a>
+  <hr>
+</ng-container>
+
+
+<a routerLink="chain-stores" *pdHasPermission="'product.admin.chain-store'">Chain store administration</a>
