@@ -113,7 +113,6 @@
     "nx-enforce-module-boundaries": [
       true,
       {
-        "npmScope": "price-depo-ui",
         "lazyLoad": [
           "profile",
           "product"

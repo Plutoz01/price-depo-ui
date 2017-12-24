@@ -20,7 +20,12 @@ Run `ng generate app myapp` to generate an application. When using Nx, you can c
 
 ## Development server
 
-Run `ng serve --app=myapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `yarn start:main-ui` for main-ui SPA. Navigate to `http://localhost:4300/`.
+
+Run `yarn start:admin` for admin SPA. Navigate to `http://localhost:4301/`.
+
+
+The apps will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

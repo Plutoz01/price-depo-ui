@@ -1,0 +1,17 @@
+<nav id="page-header" class="pd-navbar fixed-top">
+  <a class="navbar-brand" routerLink="/">Price depo</a>
+  <ng-container *pdAuthenticated="false">
+    <span class="navbar-text"> Anonymous user</span>
+    <button class="btn btn-outline-success" (click)="switchToTestUser()">Login as test user</button>
+  </ng-container>
+
+    <ul id="navigation-link-container" class="navbar-nav" *pdAuthenticated>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/product/admin">Admin</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/profile">Profile</a>
+      </li>
+    </ul>
+
+</nav>

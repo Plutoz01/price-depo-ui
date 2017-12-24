@@ -1,0 +1,5 @@
+<h1>Manufacturer administration</h1>
+
+<button class="btn btn-primary create-new" routerLink="new">Create new</button>
+
+<pd-data-table [columns]="manufacturerColumns" [items]="manufacturers$ | async" (select)="onSelect( $event )"></pd-data-table>

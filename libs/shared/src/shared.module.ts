@@ -1,10 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { PageHeaderComponent } from '../../../apps/core/src/app/components/page-header/page-header.component';
+import { ReactiveFormsModule } from "@angular/forms";
+import { components } from "@price-depo-ui/shared/src/components";
 
 @NgModule( {
-  imports: [ CommonModule ],
-  declarations: [ PageHeaderComponent ]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ],
+  declarations: [
+    ...components
+  ],
+  exports: [
+    ...components
+  ]
 } )
 export class SharedModule {
 }
