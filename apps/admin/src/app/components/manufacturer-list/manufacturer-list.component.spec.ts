@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManufacturerAdminComponent } from './manufacturer-admin.component';
+import { ManufacturerListComponent } from './manufacturer-list.component';
 
-describe( 'ManufacturerAdminComponent', () => {
-  let component: ManufacturerAdminComponent;
-  let fixture: ComponentFixture<ManufacturerAdminComponent>;
+describe( 'ManufacturerListComponent', () => {
+  let component: ManufacturerListComponent;
+  let fixture: ComponentFixture<ManufacturerListComponent>;
 
   beforeEach( async( () => {
     TestBed.configureTestingModule( {
-      declarations: [ ManufacturerAdminComponent ]
+      declarations: [ ManufacturerListComponent ]
     } )
       .compileComponents();
   } ) );
 
   beforeEach( () => {
-    fixture = TestBed.createComponent( ManufacturerAdminComponent );
+    fixture = TestBed.createComponent( ManufacturerListComponent );
     component = fixture.componentInstance;
     fixture.detectChanges();
   } );

@@ -14,6 +14,7 @@ export class DynamicFormComponent<T extends Identifiable<any>> implements OnChan
   @Input() formDefinitions: FormElementDefinition[];
   @Output() save = new EventEmitter<T>();
   @Output() delete = new EventEmitter<T>();
+  @Output() back = new EventEmitter();
 
   editorForm: FormGroup;
 

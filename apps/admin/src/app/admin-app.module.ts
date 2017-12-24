@@ -16,7 +16,8 @@ import { effects } from "./+state/effects";
 import { components } from "./components";
 import { AdminPageComponent } from "./components/admin-page/admin-page.component";
 import { AppComponent } from "./components/app.component";
-import { ManufacturerAdminComponent } from "./components/manufacturer-admin/manufacturer-admin.component";
+import { ManufacturerListComponent } from "./components/manufacturer-list/manufacturer-list.component";
+import { ManufacturerDetailsComponent } from './components/manufacturer-details/manufacturer-details.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,18 @@ const routes: Routes = [
   },
   {
     path: 'manufacturers',
-    component: ManufacturerAdminComponent
+    component: ManufacturerListComponent,
+  },
+  {
+    path: 'manufacturers/new',
+    component: ManufacturerDetailsComponent,
+    data: {
+      isNew: true
+    }
+  },
+  {
+    path: 'manufacturers/:manufacturerId',
+    component: ManufacturerDetailsComponent,
   }
 ];
 
