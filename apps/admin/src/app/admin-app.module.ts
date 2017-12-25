@@ -11,13 +11,11 @@ import { SecurityModule } from "@price-depo-ui/security";
 import { SharedModule } from "@price-depo-ui/shared";
 import { environment } from '../environments/environment';
 import { appInitialState } from './+state/admin.init';
-import { adminReducer } from './+state/admin.reducer';
-import { effects } from "./+state/effects";
+import { adminReducer } from "./+state/admin.reducer";
 import { components } from "./components";
 import { AdminPageComponent } from "./components/admin-page/admin-page.component";
 import { AppComponent } from "./components/app.component";
-import { ManufacturerListComponent } from "./components/manufacturer-list/manufacturer-list.component";
-import { ManufacturerDetailsComponent } from './components/manufacturer-details/manufacturer-details.component';
+import { ManufacturersModule } from "./manufacturers/manufacturers.module";
 
 const routes: Routes = [
   {
@@ -27,18 +25,11 @@ const routes: Routes = [
   },
   {
     path: 'manufacturers',
-    component: ManufacturerListComponent,
+    loadChildren: './manufacturers/manufacturers.module#ManufacturersModule'
   },
   {
-    path: 'manufacturers/new',
-    component: ManufacturerDetailsComponent,
-    data: {
-      isNew: true
-    }
-  },
-  {
-    path: 'manufacturers/:manufacturerId',
-    component: ManufacturerDetailsComponent,
+    path: 'chain-stores',
+    loadChildren: './chain-store/chain-store.module#ChainStoreModule'
   }
 ];
 
@@ -51,8 +42,8 @@ const routes: Routes = [
 
     NxModule.forRoot(),
     RouterModule.forRoot( routes, { initialNavigation: 'enabled' } ),
-    StoreModule.forRoot( { admin: adminReducer }, { initialState: appInitialState } ),
-    EffectsModule.forRoot( [ ...effects ] ),
+    StoreModule.forRoot( { app: adminReducer }, { initialState: appInitialState } ),
+    EffectsModule.forRoot( [] ),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule,
   ],
@@ -60,9 +51,7 @@ const routes: Routes = [
     ...components
   ],
   bootstrap: [ AppComponent ],
-  providers: [
-    ...effects
-  ]
+  providers: []
 } )
 export class AdminAppModule {
 }

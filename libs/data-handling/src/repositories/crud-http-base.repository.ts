@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { CrudRepository } from "@price-depo-ui/data-handling/src/models/crud-repository.interface";
+import { CrudRepository } from "@price-depo-ui/data-handling/src/repositories/crud-repository.interface";
 import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
 import { Page } from "@price-depo-ui/data-handling/src/models/page.interface";
 import 'rxjs/add/operator/mapTo';
@@ -39,7 +39,6 @@ export abstract class CrudHttpBaseRepository<T extends Identifiable<ID>, ID> imp
   }
 
   save( entity: T ): Observable<T> {
-    console.log( 'should save inside repo:', entity );
     return this.isEntityNew( entity ) ?
       this.create( entity ) :
       this.update( entity );

@@ -8,7 +8,9 @@
     "**/*.ts",
     /* add all lazy-loaded libraries here: "../../../libs/my-lib/index.ts" */
     "../../../libs/product/index.ts",
-    "../../../libs/shared/index.ts"
+    "../../../libs/shared/index.ts",
+    "../../../libs/data-handling/index.ts"
+
 
   ],
   "exclude": [
