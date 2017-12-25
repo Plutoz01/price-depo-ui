@@ -1,39 +1,24 @@
 import {
-  MANUFACTURER_LOADED, ManufacturerActions, ManufacturerLoadedAction, MANUFACTURERS_LOADED, ManufacturersLoadedAction,
-  NEW_MANUFACTURER
-} from "./manufacturers.actions";
-import { ManufacturersState } from "./manufacturers.interfaces";
+  handleMasterDetailsLoadAllSuccess, handleMasterDetailsLoadByIdSuccess
+} from "@price-depo-ui/data-handling/src/+state/master-details.handlers";
+import { ManufacturerActions, ManufacturerActionType } from "./manufacturers.actions";
+import { ManufacturersState } from "./manufacturers.state";
 
 export function manufacturersReducer( state: ManufacturersState, action: ManufacturerActions ): ManufacturersState {
   switch ( action.type ) {
-    case MANUFACTURERS_LOADED: {
-      return handleManufacturersLoaded( state, action );
+    case ManufacturerActionType.loadAllSuccess: {
+      return handleMasterDetailsLoadAllSuccess( state, action );
     }
-    case MANUFACTURER_LOADED: {
-      return handleManufacturerLoaded( state, action );
+    case ManufacturerActionType.loadByIdSuccess: {
+      return handleMasterDetailsLoadByIdSuccess( state, action );
     }
-    case NEW_MANUFACTURER: {
+    case ManufacturerActionType.createNew: {
       return handleNewManufacturer( state );
     }
     default: {
       return state;
     }
   }
-}
-
-function handleManufacturersLoaded( state: ManufacturersState, action: ManufacturersLoadedAction ): ManufacturersState {
-  return {
-    ...state,
-    items: action.loadedItems,
-    selected: null
-  };
-}
-
-function handleManufacturerLoaded( state: ManufacturersState, action: ManufacturerLoadedAction ): ManufacturersState {
-  return {
-    ...state,
-    selected: action.loadedItem
-  };
 }
 
 function handleNewManufacturer( state: ManufacturersState ): ManufacturersState {

@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'manufacturers',
     loadChildren: './manufacturers/manufacturers.module#ManufacturersModule'
+  },
+  {
+    path: 'chain-stores',
+    loadChildren: './chain-store/chain-store.module#ChainStoreModule'
   }
 ];
 
@@ -35,7 +39,6 @@ const routes: Routes = [
     SecurityModule,
     ProductModule,
     SharedModule,
-    ManufacturersModule,
 
     NxModule.forRoot(),
     RouterModule.forRoot( routes, { initialNavigation: 'enabled' } ),

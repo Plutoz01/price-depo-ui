@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { CrudRepository } from "@price-depo-ui/data-handling/src/models/crud-repository.interface";
+import { CrudRepository } from "@price-depo-ui/data-handling/src/repositories/crud-repository.interface";
 import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
 import { Page } from "@price-depo-ui/data-handling/src/models/page.interface";
 import 'rxjs/add/operator/mapTo';

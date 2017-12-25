@@ -1,64 +1,65 @@
 import { Action } from "@ngrx/store";
 import { Manufacturer } from "@price-depo-ui/product/src/models/manufacturer.interface";
 import {
-  DeleteAction, DeleteSuccessAction, LoadByIdAction, LoadByIdSuccessAction, LoadAllSuccessAction, SaveAction,
-  SaveSuccessAction
-} from "../../../../../../libs/data-handling/src/models/crud-state-base.actions";
+  DeleteAction, DeleteSuccessAction, LoadAllSuccessAction, LoadByIdAction, LoadByIdSuccessAction, SaveAction, SaveSuccessAction
+} from "../../../../../../libs/data-handling/src/+state/crud-state-base.actions";
 
-export const LOAD_ALL_MANUFACTURERS = 'LOAD_ALL_MANUFACTURERS';
-export const MANUFACTURERS_LOADED = 'MANUFACTURERS_LOADED';
-export const LOAD_MANUFACTURER = 'LOAD_MANUFACTURER';
-export const MANUFACTURER_LOADED = 'MANUFACTURER_LOADED';
-export const NEW_MANUFACTURER = 'NEW_MANUFACTURER';
-export const SAVE_MANUFACTURER = 'SAVE_MANUFACTURER';
-export const MANUFACTURER_SAVED = 'MANUFACTURER_SAVED';
-export const DELETE_MANUFACTURER = 'DELETE_MANUFACTURER';
-export const MANUFACTURER_DELETED = 'MANUFACTURER_DELETED';
-
-export class LoadAllManufacturersAction implements Action {
-  readonly type = LOAD_ALL_MANUFACTURERS;
+export enum ManufacturerActionType {
+  loadAll = 'MANUFACTURER_LOAD_ALL',
+  loadAllSuccess = 'MANUFACTURER_LOAD_ALL_SUCCESS',
+  loadById = 'MANUFACTURER_LOAD_BY_ID',
+  loadByIdSuccess = 'MANUFACTURER_LOAD_BY_ID_SUCCESS',
+  createNew = 'MANUFACTURER_CREATE_NEW',
+  save = 'MANUFACTURER_SAVE',
+  saveSuccess = 'MANUFACTURER_SAVE_SUCCESS',
+  delete = 'MANUFACTURER_DELETE',
+  deleteSuccess = 'MANUFACTURER_DELETE_SUCCESS'
 }
 
-export class ManufacturersLoadedAction extends LoadAllSuccessAction<Manufacturer> {
-  readonly type = MANUFACTURERS_LOADED;
+export class LoadAllManufacturerAction implements Action {
+  readonly type = ManufacturerActionType.loadAll;
+}
+
+export class LoadAllManufacturerSuccessAction extends LoadAllSuccessAction<Manufacturer> {
+  readonly type = ManufacturerActionType.loadAllSuccess;
 }
 
 export class LoadManufacturerAction extends LoadByIdAction<string> {
-  readonly type = LOAD_MANUFACTURER;
+  readonly type = ManufacturerActionType.loadById;
 }
 
-export class ManufacturerLoadedAction extends LoadByIdSuccessAction<Manufacturer> {
-  readonly type = MANUFACTURER_LOADED;
+export class LoadManufacturerSuccessAction extends LoadByIdSuccessAction<Manufacturer> {
+  readonly type = ManufacturerActionType.loadByIdSuccess;
 }
 
 export class NewManufacturerAction implements Action {
-  readonly type = NEW_MANUFACTURER;
+  readonly type = ManufacturerActionType.createNew;
 }
 
 export class SaveManufacturerAction extends SaveAction<Manufacturer> {
-  readonly type = SAVE_MANUFACTURER;
+  readonly type = ManufacturerActionType.save;
 }
 
-export class ManufacturerSavedAction extends SaveSuccessAction<Manufacturer> {
-  readonly type = MANUFACTURER_SAVED;
+export class SaveManufacturerSuccessAction extends SaveSuccessAction<Manufacturer> {
+  readonly type = ManufacturerActionType.saveSuccess;
 }
 
 export class DeleteManufacturerAction extends DeleteAction<Manufacturer> {
-  readonly type = DELETE_MANUFACTURER;
+  readonly type = ManufacturerActionType.delete;
 }
 
-export class ManufacturerDeletedAction extends DeleteSuccessAction<string> {
-  readonly type = MANUFACTURER_DELETED;
+export class DeleteManufacturerSuccessAction extends DeleteSuccessAction<string> {
+  readonly type = ManufacturerActionType.deleteSuccess;
 }
 
 export type ManufacturerActions
-  = DeleteManufacturerAction
+  = LoadAllManufacturerAction
+  | LoadAllManufacturerSuccessAction
   | LoadManufacturerAction
-  | LoadManufacturerAction
-  | ManufacturerDeletedAction
-  | ManufacturerSavedAction
-  | ManufacturersLoadedAction
-  | ManufacturerLoadedAction
+  | LoadManufacturerSuccessAction
   | NewManufacturerAction
-  | SaveManufacturerAction;
+  | SaveManufacturerAction
+  | SaveManufacturerSuccessAction
+  | DeleteManufacturerAction
+  | DeleteManufacturerSuccessAction;
 

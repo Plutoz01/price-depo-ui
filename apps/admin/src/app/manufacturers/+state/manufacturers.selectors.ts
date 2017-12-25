@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { Manufacturer } from "@price-depo-ui/product/src/models/manufacturer.interface";
-import { ManufacturersState } from "./manufacturers.interfaces";
+import { ManufacturersState } from "./manufacturers.state";
 
 function getManufacturers( state: ManufacturersState ): Manufacturer[] {
   return state.items;

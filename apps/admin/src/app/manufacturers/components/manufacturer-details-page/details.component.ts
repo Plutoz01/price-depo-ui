@@ -10,13 +10,13 @@ import { AdminAppState } from "../../../+state/admin.interfaces";
 
 @Component( {
   selector: 'pd-manufacturer-details',
-  templateUrl: './manufacturer-details.component.html',
-  styleUrls: [ './manufacturer-details.component.scss' ],
+  templateUrl: './details.component.html',
+  styleUrls: [ './details.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 } )
 export class ManufacturerDetailsPageComponent {
 
-  readonly manufacturerFormElementDefinitions: FormElementDefinition[] = [
+  readonly formElementDefinitions: FormElementDefinition[] = [
     { key: 'name', label: 'Name', type: 'text', placeholder: 'Enter manufacturer name', required: true },
     {
       key: 'country', label: 'Country', type: 'text', placeholder: 'Enter country of manufacturer',
@@ -24,18 +24,18 @@ export class ManufacturerDetailsPageComponent {
     }
   ];
 
-  readonly manufacturer$: Observable<Manufacturer>;
+  readonly item$: Observable<Manufacturer>;
 
   constructor( private store: Store<AdminAppState>, private router: Router ) {
-    this.manufacturer$ = store.select( getManufacturerSelector );
+    this.item$ = store.select( getManufacturerSelector );
   }
 
-  onSave( manufacturer: Manufacturer ) {
-    this.store.dispatch( new SaveManufacturerAction( manufacturer ) );
+  onSave( saveable: Manufacturer ) {
+    this.store.dispatch( new SaveManufacturerAction( saveable ) );
   }
 
-  onDelete( manufacturer: Manufacturer ) {
-    this.store.dispatch( new DeleteManufacturerAction( manufacturer ) );
+  onDelete( deletable: Manufacturer ) {
+    this.store.dispatch( new DeleteManufacturerAction( deletable ) );
   }
 
   onNavigateBack() {

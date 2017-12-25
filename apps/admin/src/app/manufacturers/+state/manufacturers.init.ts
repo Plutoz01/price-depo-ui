@@ -1,4 +1,4 @@
-import {ManufacturersState} from './manufacturers.interfaces';
+import {ManufacturersState} from './manufacturers.state';
 
 export const manufacturersInitialState: ManufacturersState = {
   items: [],

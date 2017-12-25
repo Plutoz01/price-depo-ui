@@ -1,33 +1,22 @@
 import { Type } from "@angular/core";
-import { Router } from "@angular/router";
-import { Actions } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { DataPersistence } from "@nrwl/nx";
 import { Observable } from "rxjs/Observable";
-import { tap } from "rxjs/operators";
 import {
   DeleteAction, DeleteSuccessAction, LoadAllSuccessAction, LoadByIdAction, LoadByIdSuccessAction, SaveAction,
   SaveSuccessAction
-} from "../models/crud-state-base.actions";
+} from "./crud-state-base.actions";
 import { Identifiable } from "../models/identifiable.interface";
 import { CrudHttpBaseRepository } from "../repositories/crud-http-base.repository";
 
 export class CrudEffectFactory<M extends Identifiable<ID>, ID> {
 
-  constructor( private actions$: Actions,
-               private dataPersistence: DataPersistence<any>,
+  constructor( private dataPersistence: DataPersistence<any>,
                private repository: CrudHttpBaseRepository<M, ID> ) {
   }
 
   static handleError( action: Action, error: Error ) {
     console.error( `Action failed: ${ action.type }. Error: `, error );
-  }
-
-  // TODO: should not be part of a crud factory ( has different purpose )
-  buildNavigateOnActionEffect( router: Router, actionType: string, navigationTarget: string[] ): Observable<Action> {
-    return this.actions$.ofType( actionType ).pipe(
-      tap( () => router.navigate( navigationTarget ) )
-    );
   }
 
   buildSaveEffect<SS extends SaveSuccessAction<M>>( saveActionType: string, saveSuccessAction: Type<SS> ): Observable<SS> {

@@ -5,30 +5,30 @@ import { Action } from "@ngrx/store";
 import { DataPersistence } from "@nrwl/nx";
 import { RouterEffectFactory } from "@price-depo-ui/shared/src/+state/router-effect-factory";
 import { Observable } from "rxjs/Observable";
-import { ManufacturerDetailsPageComponent } from "../../components/manufacturer-details-page/details.component";
-import { ManufacturerListPageComponent } from "../../components/manufacturer-list-page/list.component";
-import { LoadAllManufacturerAction, LoadManufacturerAction, ManufacturerActionType, NewManufacturerAction } from "../manufacturers.actions";
-import { ManufacturersModuleState } from "../manufacturers.state";
+import { ManufacturerActionType } from "../../../manufacturers/+state/manufacturers.actions";
+import { ChainStoreDetailsPageComponent } from "../../components/chain-store-details-page/details.component";
+import { ChainStoreListPageComponent } from "../../components/chain-store-list-page/list.component";
+import { LoadAllChainStoreAction, LoadChainStoreAction, NewChainStoreAction } from "../chain-store.actions";
+import { ChainStoreModuleState } from "../chain-store.state";
+
 
 @Injectable()
-export class ManufacturerRouterEffects {
+export class ChainStoreRouterEffects {
 
-  @Effect()
-  readonly loadAllManufacturer$ = this.dataPersistence.navigation( ManufacturerListPageComponent, {
+  @Effect() loadAll$ = this.dataPersistence.navigation( ChainStoreListPageComponent, {
     run: () => {
-      return new LoadAllManufacturerAction();
+      return new LoadAllChainStoreAction();
     }
   } );
 
-  @Effect()
-  readonly loadManufacturerById = this.dataPersistence.navigation( ManufacturerDetailsPageComponent, {
+  @Effect() loadById$ = this.dataPersistence.navigation( ChainStoreDetailsPageComponent, {
     run: ( routeSnapshot: ActivatedRouteSnapshot ) => {
       const isNew = routeSnapshot.data[ 'isNew' ] && routeSnapshot.data[ 'isNew' ];
       if ( isNew ) {
-        return new NewManufacturerAction();
+        return new NewChainStoreAction();
       } else {
-        const id = routeSnapshot.params[ 'manufacturerId' ];
-        return new LoadManufacturerAction( id );
+        const id = routeSnapshot.params[ 'chainStoreId' ];
+        return new LoadChainStoreAction( id );
       }
     },
     onError: ( a: ActivatedRouteSnapshot, error ) => {
@@ -44,11 +44,11 @@ export class ManufacturerRouterEffects {
 
   constructor( actions$: Actions,
                router: Router,
-               private dataPersistence: DataPersistence<ManufacturersModuleState> ) {
+               private dataPersistence: DataPersistence<ChainStoreModuleState> ) {
     this.navigateOnDeleteSucceeded = RouterEffectFactory.buildNavigateOnActionEffect( actions$, router,
-      ManufacturerActionType.deleteSuccess, [ 'manufacturers' ] );
+      ManufacturerActionType.deleteSuccess, [ 'chain-stores' ] );
 
     this.navigateOnSaveSucceeded$ = RouterEffectFactory.buildNavigateOnActionEffect( actions$, router,
-      ManufacturerActionType.saveSuccess, [ 'manufacturers' ] );
+      ManufacturerActionType.saveSuccess, [ 'chain-stores' ] );
   }
 }
