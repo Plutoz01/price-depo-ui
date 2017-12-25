@@ -1,0 +1,9 @@
+<div class="pd-notification-item alert alert-dismissible" [ngClass]="levelClass" role="alert">
+  <ng-container *ngIf="notification?.title">
+    <h6 class="alert-heading" >{{ notification.title }}</h6>
+  </ng-container>
+  <span>{{ notification?.details }}</span>
+  <button *ngIf="notification?.cloasable" type="button" class="close" aria-label="Close" (click)="onClose()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
