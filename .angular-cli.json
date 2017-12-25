@@ -71,6 +71,12 @@
       "appRoot": ""
     },
     {
+      "name": "notifications",
+      "root": "libs/notifications/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "product",
       "root": "libs/product/src",
       "test": "../../../test.js",
