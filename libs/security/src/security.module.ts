@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { StoreModule } from "@ngrx/store";
-import { securityInitState } from "@price-depo-ui/security/src/+state/security.init";
-import { securityReducer } from "@price-depo-ui/security/src/+state/security.reducer";
-import { directives } from "@price-depo-ui/security/src/directives";
-import { guards } from "@price-depo-ui/security/src/guards";
+import { securityInitState } from "./+state/security.init";
+import { securityReducer } from "./+state/security.reducer";
+import { directives } from "./directives";
+import { guards } from "./guards";
 
 @NgModule( {
   imports: [
