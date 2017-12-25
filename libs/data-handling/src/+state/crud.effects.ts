@@ -1,3 +1,4 @@
+import { Type } from "@angular/core";
 import { Router } from "@angular/router";
 import { Actions } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
@@ -29,44 +30,41 @@ export class CrudEffectFactory<M extends Identifiable<ID>, ID> {
     );
   }
 
-  buildSaveEffect<SS extends SaveSuccessAction<M>>( saveActionType: string, saveSuccessCreator: { new( saved: M ): SS; } ): Observable<SS> {
+  buildSaveEffect<SS extends SaveSuccessAction<M>>( saveActionType: string, saveSuccessAction: Type<SS> ): Observable<SS> {
     return this.dataPersistence.pessimisticUpdate( saveActionType, {
       run: ( action: SaveAction<M> ) => {
         return this.repository.save( action.saveable )
-          .map( ( saved: M ) => new saveSuccessCreator( saved ) );
+          .map( ( saved: M ) => new saveSuccessAction( saved ) );
       },
       onError: CrudEffectFactory.handleError
     } );
   }
 
-  buildDeleteEffect<DS extends DeleteSuccessAction<ID>>( deleteActionType: string,
-                                                         deleteSuccessCreator: { new( id: ID ): DS; } ): Observable<DS> {
+  buildDeleteEffect<DS extends DeleteSuccessAction<ID>>( deleteActionType: string, deleteSuccessAction: Type<DS> ): Observable<DS> {
     return this.dataPersistence.pessimisticUpdate( deleteActionType, {
       run: ( action: DeleteAction<M> ) => {
         const deletableId = action.deletable.id;
         return this.repository.remove( deletableId ).map( () => {
-          return new deleteSuccessCreator( deletableId );
+          return new deleteSuccessAction( deletableId );
         } );
       },
       onError: CrudEffectFactory.handleError
     } );
   }
 
-  buildLoadAllEffect<LS extends LoadAllSuccessAction<M>>( loadAllActionType: string,
-                                                          loadAllSuccessCreator: { new( items: M[] ): LS; } ): Observable<LS> {
+  buildLoadAllEffect<LS extends LoadAllSuccessAction<M>>( loadAllActionType: string, loadAllSuccessAction: Type<LS> ): Observable<LS> {
     return this.dataPersistence.fetch( loadAllActionType, {
       run: () => this.repository.getAll()
-        .map( ( items: M[] ) => new loadAllSuccessCreator( items ) ),
+        .map( ( items: M[] ) => new loadAllSuccessAction( items ) ),
       onError: CrudEffectFactory.handleError
     } );
   }
 
-  buildLoadByIdEffect<LS extends LoadByIdSuccessAction<M>>( loadByIdActionType: string,
-                                                            loadByIdSuccessCreator: { new( item: M ): LS; } ): Observable<LS> {
+  buildLoadByIdEffect<LS extends LoadByIdSuccessAction<M>>( loadByIdActionType: string, loadByIdSuccessAction: Type<LS> ): Observable<LS> {
     return this.dataPersistence.fetch( loadByIdActionType, {
       run: ( action: LoadByIdAction<ID> ) => this.repository.getById( action.id )
       // TODO: navigate to /404 if not found
-        .map( ( item: M ) => new loadByIdSuccessCreator( item ) ),
+        .map( ( item: M ) => new loadByIdSuccessAction( item ) ),
       onError: CrudEffectFactory.handleError
     } );
   }
