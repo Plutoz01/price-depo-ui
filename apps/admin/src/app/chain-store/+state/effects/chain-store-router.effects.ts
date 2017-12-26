@@ -6,10 +6,9 @@ import { DataPersistence } from "@nrwl/nx";
 import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
 import { RouterEffectFactory } from "@price-depo-ui/shared/src/+state/router-effect-factory";
 import { Observable } from "rxjs/Observable";
-import { ManufacturerActionType } from "../../../manufacturers/+state/manufacturers.actions";
 import { ChainStoreDetailsPageComponent } from "../../components/chain-store-details-page/details.component";
 import { ChainStoreListPageComponent } from "../../components/chain-store-list-page/list.component";
-import { LoadAllChainStoreAction, LoadChainStoreAction, NewChainStoreAction } from "../chain-store.actions";
+import { ChainStoreActionType, LoadAllChainStoreAction, LoadChainStoreAction, NewChainStoreAction } from "../chain-store.actions";
 import { ChainStoreModuleState } from "../chain-store.state";
 
 @Injectable()
@@ -55,9 +54,9 @@ export class ChainStoreRouterEffects {
                router: Router,
                private dataPersistence: DataPersistence<ChainStoreModuleState> ) {
     this.navigateOnDeleteSucceeded = RouterEffectFactory.buildNavigateOnActionEffect( actions$, router,
-      ManufacturerActionType.deleteSuccess, [ 'chain-stores' ] );
+      ChainStoreActionType.deleteSuccess, [ 'chain-stores' ] );
 
     this.navigateOnSaveSucceeded$ = RouterEffectFactory.buildNavigateOnActionEffect( actions$, router,
-      ManufacturerActionType.saveSuccess, [ 'chain-stores' ] );
+      ChainStoreActionType.saveSuccess, [ 'chain-stores' ] );
   }
 }
