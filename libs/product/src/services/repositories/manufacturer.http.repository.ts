@@ -1,10 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
-import { CrudHttpBaseRepository } from "libs/data-handling/src/repositories/crud-http-base.repository";
+import { HttpCrudBaseRepository } from "libs/data-handling/src/repositories/http-crud-base.repository";
 import { Manufacturer } from "libs/product/src/models/manufacturer.interface";
 
 @Injectable()
-export class ManufacturerHttpRepository extends CrudHttpBaseRepository<Manufacturer, string> {
+export class ManufacturerHttpRepository extends HttpCrudBaseRepository<Manufacturer, string> {
 
   constructor( httpClient: HttpClient ) {
     super( httpClient );

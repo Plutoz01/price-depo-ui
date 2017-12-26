@@ -1,5 +1,5 @@
-import { Identifiable } from "libs/data-handling/src/models/identifiable.interface";
-import { Page } from "libs/data-handling/src/models/page.interface";
+import { Identifiable } from "../models/identifiable.interface";
+import { Page } from "../models/page.interface";
 import { Observable } from "rxjs/Observable";
 
 export interface CrudRepository <T extends Identifiable<ID>, ID> {

@@ -22,7 +22,7 @@ export class NotificationsEffects {
         return !!hideAfterSeconds && hideAfterSeconds > 0;
       } ),
       mergeMap( action => {
-        return Observable.of( action.newNotification.id ).delay( action.newNotification.hideAfterSeconds );
+        return Observable.of( action.newNotification.id ).delay( 1000 * action.newNotification.hideAfterSeconds );
       } ),
       map( notificationId => new NotificationCloseAction( notificationId ) )
     );

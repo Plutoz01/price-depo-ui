@@ -7,6 +7,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/nx';
+import { ErrorHandlingModule } from "@price-depo-ui/error-handling/src/error-handling.module";
 import { NotificationsModule } from "@price-depo-ui/notifications";
 import { ProductModule } from "@price-depo-ui/product";
 import { SecurityModule } from "@price-depo-ui/security";
@@ -17,7 +18,6 @@ import { adminReducer } from "./+state/admin.reducer";
 import { components } from "./components";
 import { AdminPageComponent } from "./components/admin-page/admin-page.component";
 import { AppComponent } from "./components/app.component";
-import { ManufacturersModule } from "./manufacturers/manufacturers.module";
 
 const routes: Routes = [
   {
@@ -38,10 +38,12 @@ const routes: Routes = [
 @NgModule( {
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     SecurityModule,
     ProductModule,
     SharedModule,
     NotificationsModule,
+    ErrorHandlingModule,
 
     NxModule.forRoot(),
     RouterModule.forRoot( routes, { initialNavigation: 'enabled' } ),

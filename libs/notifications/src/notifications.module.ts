@@ -11,7 +11,6 @@ import { components } from "./components";
 @NgModule( {
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     StoreModule.forFeature( 'notifications', notificationsReducer, { initialState: notificationsInitState } ),
     EffectsModule.forFeature( [ NotificationsEffects ] )
   ],

@@ -1,11 +1,11 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
+import { Page } from "../models/page.interface";
 import { CrudRepository } from "@price-depo-ui/data-handling/src/repositories/crud-repository.interface";
-import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
-import { Page } from "@price-depo-ui/data-handling/src/models/page.interface";
+import { Identifiable } from "../models/identifiable.interface";
 import 'rxjs/add/operator/mapTo';
 import { Observable } from "rxjs/Observable";
 
-export abstract class CrudHttpBaseRepository<T extends Identifiable<ID>, ID> implements CrudRepository<T, ID> {
+export abstract class HttpCrudBaseRepository<T extends Identifiable<ID>, ID> implements CrudRepository<T, ID> {
 
   static convertToHttpParams( obj: Object ): HttpParams {
     // TODO: refactor to use reduce
@@ -51,7 +51,7 @@ export abstract class CrudHttpBaseRepository<T extends Identifiable<ID>, ID> imp
 
   protected abstract getApiUrl(): string;
   protected convertPageToHttpParams( page: Page ) {
-    return CrudHttpBaseRepository.convertToHttpParams( page );
+    return HttpCrudBaseRepository.convertToHttpParams( page );
   }
   protected isEntityNew( entity: T ): boolean {
     return !entity.id;
