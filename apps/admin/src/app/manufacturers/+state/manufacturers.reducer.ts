@@ -1,6 +1,6 @@
 import {
   handleMasterDetailsLoadAllSuccess, handleMasterDetailsLoadByIdSuccess
-} from "@price-depo-ui/data-handling/src/+state/master-details.handlers";
+} from "@price-depo-ui/data-handling/src/+state/master-details/master-details.handlers";
 import { ManufacturerActions, ManufacturerActionType } from "./manufacturers.actions";
 import { ManufacturersState } from "./manufacturers.state";
 

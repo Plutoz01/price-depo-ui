@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, Router } from "@angular/router";
 import { Actions, Effect } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { DataPersistence } from "@nrwl/nx";
+import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
 import { RouterEffectFactory } from "@price-depo-ui/shared/src/+state/router-effect-factory";
 import { Observable } from "rxjs/Observable";
 import { ManufacturerActionType } from "../../../manufacturers/+state/manufacturers.actions";
@@ -15,8 +16,9 @@ import { ChainStoreModuleState } from "../chain-store.state";
 export class ChainStoreRouterEffects {
 
   @Effect() loadAll$ = this.dataPersistence.navigation( ChainStoreListPageComponent, {
-    run: () => {
-      return new LoadAllChainStoreAction();
+    run: ( a: ActivatedRouteSnapshot, state: ChainStoreModuleState ) => {
+      const pageable = Pageable.of( state.admin_chain_stores.pageNumber, state.admin_chain_stores.pageSize );
+      return new LoadAllChainStoreAction( pageable );
     }
   } );
 

@@ -1,9 +1,10 @@
+import { PagedResponse } from "@price-depo-ui/data-handling/src/models/paged-response.interface";
 import { Identifiable } from "../models/identifiable.interface";
-import { Page } from "../models/page.interface";
+import { Pageable } from "../models/pageable.class";
 import { Observable } from "rxjs/Observable";
 
 export interface CrudRepository <T extends Identifiable<ID>, ID> {
-  getAll( page?: Page ): Observable<T[]>;
+  getAll( pageable?: Pageable ): Observable<PagedResponse<T>>;
   getById( id: ID ): Observable<T | undefined>;
   create( entity: T ): Observable<T>;
   update( entity: T ): Observable<T>;

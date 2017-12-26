@@ -1,5 +1,5 @@
 import { MasterDetailsState } from "./master-details.state";
-import { Identifiable } from "../models/identifiable.interface";
+import { Identifiable } from "../../models/identifiable.interface";
 
 export class MasterDetailsSelectors {
 

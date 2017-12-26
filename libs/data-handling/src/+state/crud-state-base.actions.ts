@@ -1,9 +1,16 @@
 import { Action } from "@ngrx/store";
+import { Pageable } from "../models/pageable.class";
+import { PagedResponse } from "../models/paged-response.interface";
 import { Identifiable } from "libs/data-handling/src/models/identifiable.interface";
+
+export abstract class LoadAllAction<M extends Identifiable<any>> implements Action {
+  abstract readonly type: string;
+  constructor( public readonly pageable: Pageable ) {}
+}
 
 export abstract class LoadAllSuccessAction<M extends Identifiable<any>> implements Action {
   abstract readonly type: string;
-  constructor( public readonly loadedItems: M[] ) {}
+  constructor( public readonly pagedResponse: PagedResponse<M> ) {}
 }
 
 export abstract class LoadByIdAction<ID> implements Action {

@@ -1,7 +1,7 @@
 import { Action } from "@ngrx/store";
 import {
   DeleteAction, DeleteSuccessAction, LoadByIdAction, LoadByIdSuccessAction, LoadAllSuccessAction, SaveAction,
-  SaveSuccessAction
+  SaveSuccessAction, LoadAllAction
 } from "../../../../../../libs/data-handling/src/+state/crud-state-base.actions";
 import { ChainStore } from "../../../../../../libs/product/src/models/chain-store.interface";
 
@@ -17,7 +17,7 @@ export enum ChainStoreActionType {
   deleteSuccess = 'CHAIN_STORE_DELETE_SUCCESS'
 }
 
-export class LoadAllChainStoreAction implements Action {
+export class LoadAllChainStoreAction extends LoadAllAction<ChainStore> {
   readonly type = ChainStoreActionType.loadAll;
 }
 

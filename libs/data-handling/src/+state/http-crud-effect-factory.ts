@@ -1,11 +1,14 @@
 import { Type } from "@angular/core";
 import { DataPersistence } from "@nrwl/nx";
+import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
+import { PagedResponse } from "@price-depo-ui/data-handling/src/models/paged-response.interface";
 import { ErrorHandlingEffects } from "@price-depo-ui/error-handling/src/+state/error-handling.effects";
 import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/mergeMap';
 import { Identifiable } from "../models/identifiable.interface";
 import { HttpCrudBaseRepository } from "../repositories/http-crud-base.repository";
 import {
-  DeleteAction, DeleteSuccessAction, LoadAllSuccessAction, LoadByIdAction, LoadByIdSuccessAction, SaveAction,
+  DeleteAction, DeleteSuccessAction, LoadAllAction, LoadAllSuccessAction, LoadByIdAction, LoadByIdSuccessAction, SaveAction,
   SaveSuccessAction
 } from "./crud-state-base.actions";
 
@@ -40,8 +43,15 @@ export class HttpCrudEffectFactory<M extends Identifiable<ID>, ID> {
 
   buildLoadAllEffect<LS extends LoadAllSuccessAction<M>>( loadAllActionType: string, loadAllSuccessAction: Type<LS> ): Observable<LS> {
     return this.dataPersistence.fetch( loadAllActionType, {
-      run: () => this.repository.getAll()
-        .map( ( items: M[] ) => new loadAllSuccessAction( items ) ),
+      run: ( action: LoadAllAction<M> ) => this.repository.getAll( action.pageable )
+        // start a new request with page==0 if actual page is greater than response.totalPages
+        .mergeMap( ( pagedResponse: PagedResponse<M> ) => {
+          if ( action.pageable.page > ( pagedResponse.totalPages - 1 ) ) {
+            return this.repository.getAll( Pageable.of( 0, action.pageable.size ) );
+          }
+          return Observable.of( pagedResponse );
+        } )
+        .map( ( pagedResponse: PagedResponse<M> ) => new loadAllSuccessAction( pagedResponse ) ),
       onError: ErrorHandlingEffects.handleActionError
     } );
   }

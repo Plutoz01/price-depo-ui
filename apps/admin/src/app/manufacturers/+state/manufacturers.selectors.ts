@@ -10,6 +10,6 @@ function getSelectedManufacturer( state: ManufacturersState ): Manufacturer {
   return state.selected;
 }
 
-export const getManufacturersStateSelector = createFeatureSelector( 'admin.manufacturers' );
+export const getManufacturersStateSelector = createFeatureSelector( 'admin_manufacturers' );
 export const getManufacturersSelector = createSelector( getManufacturersStateSelector, getManufacturers );
 export const getManufacturerSelector = createSelector( getManufacturersStateSelector, getSelectedManufacturer );

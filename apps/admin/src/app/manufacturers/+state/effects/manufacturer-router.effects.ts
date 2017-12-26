@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, Router } from "@angular/router";
 import { Actions, Effect } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { DataPersistence } from "@nrwl/nx";
+import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
 import { RouterEffectFactory } from "@price-depo-ui/shared/src/+state/router-effect-factory";
 import { Observable } from "rxjs/Observable";
 import { ManufacturerDetailsPageComponent } from "../../components/manufacturer-details-page/details.component";
@@ -15,8 +16,9 @@ export class ManufacturerRouterEffects {
 
   @Effect()
   readonly loadAllManufacturer$ = this.dataPersistence.navigation( ManufacturerListPageComponent, {
-    run: () => {
-      return new LoadAllManufacturerAction();
+    run: ( a: ActivatedRouteSnapshot, state: ManufacturersModuleState ) => {
+      const pageable = Pageable.of( state.admin_manufacturers.pageNumber, state.admin_manufacturers.pageSize );
+      return new LoadAllManufacturerAction( pageable );
     }
   } );
 

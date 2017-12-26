@@ -1,29 +1,30 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { Page } from "../models/page.interface";
+import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
+import { PagedResponse } from "@price-depo-ui/data-handling/src/models/paged-response.interface";
 import { CrudRepository } from "@price-depo-ui/data-handling/src/repositories/crud-repository.interface";
-import { Identifiable } from "../models/identifiable.interface";
 import 'rxjs/add/operator/mapTo';
 import { Observable } from "rxjs/Observable";
+import { Identifiable } from "../models/identifiable.interface";
 
 export abstract class HttpCrudBaseRepository<T extends Identifiable<ID>, ID> implements CrudRepository<T, ID> {
 
+  constructor( protected httpClient: HttpClient ) {
+  }
+
   static convertToHttpParams( obj: Object ): HttpParams {
     // TODO: refactor to use reduce
-    const httpParams = new HttpParams();
+    let httpParams = new HttpParams();
     for ( const key in obj ) {
-      if ( obj.hasOwnProperty( key ) && obj[ key ] ) {
-        httpParams.set( key, obj[ key ] );
+      if ( obj.hasOwnProperty( key ) && obj[ key ].toString() ) {
+        httpParams = httpParams.set( key, obj[ key ] );
       }
     }
     return httpParams;
   }
 
-  constructor( protected httpClient: HttpClient ) {
-  }
-
-  getAll( page?: Page ): Observable<T[]> {
-    const pageParams: HttpParams = page ? this.convertPageToHttpParams( page ) : undefined;
-    return this.httpClient.get<T[]>( `${ this.getApiUrl() }`, { params: pageParams } );
+  getAll( pageable: Pageable ): Observable<PagedResponse<T>> {
+    const pageParams: HttpParams = this.convertPageToHttpParams( pageable );
+    return this.httpClient.get<PagedResponse<T>>( `${ this.getApiUrl() }`, { params: pageParams } );
   }
 
   getById( id: ID ): Observable<T | undefined> {
@@ -50,9 +51,11 @@ export abstract class HttpCrudBaseRepository<T extends Identifiable<ID>, ID> imp
 
 
   protected abstract getApiUrl(): string;
-  protected convertPageToHttpParams( page: Page ) {
-    return HttpCrudBaseRepository.convertToHttpParams( page );
+
+  protected convertPageToHttpParams( pageable: Pageable ) {
+    return HttpCrudBaseRepository.convertToHttpParams( pageable );
   }
+
   protected isEntityNew( entity: T ): boolean {
     return !entity.id;
   }

@@ -37,7 +37,7 @@ const routes: Routes = [
     DataHandlingModule,
 
     RouterModule.forChild( routes ),
-    StoreModule.forFeature( 'admin.manufacturers', manufacturersReducer, { initialState: manufacturersInitialState } ),
+    StoreModule.forFeature( 'admin_manufacturers', manufacturersReducer, { initialState: manufacturersInitialState } ),
     EffectsModule.forFeature( effects )
   ],
   declarations: [

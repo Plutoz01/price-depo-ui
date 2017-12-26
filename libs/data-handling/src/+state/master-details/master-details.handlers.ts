@@ -1,12 +1,19 @@
 import { MasterDetailsState } from "./master-details.state";
-import { LoadAllSuccessAction, LoadByIdSuccessAction } from "./crud-state-base.actions";
-import { Identifiable } from "../models/identifiable.interface";
+import { LoadAllSuccessAction, LoadByIdSuccessAction } from "../crud-state-base.actions";
+import { Identifiable } from "../../models/identifiable.interface";
 
 export function handleMasterDetailsLoadAllSuccess<M extends Identifiable<any>>( state: MasterDetailsState<M>,
                                                                                 action: LoadAllSuccessAction<M> ): MasterDetailsState<M> {
   return {
     ...state,
-    items: action.loadedItems,
+    items: action.pagedResponse.content,
+    pageNumber: action.pagedResponse.pageNumber,
+    pageSize: action.pagedResponse.pageSize,
+    hasNextPage: action.pagedResponse.hasNextPage,
+    hasPreviousPage: action.pagedResponse.hasPreviousPage,
+    totalPages: action.pagedResponse.totalPages,
+    totalItems: action.pagedResponse.totalItems,
+
     selected: null
   };
 }

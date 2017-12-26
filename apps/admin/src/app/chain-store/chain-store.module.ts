@@ -37,7 +37,7 @@ const routes: Routes = [
     DataHandlingModule,
 
     RouterModule.forChild( routes ),
-    StoreModule.forFeature( 'admin.chain-stores', chainStoreReducer, { initialState: chainStoreInitialState } ),
+    StoreModule.forFeature( 'admin_chain_stores', chainStoreReducer, { initialState: chainStoreInitialState } ),
     EffectsModule.forFeature( effects )
 
   ],
