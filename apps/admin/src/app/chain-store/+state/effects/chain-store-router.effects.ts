@@ -11,7 +11,6 @@ import { ChainStoreListPageComponent } from "../../components/chain-store-list-p
 import { LoadAllChainStoreAction, LoadChainStoreAction, NewChainStoreAction } from "../chain-store.actions";
 import { ChainStoreModuleState } from "../chain-store.state";
 
-
 @Injectable()
 export class ChainStoreRouterEffects {
 

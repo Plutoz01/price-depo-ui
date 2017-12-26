@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from "@angular/forms";
-import { components } from "@price-depo-ui/shared/src/components";
+import { components } from "./components";
 
 @NgModule( {
   imports: [

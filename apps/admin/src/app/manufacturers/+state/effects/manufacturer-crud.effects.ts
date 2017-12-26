@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Effect } from "@ngrx/effects";
 import { DataPersistence } from "@nrwl/nx";
-import { CrudEffectFactory } from "@price-depo-ui/data-handling/src/+state/crud-effect-factory";
+import { HttpCrudEffectFactory } from "@price-depo-ui/data-handling/src/+state/http-crud-effect-factory";
 import { ManufacturerHttpRepository } from "@price-depo-ui/product/src/services/repositories/manufacturer.http.repository";
 import { Observable } from "rxjs/Observable";
 import {
@@ -27,7 +27,7 @@ export class ManufacturerCrudEffects {
 
   constructor( dataPersistence: DataPersistence<ManufacturersModuleState>,
                manufacturerRepository: ManufacturerHttpRepository ) {
-    const crudEffectFactory = new CrudEffectFactory( dataPersistence, manufacturerRepository );
+    const crudEffectFactory = new HttpCrudEffectFactory( dataPersistence, manufacturerRepository );
 
     this.loadAll$ = crudEffectFactory.buildLoadAllEffect( ManufacturerActionType.loadAll, LoadAllManufacturerSuccessAction );
 

@@ -3,6 +3,9 @@
   <hr>
 </ng-container>
 
-<button class="btn btn-primary" (click)="createStaticNotification()">Create static notification</button>
+<ng-container *pdHasPermission="'product.admin.chain-store'">
+  <a routerLink="chain-stores">Chain store administration</a>
+  <hr>
+</ng-container>
 
-<a routerLink="chain-stores" *pdHasPermission="'product.admin.chain-store'">Chain store administration</a>
+

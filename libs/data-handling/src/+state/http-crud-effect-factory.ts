@@ -1,23 +1,20 @@
 import { Type } from "@angular/core";
-import { Action } from "@ngrx/store";
 import { DataPersistence } from "@nrwl/nx";
+import { ErrorHandlingEffects } from "@price-depo-ui/error-handling/src/+state/error-handling.effects";
 import { Observable } from "rxjs/Observable";
+import { Identifiable } from "../models/identifiable.interface";
+import { HttpCrudBaseRepository } from "../repositories/http-crud-base.repository";
 import {
   DeleteAction, DeleteSuccessAction, LoadAllSuccessAction, LoadByIdAction, LoadByIdSuccessAction, SaveAction,
   SaveSuccessAction
 } from "./crud-state-base.actions";
-import { Identifiable } from "../models/identifiable.interface";
-import { CrudHttpBaseRepository } from "../repositories/crud-http-base.repository";
 
-export class CrudEffectFactory<M extends Identifiable<ID>, ID> {
+export class HttpCrudEffectFactory<M extends Identifiable<ID>, ID> {
 
   constructor( private dataPersistence: DataPersistence<any>,
-               private repository: CrudHttpBaseRepository<M, ID> ) {
+               private repository: HttpCrudBaseRepository<M, ID> ) {
   }
 
-  static handleError( action: Action, error: Error ) {
-    console.error( `Action failed: ${ action.type }. Error: `, error );
-  }
 
   buildSaveEffect<SS extends SaveSuccessAction<M>>( saveActionType: string, saveSuccessAction: Type<SS> ): Observable<SS> {
     return this.dataPersistence.pessimisticUpdate( saveActionType, {
@@ -25,7 +22,7 @@ export class CrudEffectFactory<M extends Identifiable<ID>, ID> {
         return this.repository.save( action.saveable )
           .map( ( saved: M ) => new saveSuccessAction( saved ) );
       },
-      onError: CrudEffectFactory.handleError
+      onError: ErrorHandlingEffects.handleActionError
     } );
   }
 
@@ -37,7 +34,7 @@ export class CrudEffectFactory<M extends Identifiable<ID>, ID> {
           return new deleteSuccessAction( deletableId );
         } );
       },
-      onError: CrudEffectFactory.handleError
+      onError: ErrorHandlingEffects.handleActionError
     } );
   }
 
@@ -45,7 +42,7 @@ export class CrudEffectFactory<M extends Identifiable<ID>, ID> {
     return this.dataPersistence.fetch( loadAllActionType, {
       run: () => this.repository.getAll()
         .map( ( items: M[] ) => new loadAllSuccessAction( items ) ),
-      onError: CrudEffectFactory.handleError
+      onError: ErrorHandlingEffects.handleActionError
     } );
   }
 
@@ -54,7 +51,7 @@ export class CrudEffectFactory<M extends Identifiable<ID>, ID> {
       run: ( action: LoadByIdAction<ID> ) => this.repository.getById( action.id )
       // TODO: navigate to /404 if not found
         .map( ( item: M ) => new loadByIdSuccessAction( item ) ),
-      onError: CrudEffectFactory.handleError
+      onError: ErrorHandlingEffects.handleActionError
     } );
   }
 }
