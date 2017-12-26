@@ -2,5 +2,9 @@
 
 <button class="btn btn-primary create-new" (click)="onCreateNew()">Create new</button>
 
-<pd-data-table [columns]="columnDefinitions" [items]="items$ | async" (select)="onSelect( $event )"></pd-data-table>
-<pd-paginator [paginationInfo]="paginationInfo$ | async" (pageTo)="onChangePage( $event )"></pd-paginator>
+<pd-data-table [columns]="columnDefinitions"
+               [items]="items$ | async"
+               [paginationInfo]="paginationInfo$ | async"
+               (select)="onSelect( $event )"
+               (pageTo)="onPageTo( $event )">
+</pd-data-table>

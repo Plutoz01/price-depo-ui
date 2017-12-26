@@ -1,6 +1,21 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
-/* You can add global styles to this file, and also import other style files */
 
 .pd-navbar {
   @extend .navbar, .navbar-dark, .bg-dark;
+}
+
+.thead-dark {
+  th {
+    @extend .bg-dark;
+  }
+}
+
+.tfoot-dark {
+  td {
+    @extend .bg-dark;
+    color: $navbar-dark-color;
+    //background-color: $table-dark-bg;
+    //border-color: $table-dark-border-color;
+  }
+
 }

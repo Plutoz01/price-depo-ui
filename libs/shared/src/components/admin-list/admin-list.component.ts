@@ -45,7 +45,7 @@ export class AdminListPageComponent<T extends Identifiable<any>> implements OnIn
     } );
   }
 
-  onChangePage( newPage: number ) {
+  onPageTo( newPage: number ) {
     this.router.navigate( [], {
       queryParams: { page: newPage }
     } );

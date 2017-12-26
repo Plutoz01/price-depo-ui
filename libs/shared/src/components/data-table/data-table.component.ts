@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PaginationInfo } from "@price-depo-ui/data-handling/src/models/pagination-info.interface";
 import { ColumnDefinition } from "@price-depo-ui/shared/src/models/column-definition.interface";
 
 @Component( {
@@ -12,7 +13,9 @@ export class DataTableComponent {
 
   @Input() items: Object[] = [];
   @Input() columns: ColumnDefinition[] = [];
+  @Input() paginationInfo?: PaginationInfo;
   @Output() select = new EventEmitter<Object | null>();
+  @Output() pageTo = new EventEmitter<number>();
 
   getCellValue( item: Object, colName: string ): any {
     return item[ colName ] || '';
