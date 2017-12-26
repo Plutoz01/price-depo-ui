@@ -4,6 +4,8 @@ import { ChainStore } from "@price-depo-ui/product/src/models/chain-store.interf
 
 export const getChainStoreStateSelector = createFeatureSelector( 'admin_chain_stores' );
 export const getAllChainStoresSelector = createSelector( getChainStoreStateSelector,
-  MasterDetailsSelectors.getItemsFromMasterDetailsState<ChainStore>() );
+  MasterDetailsSelectors.getItems<ChainStore>() );
 export const getSelectedChainStoreSelector = createSelector( getChainStoreStateSelector,
   MasterDetailsSelectors.getSelectedItem<ChainStore>() );
+export const getChainStorePaginationSelector = createSelector( getChainStoreStateSelector,
+  MasterDetailsSelectors.getPaginationInfo() );

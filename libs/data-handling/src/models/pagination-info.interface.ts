@@ -1,7 +1,4 @@
-import { PaginationInfo } from "@price-depo-ui/data-handling/src/models/pagination-info.interface";
-
-export interface PagedResponse<T> extends PaginationInfo {
-  readonly content: T[];
+export interface PaginationInfo {
   readonly pageNumber: number;
   readonly pageSize: number;
   readonly hasNextPage: boolean;

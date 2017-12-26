@@ -16,9 +16,16 @@ export class ManufacturerRouterEffects {
 
   @Effect()
   readonly loadAllManufacturer$ = this.dataPersistence.navigation( ManufacturerListPageComponent, {
-    run: ( a: ActivatedRouteSnapshot, state: ManufacturersModuleState ) => {
-      const pageable = Pageable.of( state.admin_manufacturers.pageNumber, state.admin_manufacturers.pageSize );
-      return new LoadAllManufacturerAction( pageable );
+    run: ( routeSnapshot: ActivatedRouteSnapshot, state: ManufacturersModuleState ) => {
+      let page = +routeSnapshot.queryParams[ 'page' ];
+      if ( !Number.isInteger( page ) ) {
+        page = state.admin_manufacturers.pagination.pageNumber;
+      }
+      let size = +routeSnapshot.queryParams[ 'size' ];
+      if ( !Number.isInteger( size ) ) {
+        size = state.admin_manufacturers.pagination.pageSize;
+      }
+      return new LoadAllManufacturerAction( Pageable.of( page, size ) );
     }
   } );
 

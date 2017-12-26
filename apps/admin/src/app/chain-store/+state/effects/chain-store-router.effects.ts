@@ -16,9 +16,17 @@ import { ChainStoreModuleState } from "../chain-store.state";
 export class ChainStoreRouterEffects {
 
   @Effect() loadAll$ = this.dataPersistence.navigation( ChainStoreListPageComponent, {
-    run: ( a: ActivatedRouteSnapshot, state: ChainStoreModuleState ) => {
-      const pageable = Pageable.of( state.admin_chain_stores.pageNumber, state.admin_chain_stores.pageSize );
-      return new LoadAllChainStoreAction( pageable );
+    run: ( routeSnapshot: ActivatedRouteSnapshot, state: ChainStoreModuleState ) => {
+      // TODO: extract and make more generic ( quite same for all the router effects )
+      let page = +routeSnapshot.queryParams[ 'page' ];
+      if ( !Number.isInteger( page ) ) {
+        page = state.admin_chain_stores.pagination.pageNumber;
+      }
+      let size = +routeSnapshot.queryParams[ 'size' ];
+      if ( !Number.isInteger( size ) ) {
+        size = state.admin_chain_stores.pagination.pageSize;
+      }
+      return new LoadAllChainStoreAction( Pageable.of( page, size ) );
     }
   } );
 
