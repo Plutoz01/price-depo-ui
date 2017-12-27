@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
 import { PaginationInfo } from "@price-depo-ui/data-handling/src/models/pagination-info.interface";
 import { ColumnDefinition } from "@price-depo-ui/shared/src/models/column-definition.interface";
 
@@ -14,8 +15,9 @@ export class DataTableComponent {
   @Input() items: Object[] = [];
   @Input() columns: ColumnDefinition[] = [];
   @Input() paginationInfo?: PaginationInfo;
+  @Input() pageSizes?: number[] = Pageable.defaultPageSizes;
   @Output() select = new EventEmitter<Object | null>();
-  @Output() pageTo = new EventEmitter<number>();
+  @Output() pageTo = new EventEmitter<Pageable>();
 
   getCellValue( item: Object, colName: string ): any {
     return item[ colName ] || '';
@@ -28,6 +30,26 @@ export class DataTableComponent {
     } else {
       this.selectedIndex = null;
       this.select.emit( null );
+    }
+  }
+
+  onPageNumberChange( newPageNumber: number ) {
+    this.onPageTo( newPageNumber, this.paginationInfo.pageSize );
+  }
+
+  onPageSizeChange( newPageSize: number ) {
+    this.onPageTo( this.paginationInfo.pageNumber, newPageSize );
+  }
+
+  onPageTo( pageNumber: number, pageSize: number ) {
+    let pageable = Pageable.of( pageNumber, pageSize );
+
+    if ( pageable.firstIndex > ( this.paginationInfo.totalItems - 1 ) ) {
+      pageable = Pageable.of( 0, pageSize );
+    }
+
+    if ( pageable.page !== this.paginationInfo.pageNumber || pageable.size !== this.paginationInfo.pageSize ) {
+      this.pageTo.emit( pageable );
     }
   }
 

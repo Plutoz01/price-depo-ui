@@ -14,16 +14,19 @@
   <tfoot *ngIf="paginationInfo" class="tfoot-dark">
   <tr>
     <td [attr.colspan]="columns?.length">
-      <div class="pagination-container d-flex justify-content-between">
-        <div class="pagination-info d-flex align-items-center">
+      <div class="pagination-container d-flex justify-content-between flex-column flex-md-row">
+        <div class="pagination-info d-flex align-items-center m-1">
           <small *ngIf="paginationInfo.totalItems > 0">
             Showing {{ paginationInfo.pageNumber * paginationInfo.pageSize + 1 }}
             to {{ paginationInfo.pageNumber * paginationInfo.pageSize + items.length }}
             of {{ paginationInfo.totalItems }} items
           </small>
         </div>
-        <div>
-          <pd-paginator [paginationInfo]="paginationInfo" (pageTo)="pageTo.emit( $event )"></pd-paginator>
+        <div class="d-flex flex-column flex-sm-row">
+          <pd-paginator [paginationInfo]="paginationInfo" (pageTo)="onPageNumberChange( $event )" class="m-1"></pd-paginator>
+
+          <pd-page-size-chooser [choices]="pageSizes" [selected]="paginationInfo.pageSize" (select)="onPageSizeChange( $event )" class="m-1">
+          </pd-page-size-chooser>
         </div>
       </div>
     </td>

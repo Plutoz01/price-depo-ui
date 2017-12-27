@@ -1,0 +1,8 @@
+<nav class="pd-page-size-chooser">
+  <ul class="pagination">
+    <li class="page-item" *ngFor="let choice of choices"
+        [ngClass]="{ 'active': selected === choice }" (click)="onSelect( choice )">
+      <button class="page-link">{{ choice }}</button>
+    </li>
+  </ul>
+</nav>

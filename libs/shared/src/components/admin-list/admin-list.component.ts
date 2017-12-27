@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core
 import { ActivatedRoute, Router } from "@angular/router";
 import { Selector, Store } from "@ngrx/store";
 import { MasterDetailsState } from "@price-depo-ui/data-handling/src/+state/master-details/master-details.state";
+import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
 import { PaginationInfo } from "@price-depo-ui/data-handling/src/models/pagination-info.interface";
 import { Observable } from "rxjs/Observable";
 import { Identifiable } from "../../../../data-handling/src/models/identifiable.interface";
@@ -45,9 +46,9 @@ export class AdminListPageComponent<T extends Identifiable<any>> implements OnIn
     } );
   }
 
-  onPageTo( newPage: number ) {
+  onPageTo( pageable: Pageable ) {
     this.router.navigate( [], {
-      queryParams: { page: newPage }
+      queryParams: { page: pageable.page, size: pageable.size }
     } );
   }
 }

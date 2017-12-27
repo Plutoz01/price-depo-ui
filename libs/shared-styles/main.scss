@@ -14,8 +14,9 @@
   td {
     @extend .bg-dark;
     color: $navbar-dark-color;
-    //background-color: $table-dark-bg;
-    //border-color: $table-dark-border-color;
   }
+}
 
+.pagination{
+  margin-bottom: 0;
 }
