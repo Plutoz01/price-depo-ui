@@ -12,17 +12,6 @@ import { map } from "rxjs/operators";
 export class ErrorHandlingEffects {
   static readonly errorMessageAutoHideAfterSeconds = 15;
 
-  static handleActionError( action: Action, error: Error ): ErrorThrownAction {
-    console.error( `Action failed: ${ action.type }. Error: `, error );
-
-    let title = 'Unexpected error';
-
-    if ( error instanceof HttpErrorResponse ) {
-      title = 'Network error';
-    }
-    return new ErrorThrownAction( title );
-  }
-
   @Effect()
   readonly notificationOnError: Observable<NotificationCreateAction> =
     this.actions$.ofType<ErrorThrownAction>( ErrorHandlingActionType.errorThrown ).pipe(
@@ -36,6 +25,17 @@ export class ErrorHandlingEffects {
         return new NotificationCreateAction( notification );
       } )
     );
+
+  static handleActionError( action: Action, error: Error ): ErrorThrownAction {
+    console.error( `Action failed: ${ action.type }. Error: `, error );
+
+    let title = 'Unexpected error';
+
+    if ( error instanceof HttpErrorResponse ) {
+      title = 'Network error';
+    }
+    return new ErrorThrownAction( title );
+  }
 
   constructor( private actions$: Actions ) {
   }
