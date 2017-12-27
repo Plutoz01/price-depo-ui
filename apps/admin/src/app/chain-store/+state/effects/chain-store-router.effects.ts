@@ -3,20 +3,29 @@ import { ActivatedRouteSnapshot, Router } from "@angular/router";
 import { Actions, Effect } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { DataPersistence } from "@nrwl/nx";
+import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
 import { RouterEffectFactory } from "@price-depo-ui/shared/src/+state/router-effect-factory";
 import { Observable } from "rxjs/Observable";
-import { ManufacturerActionType } from "../../../manufacturers/+state/manufacturers.actions";
 import { ChainStoreDetailsPageComponent } from "../../components/chain-store-details-page/details.component";
 import { ChainStoreListPageComponent } from "../../components/chain-store-list-page/list.component";
-import { LoadAllChainStoreAction, LoadChainStoreAction, NewChainStoreAction } from "../chain-store.actions";
+import { ChainStoreActionType, LoadAllChainStoreAction, LoadChainStoreAction, NewChainStoreAction } from "../chain-store.actions";
 import { ChainStoreModuleState } from "../chain-store.state";
 
 @Injectable()
 export class ChainStoreRouterEffects {
 
   @Effect() loadAll$ = this.dataPersistence.navigation( ChainStoreListPageComponent, {
-    run: () => {
-      return new LoadAllChainStoreAction();
+    run: ( routeSnapshot: ActivatedRouteSnapshot, state: ChainStoreModuleState ) => {
+      // TODO: extract and make more generic ( quite same for all the router effects )
+      let page = +routeSnapshot.queryParams[ 'page' ];
+      if ( !Number.isInteger( page ) ) {
+        page = state.admin_chain_stores.pagination.pageNumber;
+      }
+      let size = +routeSnapshot.queryParams[ 'size' ];
+      if ( !Number.isInteger( size ) ) {
+        size = state.admin_chain_stores.pagination.pageSize;
+      }
+      return new LoadAllChainStoreAction( Pageable.of( page, size ) );
     }
   } );
 
@@ -45,9 +54,9 @@ export class ChainStoreRouterEffects {
                router: Router,
                private dataPersistence: DataPersistence<ChainStoreModuleState> ) {
     this.navigateOnDeleteSucceeded = RouterEffectFactory.buildNavigateOnActionEffect( actions$, router,
-      ManufacturerActionType.deleteSuccess, [ 'chain-stores' ] );
+      ChainStoreActionType.deleteSuccess, [ 'chain-stores' ] );
 
     this.navigateOnSaveSucceeded$ = RouterEffectFactory.buildNavigateOnActionEffect( actions$, router,
-      ManufacturerActionType.saveSuccess, [ 'chain-stores' ] );
+      ChainStoreActionType.saveSuccess, [ 'chain-stores' ] );
   }
 }

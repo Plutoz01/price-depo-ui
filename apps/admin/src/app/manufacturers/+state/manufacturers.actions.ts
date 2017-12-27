@@ -1,7 +1,8 @@
 import { Action } from "@ngrx/store";
 import { Manufacturer } from "@price-depo-ui/product/src/models/manufacturer.interface";
 import {
-  DeleteAction, DeleteSuccessAction, LoadAllSuccessAction, LoadByIdAction, LoadByIdSuccessAction, SaveAction, SaveSuccessAction
+  DeleteAction, DeleteSuccessAction, LoadAllAction, LoadAllSuccessAction, LoadByIdAction, LoadByIdSuccessAction, SaveAction,
+  SaveSuccessAction
 } from "../../../../../../libs/data-handling/src/+state/crud-state-base.actions";
 
 export enum ManufacturerActionType {
@@ -16,7 +17,7 @@ export enum ManufacturerActionType {
   deleteSuccess = 'MANUFACTURER_DELETE_SUCCESS'
 }
 
-export class LoadAllManufacturerAction implements Action {
+export class LoadAllManufacturerAction extends LoadAllAction<Manufacturer> {
   readonly type = ManufacturerActionType.loadAll;
 }
 

@@ -1,12 +1,42 @@
 <table class="pd-data-table table table-bordered table-hover table-sm">
   <thead class="thead-dark">
-    <tr>
-      <th scope="col" *ngFor="let colDefinition of columns">{{ colDefinition.headerText }}</th>
-    </tr>
+  <tr>
+    <th scope="col" *ngFor="let colDefinition of columns">{{ colDefinition.headerText }}</th>
+  </tr>
   </thead>
   <tbody>
+  <ng-container *ngIf="items?.length > 0; else noItems">
     <tr *ngFor="let item of items; let i = index" [ngClass]=" { 'table-active': i === selectedIndex } " (click)="onSelect( i )">
       <td *ngFor="let colDefinition of columns">{{ getCellValue( item, colDefinition.name ) }}</td>
     </tr>
+  </ng-container>
   </tbody>
+  <tfoot *ngIf="paginationInfo" class="tfoot-dark">
+  <tr>
+    <td [attr.colspan]="columns?.length">
+      <div class="pagination-container d-flex justify-content-between flex-column flex-md-row">
+        <div class="pagination-info d-flex align-items-center m-1">
+          <small *ngIf="paginationInfo.totalItems > 0">
+            Showing {{ paginationInfo.pageNumber * paginationInfo.pageSize + 1 }}
+            to {{ paginationInfo.pageNumber * paginationInfo.pageSize + items.length }}
+            of {{ paginationInfo.totalItems }} items
+          </small>
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <pd-paginator [paginationInfo]="paginationInfo" (pageTo)="onPageNumberChange( $event )" class="m-1"></pd-paginator>
+
+          <pd-page-size-chooser [choices]="pageSizes" [selected]="paginationInfo.pageSize" (select)="onPageSizeChange( $event )" class="m-1">
+          </pd-page-size-chooser>
+        </div>
+      </div>
+    </td>
+  </tr>
+  </tfoot>
 </table>
+<ng-template #noItems>
+  <tr>
+    <td [attr.colspan]="columns?.length">
+      <p class="no-items-message">No items to show</p>
+    </td>
+  </tr>
+</ng-template>

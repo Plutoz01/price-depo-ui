@@ -1,9 +1,8 @@
 import {
   handleMasterDetailsLoadAllSuccess, handleMasterDetailsLoadByIdSuccess
-} from "@price-depo-ui/data-handling/src/+state/master-details.handlers";
+} from "@price-depo-ui/data-handling/src/+state/master-details/master-details.handlers";
 import { ChainStoreActions, ChainStoreActionType } from "./chain-store.actions";
 import { ChainStoreState } from "./chain-store.state";
-
 
 export function chainStoreReducer( state: ChainStoreState, action: ChainStoreActions ): ChainStoreState {
   switch ( action.type ) {

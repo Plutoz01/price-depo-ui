@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from "@ngrx/store";
-import { Manufacturer } from "libs/product/src/models/manufacturer.interface";
+import { Selector, State } from "@ngrx/store";
+import { PaginationInfo } from "@price-depo-ui/data-handling/src/models/pagination-info.interface";
+import { Manufacturer } from "@price-depo-ui/product/src/models/manufacturer.interface";
 import { ColumnDefinition } from "libs/shared/src/models/column-definition.interface";
+import { getManufacturerPaginationSelector, getManufacturersSelector } from "../../+state/manufacturers.selectors";
 import { ManufacturersModuleState } from "../../+state/manufacturers.state";
-import { getManufacturersSelector } from "../../+state/manufacturers.selectors";
 
 @Component( {
   templateUrl: './list.component.html',
@@ -12,13 +13,13 @@ import { getManufacturersSelector } from "../../+state/manufacturers.selectors";
 } )
 export class ManufacturerListPageComponent {
 
+  readonly itemsSelector: Selector<State<ManufacturersModuleState>, Manufacturer[]> =
+    getManufacturersSelector;
+  readonly paginationSelector: Selector<State<ManufacturersModuleState>, PaginationInfo> =
+    getManufacturerPaginationSelector;
+
   readonly columnDefinitions: ColumnDefinition[] = [
     { name: 'name', headerText: 'Name' },
     { name: 'country', headerText: 'Country' }
   ];
-
-  readonly items$: Store<Manufacturer[]> = this.store.select( getManufacturersSelector );
-
-  constructor( private store: Store<ManufacturersModuleState> ) {
-  }
 }

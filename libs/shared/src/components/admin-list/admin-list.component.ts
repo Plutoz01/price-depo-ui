@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Selector, Store } from "@ngrx/store";
+import { MasterDetailsState } from "@price-depo-ui/data-handling/src/+state/master-details/master-details.state";
+import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
+import { PaginationInfo } from "@price-depo-ui/data-handling/src/models/pagination-info.interface";
+import { Observable } from "rxjs/Observable";
 import { Identifiable } from "../../../../data-handling/src/models/identifiable.interface";
 import { ColumnDefinition } from "../../models/column-definition.interface";
 
@@ -9,13 +14,24 @@ import { ColumnDefinition } from "../../models/column-definition.interface";
   styleUrls: [ './admin-list.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 } )
-export class AdminListPageComponent<T extends Identifiable<any>> {
+export class AdminListPageComponent<T extends Identifiable<any>> implements OnInit {
 
-  @Input() items: T[];
   @Input() title: string;
   @Input() columnDefinitions: ColumnDefinition[];
+  @Input() itemsSelector: Selector<MasterDetailsState<T>, T[]>;
+  @Input() paginationSelector: Selector<MasterDetailsState<T>, PaginationInfo>;
 
-  constructor( protected router: Router, protected route: ActivatedRoute ) {
+  items$: Observable<T[]>;
+  paginationInfo$: Observable<PaginationInfo>;
+
+  constructor( private readonly store: Store<any>,
+               private readonly router: Router,
+               private readonly route: ActivatedRoute ) {
+  }
+
+  ngOnInit() {
+    this.items$ = this.store.select( this.itemsSelector );
+    this.paginationInfo$ = this.store.select( this.paginationSelector );
   }
 
   onSelect( selected: T ) {
@@ -27,5 +43,12 @@ export class AdminListPageComponent<T extends Identifiable<any>> {
   onCreateNew() {
     this.router.navigate( [ 'new' ], {
       relativeTo: this.route
-    } );  }
+    } );
+  }
+
+  onPageTo( pageable: Pageable ) {
+    this.router.navigate( [], {
+      queryParams: { page: pageable.page, size: pageable.size }
+    } );
+  }
 }
