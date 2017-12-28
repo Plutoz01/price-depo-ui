@@ -1,21 +1,102 @@
-import { FormElementDefinition } from "@price-depo-ui/shared/src/models/form-element-definition.inteface";
+import {
+  DynamicFormGroupDef, DynamicFormHiddenControlDef,
+  DynamicFormTextControlDef
+} from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
 
-export const manufacturerFormElementDefinitions: FormElementDefinition[] = [
-  { key: 'name', label: 'Name', type: 'text', placeholder: 'Enter manufacturers name', required: true },
-  {
-    key: 'country', label: 'Country', type: 'text', placeholder: 'Enter country of manufacturers',
-    description: 'Please add full name of country'
-  }
-];
+export const manufacturerFormDefinition = new DynamicFormGroupDef(
+  '',
+  '',
+  [
+    new DynamicFormHiddenControlDef( 'id' ),
+    new DynamicFormTextControlDef(
+      'name',
+      'Name',
+      null,
+      'Enter manufacturers name',
+      true
+    ),
+    new DynamicFormTextControlDef(
+      'country',
+      'Country',
+      'Please add full name of country',
+      'Enter country of manufacturers',
+      true
+    )
+  ]
+);
 
-export const chainStoreFormElementDefinitions: FormElementDefinition[] = [
-  { key: 'name', label: 'Name', type: 'text', placeholder: 'Enter chain store name', required: true },
-  {
-    key: 'website', label: 'Website', type: 'text', placeholder: 'Enter website of chain store',
-    description: 'Please use http:// or https:// prefix'
-  }
-];
+export const chainStoreFormDefinition = new DynamicFormGroupDef();
 
-export const shopFormElementDefinitions: FormElementDefinition[] = [
-  { key: 'name', label: 'Name', type: 'text', placeholder: 'Enter shop name', required: true }
-];
+export const shopFormDefinition = new DynamicFormGroupDef(
+  '',
+  '',
+  [
+    new DynamicFormHiddenControlDef( 'id' ),
+    new DynamicFormTextControlDef(
+      'name',
+      'Name',
+      null,
+      'Enter shop name',
+      true
+    ),
+    new DynamicFormGroupDef(
+      'address',
+      'Address',
+      [
+        new DynamicFormTextControlDef(
+          'country',
+          'Country',
+          null,
+          'Enter country',
+          true
+        ),
+        new DynamicFormTextControlDef(
+          'postCode',
+          'Postcode',
+          null,
+          'Enter post code',
+          true
+        ),
+        new DynamicFormTextControlDef(
+          'settlement',
+          'Settlement',
+          null,
+          'Enter settlement',
+          true
+        ),
+        new DynamicFormTextControlDef(
+          'street',
+          'Street',
+          null,
+          'Enter street',
+          true
+        ),
+        new DynamicFormTextControlDef(
+          'number',
+          'House number',
+          null,
+          'Enter house number',
+          true
+        )
+      ]
+    )
+  ]
+);
+
+//
+// export const chainStoreFormDefinition: FormElementDefinition[] = [
+//   { key: 'name', label: 'Name', type: 'text', placeholder: 'Enter chain store name', required: true },
+//   {
+//     key: 'website', label: 'Website', type: 'text', placeholder: 'Enter website of chain store',
+//     description: 'Please use http:// or https:// prefix'
+//   }
+// ];
+//
+// export const shopFormDefinition: FormElementDefinition[] = [
+//   { key: 'name', label: 'Name', type: 'text', placeholder: 'Enter shop name', required: true },
+//   {
+//     key: 'address', label: 'Address', type: 'group', members: [
+//       // { key: 'country', label: 'Country', type: 'text', placeholder: 'Enter country', required: true }
+//     ]
+//   }
+// ];

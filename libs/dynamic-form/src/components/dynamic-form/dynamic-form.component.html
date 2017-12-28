@@ -1,0 +1,9 @@
+<form [formGroup]="editorForm">
+  <pd-dynamic-form-group [formGroupDef]="formDef" [control]="editorForm"></pd-dynamic-form-group>
+
+  <div class="actions-container mt-2">
+    <button type="button" class="btn" (click)="back.emit()">Back</button>
+    <button type="button" class="btn btn-primary" (click)="onSave()" [disabled]="editorForm.invalid">Save</button>
+    <button type="button" class="btn btn-danger" (click)="onDelete()" [disabled]="!isDeletable">Delete</button>
+  </div>
+</form>

@@ -12,15 +12,15 @@ import { AdminDataType } from "../models/admin-data-type.enum";
 import { MasterDetailsRouterData } from "../models/master-details-router-data.interface";
 import { chainStoreColumnDefinitions, manufacturerColumnDefinitions, shopColumnDefinitions } from "./column-definitions.data";
 import {
-  chainStoreFormElementDefinitions, manufacturerFormElementDefinitions,
-  shopFormElementDefinitions
+  chainStoreFormDefinition, manufacturerFormDefinition,
+  shopFormDefinition
 } from "./formElementDefinitions.data";
 
 export const manufacturerMasterDetailsRouterData: MasterDetailsRouterData<Manufacturer> = {
   dataType: AdminDataType.manufacturers,
   title: 'Manufacturers',
   columnDefinitions: manufacturerColumnDefinitions,
-  formElementDefinitions: manufacturerFormElementDefinitions,
+  formDefinition: manufacturerFormDefinition,
   masterDetailsStateSelector: getManufacturerMasterDetailsStateSelector,
   initialValue: initialManufacturer()
 };
@@ -29,7 +29,7 @@ export const chainStoreMasterDetailsRouterData: MasterDetailsRouterData<ChainSto
   dataType: AdminDataType.chainStores,
   title: 'Chain stores',
   columnDefinitions: chainStoreColumnDefinitions,
-  formElementDefinitions: chainStoreFormElementDefinitions,
+  formDefinition: chainStoreFormDefinition,
   masterDetailsStateSelector: getChainStoreMasterDetailsStateSelector,
   initialValue: initialChainStore()
 };
@@ -38,7 +38,7 @@ export const shopMasterDetailsRouteData: MasterDetailsRouterData<Shop> = {
   dataType: AdminDataType.shops,
   title: 'Shops',
   columnDefinitions: shopColumnDefinitions,
-  formElementDefinitions: shopFormElementDefinitions,
+  formDefinition: shopFormDefinition,
   masterDetailsStateSelector: getShopMasterDetailsStateSelector,
   initialValue: initialShop()
 };

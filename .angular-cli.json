@@ -71,6 +71,12 @@
       "appRoot": ""
     },
     {
+      "name": "dynamic-form",
+      "root": "libs/dynamic-form/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "error-handling",
       "root": "libs/error-handling/src",
       "test": "../../../test.js",

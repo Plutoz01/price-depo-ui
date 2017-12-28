@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { FormElementDefinition } from "@price-depo-ui/shared/src/models/form-element-definition.inteface";
+import { DynamicFormGroupDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
 import { Identifiable } from "libs/data-handling/src/models/identifiable.interface";
 import { MasterDetailsRouterData } from "apps/admin/src/app/models/master-details-router-data.interface";
 import { Observable } from "rxjs/Observable";
@@ -15,7 +15,7 @@ import { AdminDataType } from "../../models/admin-data-type.enum";
 } )
 export class AdminDetailsPageComponent<T extends Identifiable<any>> {
 
-  readonly formElementDefinitions: FormElementDefinition[];
+  readonly formDefinition: DynamicFormGroupDef;
   readonly item$: Observable<T>;
   readonly adminDataType: AdminDataType;
 
@@ -28,7 +28,7 @@ export class AdminDetailsPageComponent<T extends Identifiable<any>> {
       throw new Error( 'MasterDetailsRouterData is required, but missing' );
     }
     this.adminDataType = options.dataType;
-    this.formElementDefinitions = options.formElementDefinitions;
+    this.formDefinition = options.formDefinition;
     const masterDetailsStore = this.store.select( options.masterDetailsStateSelector );
     this.item$ = masterDetailsStore.select( 'selected' );
   }
