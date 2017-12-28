@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
@@ -15,25 +15,10 @@ import { SharedModule } from "@price-depo-ui/shared";
 import { environment } from '../environments/environment';
 import { appInitialState } from './+state/admin.init';
 import { adminReducer } from "./+state/admin.reducer";
+import { effects } from "./+state/effects";
+import { routes } from "./admin.routes";
 import { components } from "./components";
-import { AdminPageComponent } from "./components/admin-page/admin-page.component";
 import { AppComponent } from "./components/app.component";
-
-const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    component: AdminPageComponent
-  },
-  {
-    path: 'manufacturers',
-    loadChildren: './manufacturers/manufacturers.module#ManufacturersModule'
-  },
-  {
-    path: 'chain-stores',
-    loadChildren: './chain-store/chain-store.module#ChainStoreModule'
-  }
-];
 
 @NgModule( {
   imports: [
@@ -48,7 +33,7 @@ const routes: Routes = [
     NxModule.forRoot(),
     RouterModule.forRoot( routes, { initialNavigation: 'enabled' } ),
     StoreModule.forRoot( { app: adminReducer }, { initialState: appInitialState } ),
-    EffectsModule.forRoot( [] ),
+    EffectsModule.forRoot( effects ),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreRouterConnectingModule,
   ],
@@ -56,7 +41,9 @@ const routes: Routes = [
     ...components
   ],
   bootstrap: [ AppComponent ],
-  providers: []
+  providers: [
+    ...effects
+  ]
 } )
 export class AdminAppModule {
 }
