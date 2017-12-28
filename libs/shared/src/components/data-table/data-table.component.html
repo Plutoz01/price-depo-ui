@@ -7,7 +7,7 @@
   <tbody>
   <ng-container *ngIf="items?.length > 0; else noItems">
     <tr *ngFor="let item of items; let i = index" [ngClass]=" { 'table-active': i === selectedIndex } " (click)="onSelect( i )">
-      <td *ngFor="let colDefinition of columns">{{ getCellValue( item, colDefinition.name ) }}</td>
+      <td *ngFor="let colDefinition of columns">{{ getCellValue( item, colDefinition.path ) }}</td>
     </tr>
   </ng-container>
   </tbody>

@@ -1,4 +1,4 @@
 export interface ColumnDefinition {
-  readonly name: string;
+  readonly path: string;
   readonly headerText?: string;
 }
