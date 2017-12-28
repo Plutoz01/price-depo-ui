@@ -7,6 +7,7 @@ import { CrudRepository } from "@price-depo-ui/data-handling/src/repositories/cr
 import { ErrorHandlingEffects } from "@price-depo-ui/error-handling/src/+state/error-handling.effects";
 import { ChainStoreHttpRepository } from "@price-depo-ui/product/src/services/repositories/chain-store.http.repository";
 import { ManufacturerHttpRepository } from "@price-depo-ui/product/src/services/repositories/manufacturer.http.repository";
+import { ShopHttpRepository } from "@price-depo-ui/product/src/services/repositories/shop.http.repository";
 import 'rxjs/add/operator/mergeMap';
 import { Observable } from "rxjs/Observable";
 import { AdminDataType } from "../../models/admin-data-type.enum";
@@ -34,7 +35,8 @@ export class AdminCrudEffects {
 
   constructor( private readonly dataPersistence: DataPersistence<AdminAppState>,
                private readonly manufacturerRepository: ManufacturerHttpRepository,
-               private readonly chainStoreRepository: ChainStoreHttpRepository) {
+               private readonly chainStoreRepository: ChainStoreHttpRepository,
+               private readonly shopRepository: ShopHttpRepository ) {
   }
 
   getRepositoryByDataType( adminDataType: AdminDataType ): CrudRepository<Identifiable<any>, any> {
@@ -43,6 +45,8 @@ export class AdminCrudEffects {
         return this.manufacturerRepository;
       case AdminDataType.chainStores:
         return this.chainStoreRepository;
+      case AdminDataType.shops:
+        return this.shopRepository;
       default:
         throw new Error( 'unhandled data type: ' + adminDataType );
     }

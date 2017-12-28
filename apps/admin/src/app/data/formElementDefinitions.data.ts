@@ -15,3 +15,7 @@ export const chainStoreFormElementDefinitions: FormElementDefinition[] = [
     description: 'Please use http:// or https:// prefix'
   }
 ];
+
+export const shopFormElementDefinitions: FormElementDefinition[] = [
+  { key: 'name', label: 'Name', type: 'text', placeholder: 'Enter shop name', required: true }
+];

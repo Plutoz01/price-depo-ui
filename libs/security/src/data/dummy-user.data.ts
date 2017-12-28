@@ -6,5 +6,6 @@ export const testUserBob = new UserBase( UserRole.REGULAR_USER,
     'profile',
     'product.admin',
     'product.admin.manufacturer',
-    'product.admin.chain-store'
+    'product.admin.chain-store',
+    'product.admin.shop'
   ] );

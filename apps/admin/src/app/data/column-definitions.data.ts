@@ -9,3 +9,7 @@ export const chainStoreColumnDefinitions: ColumnDefinition[] = [
   { name: 'name', headerText: 'Name' },
   { name: 'website', headerText: 'Website' }
 ];
+
+export const shopColumnDefinitions: ColumnDefinition[] = [
+  { name: 'name', headerText: 'Name' }
+];

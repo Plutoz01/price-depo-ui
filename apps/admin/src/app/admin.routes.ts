@@ -2,7 +2,7 @@ import { Routes } from "@angular/router";
 import { AdminDetailsPageComponent } from "./components/admin-details/admin-details.component";
 import { AdminListPageComponent } from "./components/admin-list/admin-list.component";
 import { AdminPageComponent } from "./components/admin-page/admin-page.component";
-import { chainStoreMasterDetailsRouterData, manufacturerMasterDetailsRouterData } from "./data/router.data";
+import { chainStoreMasterDetailsRouterData, manufacturerMasterDetailsRouterData, shopMasterDetailsRouteData } from "./data/router.data";
 import { AdminDataType } from "./models/admin-data-type.enum";
 
 const manufacturerRoutes: Routes = [
@@ -55,6 +55,31 @@ const chainStoreRoutes: Routes = [
   }
 ];
 
+const shopRoutes: Routes = [
+  {
+    path: AdminDataType.shops,
+    component: AdminListPageComponent,
+    data: {
+      masterDetails: shopMasterDetailsRouteData
+    }
+  },
+  {
+    path: `${ AdminDataType.shops }/new`,
+    component: AdminDetailsPageComponent,
+    data: {
+      masterDetails: shopMasterDetailsRouteData,
+      isNew: true
+    }
+  },
+  {
+    path: `${ AdminDataType.shops }/:id`,
+    component: AdminDetailsPageComponent,
+    data: {
+      masterDetails: shopMasterDetailsRouteData
+    }
+  }
+];
+
 export const routes: Routes = [
   {
     path: '',
@@ -62,5 +87,6 @@ export const routes: Routes = [
     component: AdminPageComponent
   },
   ...manufacturerRoutes,
-  ...chainStoreRoutes
+  ...chainStoreRoutes,
+  ...shopRoutes
 ];
