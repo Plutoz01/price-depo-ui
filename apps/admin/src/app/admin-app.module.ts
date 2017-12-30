@@ -17,7 +17,7 @@ import { environment } from '../environments/environment';
 import { appInitialState } from './+state/admin.init';
 import { adminReducer } from "./+state/admin.reducer";
 import { effects } from "./+state/effects";
-import { routes } from "./admin.routes";
+import { routes } from "./routes/admin.routes";
 import { components } from "./components";
 import { AppComponent } from "./components/app.component";
 
