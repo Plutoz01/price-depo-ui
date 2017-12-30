@@ -1,4 +1,4 @@
-<form [formGroup]="editorForm">
+<form [formGroup]="editorForm" [attr.id]="formDef?.key + 'Form'">
   <pd-dynamic-form-group [formGroupDef]="formDef" [control]="editorForm"></pd-dynamic-form-group>
 
   <div class="actions-container mt-2">

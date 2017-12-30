@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup } from "@angular/forms";
-import { DynamicFormGroupDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
+import { DynamicFormElementType, DynamicFormGroupDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
 
 @Component({
   selector: 'pd-dynamic-form-group',
@@ -9,6 +9,8 @@ import { DynamicFormGroupDef } from "@price-depo-ui/dynamic-form/src/models/dyna
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DynamicFormGroupComponent {
+  readonly formElementType = DynamicFormElementType;
+
   @Input() formGroupDef: DynamicFormGroupDef;
   @Input() control: FormGroup;
 }

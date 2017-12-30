@@ -13,7 +13,7 @@ export class DynamicFormFactory {
   constructor( private formBuilder: FormBuilder ) {
   }
 
-  buildFormGroup( formGroupDef: DynamicFormGroupDef, initialValue: Identifiable<any> = {} ): FormGroup {
+  buildFormGroup( formGroupDef: DynamicFormGroupDef, initialValue: Object = {} ): FormGroup {
     return new FormGroup(
       formGroupDef.members.reduce( ( partial, currentDef: AbstractDynamicFormElement ): Object => {
         const actualValue = _.get( initialValue, currentDef.key );

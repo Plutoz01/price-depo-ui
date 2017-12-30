@@ -4,7 +4,7 @@ import {
 } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
 
 export const manufacturerFormDefinition = new DynamicFormGroupDef(
-  '',
+  'manufacturer',
   '',
   [
     new DynamicFormHiddenControlDef( 'id' ),
@@ -25,10 +25,30 @@ export const manufacturerFormDefinition = new DynamicFormGroupDef(
   ]
 );
 
-export const chainStoreFormDefinition = new DynamicFormGroupDef();
+export const chainStoreFormDefinition = new DynamicFormGroupDef(
+  'chainStore',
+  '',
+  [
+    new DynamicFormHiddenControlDef( 'id' ),
+    new DynamicFormTextControlDef(
+      'name',
+      'Name',
+      null,
+      'Enter chain store name',
+      true
+    ),
+    new DynamicFormTextControlDef(
+      'website',
+      'Website',
+      'Please use http:// or https:// prefixes',
+      'Enter website URL',
+      true
+    )
+  ]
+);
 
 export const shopFormDefinition = new DynamicFormGroupDef(
-  '',
+  'shop',
   '',
   [
     new DynamicFormHiddenControlDef( 'id' ),
