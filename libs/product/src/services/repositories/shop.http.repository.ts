@@ -1,10 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { HttpCrudBaseRepository } from "@price-depo-ui/data-handling/src/repositories/http-crud-base.repository";
+import { HttpFilterableCrudBaseRepository } from "@price-depo-ui/data-handling/src/repositories/http-filterable-crud-base.repository";
+import { ShopFilterKeys } from "@price-depo-ui/product/src/models/filters/shop-filter.type";
 import { Shop } from "@price-depo-ui/product/src/models/shop.interface";
 
 @Injectable()
-export class ShopHttpRepository extends HttpCrudBaseRepository<Shop, string> {
+export class ShopHttpRepository extends HttpFilterableCrudBaseRepository<Shop, string, ShopFilterKeys> {
 
   constructor( httpClient: HttpClient ) {
     super( httpClient );
