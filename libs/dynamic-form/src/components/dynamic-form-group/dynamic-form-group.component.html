@@ -1,9 +1,9 @@
 <div class="dynamic-form-group">
-  <h6 *ngIf="formGroupDef?.label">{{ formGroupDef.label }}</h6>
+  <h5 *ngIf="formGroupDef?.label">{{ formGroupDef.label }}</h5>
 
   <div class="members-container row">
     <ng-container *ngFor="let def of formGroupDef?.members">
-      <ng-container class="asd-switch" [ngSwitch]="def.type">
+      <ng-container [ngSwitch]="def.type">
 
         <div *ngSwitchCase="formElementType.group" class="col-12">
           <pd-dynamic-form-group [formGroupDef]="def" [control]="control.get( def.key )">
