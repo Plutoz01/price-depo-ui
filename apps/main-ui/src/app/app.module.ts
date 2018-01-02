@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
@@ -32,7 +31,6 @@ const routes: Routes = [
 @NgModule( {
   imports: [
     BrowserModule,
-    NgbModule.forRoot(),
     NxModule.forRoot(),
     RouterModule.forRoot( routes, { initialNavigation: 'enabled' } ),
     StoreModule.forRoot( appReducer, { initialState: appInitialState } ),
