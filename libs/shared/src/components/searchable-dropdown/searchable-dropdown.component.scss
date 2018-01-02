@@ -1,0 +1,11 @@
+.searchable-dropdown {
+  .dropdown-menu {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    .result-list {
+      overflow-y: auto;
+      max-height: 12rem;
+    }
+  }
+}

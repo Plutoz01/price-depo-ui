@@ -1,0 +1,28 @@
+<div class="searchable-dropdown dropdown" (keyup.esc)="onClose()">
+  <button class="btn btn-outline-secondary dropdown-toggle" type="button" (click)="onToggleOpen()">
+    {{ selected ? getDisplayValueFrom( selected ) : 'Please select' }}
+  </button>
+  <div class="dropdown-menu" [class.show]="isOpen" (clickOutside)="onClose()" [exclude]="'.searchable-dropdown > .dropdown-toggle'">
+    <div class="input-group input-group-sm">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>
+      </div>
+      <input #searchInput type="text" class="form-control" placeholder="Search" aria-label="Search" autocomplete="off"
+             (keyup)="onSearchChange( searchInput.value )">
+    </div>
+
+    <div class="dropdown-divider"></div>
+
+    <div class="result-list">
+      <ng-container *ngIf="results?.length > 0; else noResultsFound">
+        <button class="dropdown-item" type="button" *ngFor="let result of results" (click)="onSelect( result )">
+          {{ getDisplayValueFrom( result ) }}
+        </button>
+      </ng-container>
+
+      <ng-template #noResultsFound>
+        <small>No items found</small>
+      </ng-template>
+    </div>
+  </div>
+</div>
