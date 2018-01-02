@@ -102,21 +102,3 @@ export const shopFormDefinition = new DynamicFormGroupDef(
     )
   ]
 );
-
-//
-// export const chainStoreFormDefinition: FormElementDefinition[] = [
-//   { key: 'name', label: 'Name', type: 'text', placeholder: 'Enter chain store name', required: true },
-//   {
-//     key: 'website', label: 'Website', type: 'text', placeholder: 'Enter website of chain store',
-//     description: 'Please use http:// or https:// prefix'
-//   }
-// ];
-//
-// export const shopFormDefinition: FormElementDefinition[] = [
-//   { key: 'name', label: 'Name', type: 'text', placeholder: 'Enter shop name', required: true },
-//   {
-//     key: 'address', label: 'Address', type: 'group', members: [
-//       // { key: 'country', label: 'Country', type: 'text', placeholder: 'Enter country', required: true }
-//     ]
-//   }
-// ];
