@@ -1,5 +1,5 @@
 import { DynamicFormDefFactory } from "@price-depo-ui/dynamic-form/src/dynamicFormDefFactory";
-import { filterableChainStoreProviderToken } from "../tokens/filterable-provider.tokens";
+import { chainStoreSearchProviderToken } from "../tokens/search-provider.tokens";
 
 export const manufacturerFormDefinition = DynamicFormDefFactory.buildGroupDef( {
   members: [
@@ -7,13 +7,15 @@ export const manufacturerFormDefinition = DynamicFormDefFactory.buildGroupDef( {
     DynamicFormDefFactory.buildTextControlDef( {
       key: 'name',
       label: 'Name',
-      placeholder: 'Enter manufacturer name'
+      placeholder: 'Enter manufacturer name',
+      required: true
     } ),
     DynamicFormDefFactory.buildTextControlDef( {
       key: 'country',
       label: 'Country',
       placeholder: 'Enter country of manufacturer',
-      description: 'Please add full name of country'
+      description: 'Please add full name of country',
+      required: true
     } ),
   ]
 } );
@@ -24,13 +26,15 @@ export const chainStoreFormDefinition = DynamicFormDefFactory.buildGroupDef( {
     DynamicFormDefFactory.buildTextControlDef( {
       key: 'name',
       label: 'Name',
-      placeholder: 'Enter chain store name'
+      placeholder: 'Enter chain store name',
+      required: true
     } ),
     DynamicFormDefFactory.buildTextControlDef( {
       key: 'website',
       label: 'Website',
       placeholder: 'Enter website URL',
-      description: 'Please use http:// or https:// prefixes'
+      description: 'Please use http:// or https:// prefixes',
+      required: true
     } ),
   ]
 } );
@@ -41,7 +45,15 @@ export const shopFormDefinition = DynamicFormDefFactory.buildGroupDef( {
     DynamicFormDefFactory.buildTextControlDef( {
       key: 'name',
       label: 'Name',
-      placeholder: 'Enter shop name'
+      placeholder: 'Enter shop name',
+      required: true
+    } ),
+    DynamicFormDefFactory.buildSearchableDropdownDef( {
+      key: 'chainStoreId',
+      label: 'Chain store',
+      placeholder: 'Please select a chain store',
+      displayKey: 'name',
+      searchProviderToken: chainStoreSearchProviderToken
     } ),
     DynamicFormDefFactory.buildGroupDef( {
       key: 'address',
@@ -50,36 +62,34 @@ export const shopFormDefinition = DynamicFormDefFactory.buildGroupDef( {
         DynamicFormDefFactory.buildTextControlDef( {
           key: 'country',
           label: 'Country',
-          placeholder: 'Enter country'
+          placeholder: 'Enter country',
+          required: true
         } ),
         DynamicFormDefFactory.buildTextControlDef( {
           key: 'postCode',
           label: 'Post code',
-          placeholder: 'Enter post code'
+          placeholder: 'Enter post code',
+          required: true
         } ),
         DynamicFormDefFactory.buildTextControlDef( {
           key: 'settlement',
           label: 'Settlement',
-          placeholder: 'Enter settlement'
+          placeholder: 'Enter settlement',
+          required: true
         } ),
         DynamicFormDefFactory.buildTextControlDef( {
           key: 'street',
           label: 'Street',
-          placeholder: 'Enter street'
+          placeholder: 'Enter street',
+          required: true
         } ),
         DynamicFormDefFactory.buildTextControlDef( {
           key: 'number',
           label: 'House number',
-          placeholder: 'Enter house number'
+          placeholder: 'Enter house number',
+          required: true
         } ),
       ]
-    } ),
-    DynamicFormDefFactory.buildSearchableDropdownDef( {
-      key: 'chainStoreId',
-      label: 'Chain store',
-      placeholder: 'Please select a chain store',
-      displayKey: 'name',
-      filterableProviderToken: filterableChainStoreProviderToken
     } )
   ]
 } );

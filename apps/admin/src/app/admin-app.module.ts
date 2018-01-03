@@ -11,7 +11,6 @@ import { DynamicFormModule } from "@price-depo-ui/dynamic-form/src/dynamic-form.
 import { ErrorHandlingModule } from "@price-depo-ui/error-handling/src/error-handling.module";
 import { NotificationsModule } from "@price-depo-ui/notifications";
 import { ProductModule } from "@price-depo-ui/product";
-import { ChainStoreHttpRepository } from "@price-depo-ui/product/src/services/repositories/chain-store.http.repository";
 import { SecurityModule } from "@price-depo-ui/security";
 import { SharedModule } from "@price-depo-ui/shared";
 import { environment } from '../environments/environment';
@@ -21,10 +20,11 @@ import { effects } from "./+state/effects";
 import { components } from "./components";
 import { AppComponent } from "./components/app.component";
 import { routes } from "./routes/admin.routes";
-import { filterableChainStoreProviderToken } from "./tokens/filterable-provider.tokens";
+import { ChainStoreSearchProviderService } from "./services/search-providers/chain-store-search-provider.service";
+import { chainStoreSearchProviderToken } from "./tokens/search-provider.tokens";
 
 const filterableProviders: Provider[] = [
-  { provide: filterableChainStoreProviderToken, useExisting: ChainStoreHttpRepository }
+  { provide: chainStoreSearchProviderToken, useClass: ChainStoreSearchProviderService }
 ];
 
 @NgModule( {

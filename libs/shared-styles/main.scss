@@ -27,3 +27,10 @@ html, body {
 .pagination{
   margin-bottom: 0;
 }
+
+.btn-outline-input {
+  @extend .btn-outline-secondary;
+  color: $input-color;
+  background-color: $white;
+  border-color: $input-border-color;
+}

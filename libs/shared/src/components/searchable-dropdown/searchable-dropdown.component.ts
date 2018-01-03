@@ -14,7 +14,7 @@ export class SearchableDropdownComponent<T extends Identifiable<any> | string> {
   @Input() selected?: T;
   @Input() displayKey = 'id';
   @Output() search = new EventEmitter<string>();
-  @Output() select = new EventEmitter<T>();
+  @Output() itemSelect = new EventEmitter<T>();
 
   @ViewChild( 'searchInput' ) searchInputRef: ElementRef;
 
@@ -25,9 +25,7 @@ export class SearchableDropdownComponent<T extends Identifiable<any> | string> {
   }
 
   onSearchChange( text: string ) {
-    if ( text ) {
-      this.search.emit( text );
-    }
+    this.search.emit( text );
   }
 
   onClose() {
@@ -44,7 +42,8 @@ export class SearchableDropdownComponent<T extends Identifiable<any> | string> {
   }
 
   onSelect( selected: T ) {
-    this.select.emit( selected );
+    this.itemSelect.emit( selected );
+    this.onClose();
   }
 
   getDisplayValueFrom( item: T ): any {

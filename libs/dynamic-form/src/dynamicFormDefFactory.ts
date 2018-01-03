@@ -1,5 +1,5 @@
 import { InjectionToken } from "@angular/core";
-import { FilterableRepository } from "@price-depo-ui/data-handling/src/repositories/filterable-repository.interface";
+import { SearchProvider } from "@price-depo-ui/dynamic-form/src/models/search-provider.interface";
 import {
   AbstractDynamicFormElement, DynamicFormControlDef, DynamicFormElementType, DynamicFormGroupDef,
   DynamicFormSearchableDropdownControlDef
@@ -23,7 +23,7 @@ export module DynamicFormDefFactory {
   }
 
   interface SearchableDropdownControlDefOpts extends FormControlDefOpts {
-    readonly filterableProviderToken: InjectionToken<FilterableRepository<any, any>>;
+    readonly searchProviderToken: InjectionToken<SearchProvider<any, any, any>>;
     readonly displayKey?: string;
   }
 
@@ -54,8 +54,8 @@ export module DynamicFormDefFactory {
 
   export function buildSearchableDropdownDef( options: SearchableDropdownControlDefOpts ): DynamicFormSearchableDropdownControlDef {
     return {
-      ...buildDefaultControlDefWithType( DynamicFormElementType.filterableDropdown, options ),
-      filterableProviderToken: options.filterableProviderToken,
+      ...buildDefaultControlDefWithType( DynamicFormElementType.searchableDropdown, options ),
+      searchProviderToken: options.searchProviderToken,
       displayKey: options.displayKey
     };
   }

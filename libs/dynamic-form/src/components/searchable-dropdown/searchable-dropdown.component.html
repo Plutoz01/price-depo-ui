@@ -1,0 +1,12 @@
+<div class="pd-dynamic-form-text-input form-group">
+  <label [attr.for]="controlDef.key + 'Input'">{{ controlDef.label }}</label>
+  <pd-searchable-dropdown [selected]="selectedValue$ | async"
+                          [displayKey]="controlDef.displayKey"
+                          [results]="searchResults$ | async"
+  (search)="onSearch( $event )"
+  (itemSelect)="onSelect( $event )">
+  </pd-searchable-dropdown>
+
+  <small [attr.id]="controlDef.key + 'Help'" class="form-text text-muted" *ngIf="controlDef?.description">{{ controlDef.description }}
+  </small>
+</div>

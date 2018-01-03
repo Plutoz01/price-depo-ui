@@ -30,7 +30,7 @@ export class DynamicFormFactory {
       case DynamicFormElementType.group:
         return this.buildFormGroup( <DynamicFormGroupDef>def, value );
       case DynamicFormElementType.text:
-      case DynamicFormElementType.filterableDropdown:
+      case DynamicFormElementType.searchableDropdown:
         return this.buildDefaultControlItem( def, value );
       case DynamicFormElementType.hidden:
         return this.buildHiddenItem( def, value );

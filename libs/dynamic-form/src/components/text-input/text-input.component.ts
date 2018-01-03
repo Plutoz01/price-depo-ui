@@ -12,7 +12,4 @@ export class DynamicFormTextInputComponent   {
 
   @Input() controlDef: DynamicFormControlDef;
   @Input() control: FormControl;
-
-  constructor() { }
-
 }
