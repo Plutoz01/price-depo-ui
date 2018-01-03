@@ -30,7 +30,8 @@ export class DynamicFormFactory {
       case DynamicFormElementType.group:
         return this.buildFormGroup( <DynamicFormGroupDef>def, value );
       case DynamicFormElementType.text:
-        return this.buildFormTextItem( def, value );
+      case DynamicFormElementType.filterableDropdown:
+        return this.buildDefaultControlItem( def, value );
       case DynamicFormElementType.hidden:
         return this.buildHiddenItem( def, value );
       default:
@@ -38,7 +39,7 @@ export class DynamicFormFactory {
     }
   }
 
-  buildFormTextItem( formTextItemDef: DynamicFormControlDef, initialValue: any ): FormControl {
+  buildDefaultControlItem( formTextItemDef: DynamicFormControlDef, initialValue: any ): FormControl {
     const validators: ValidatorFn[] = [];
     if ( formTextItemDef.required ) {
       validators.push( Validators.required );

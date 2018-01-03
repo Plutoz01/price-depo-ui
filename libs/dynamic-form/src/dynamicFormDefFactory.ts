@@ -1,6 +1,8 @@
+import { InjectionToken } from "@angular/core";
+import { FilterableRepository } from "@price-depo-ui/data-handling/src/repositories/filterable-repository.interface";
 import {
-  AbstractDynamicFormElement, DynamicFormControlDef, DynamicFormElementType,
-  DynamicFormGroupDef
+  AbstractDynamicFormElement, DynamicFormControlDef, DynamicFormElementType, DynamicFormGroupDef,
+  DynamicFormSearchableDropdownControlDef
 } from "./models/dynamic-form.interface";
 
 export module DynamicFormDefFactory {
@@ -10,17 +12,23 @@ export module DynamicFormDefFactory {
     label?: string;
   }
 
-  interface DynamicFormGroupDefOpts extends AbstractDynamicFormElementOpts {
+  interface GroupDefOpts extends AbstractDynamicFormElementOpts {
     members?: AbstractDynamicFormElement[];
   }
 
-  interface DynamicFormControlDefOpts extends AbstractDynamicFormElementOpts {
+  interface FormControlDefOpts extends AbstractDynamicFormElementOpts {
     description?: string;
     placeholder?: string;
     required?: boolean;
   }
 
-  function buildDefaultControlDefWithType( type: DynamicFormElementType, options: DynamicFormControlDefOpts = {} ): DynamicFormControlDef {
+  interface SearchableDropdownControlDefOpts extends FormControlDefOpts {
+    readonly filterableProviderToken: InjectionToken<FilterableRepository<any, any>>;
+    readonly displayKey?: string;
+  }
+
+
+  function buildDefaultControlDefWithType( type: DynamicFormElementType, options: FormControlDefOpts = {} ): DynamicFormControlDef {
     return {
       ...options,
       type: type,
@@ -28,7 +36,7 @@ export module DynamicFormDefFactory {
     };
   }
 
-  export function buildGroupDef( options: DynamicFormGroupDefOpts = {} ): DynamicFormGroupDef {
+  export function buildGroupDef( options: GroupDefOpts = {} ): DynamicFormGroupDef {
     return {
       type: DynamicFormElementType.group,
       key: options.key || '',
@@ -36,12 +44,20 @@ export module DynamicFormDefFactory {
     };
   }
 
-  export function buildTextControlDef( options: DynamicFormControlDefOpts = {} ): DynamicFormControlDef {
+  export function buildTextControlDef( options: FormControlDefOpts = {} ): DynamicFormControlDef {
     return buildDefaultControlDefWithType( DynamicFormElementType.text, options );
   }
 
-  export function buildHiddenControlDef( options: DynamicFormControlDefOpts = {} ): DynamicFormControlDef {
+  export function buildHiddenControlDef( options: FormControlDefOpts = {} ): DynamicFormControlDef {
     return buildDefaultControlDefWithType( DynamicFormElementType.hidden, options );
+  }
+
+  export function buildSearchableDropdownDef( options: SearchableDropdownControlDefOpts ): DynamicFormSearchableDropdownControlDef {
+    return {
+      ...buildDefaultControlDefWithType( DynamicFormElementType.filterableDropdown, options ),
+      filterableProviderToken: options.filterableProviderToken,
+      displayKey: options.displayKey
+    };
   }
 
 

@@ -1,7 +1,11 @@
+import { InjectionToken } from "@angular/core";
+import { FilterableRepository } from "@price-depo-ui/data-handling/src/repositories/filterable-repository.interface";
+
 export enum DynamicFormElementType {
   group = 'group',
   hidden = 'hidden',
-  text = 'text'
+  text = 'text',
+  filterableDropdown = 'filterableDropdown'
 }
 
 export interface AbstractDynamicFormElement {
@@ -18,4 +22,9 @@ export interface DynamicFormControlDef extends AbstractDynamicFormElement {
 
 export interface DynamicFormGroupDef extends AbstractDynamicFormElement {
   readonly members: AbstractDynamicFormElement[];
+}
+
+export interface  DynamicFormSearchableDropdownControlDef extends DynamicFormControlDef {
+  readonly filterableProviderToken: InjectionToken<FilterableRepository<any, any>>;
+  readonly displayKey?: string;
 }

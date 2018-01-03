@@ -1,4 +1,5 @@
 import { DynamicFormDefFactory } from "@price-depo-ui/dynamic-form/src/dynamicFormDefFactory";
+import { filterableChainStoreProviderToken } from "../tokens/filterable-provider.tokens";
 
 export const manufacturerFormDefinition = DynamicFormDefFactory.buildGroupDef( {
   members: [
@@ -72,6 +73,13 @@ export const shopFormDefinition = DynamicFormDefFactory.buildGroupDef( {
           placeholder: 'Enter house number'
         } ),
       ]
+    } ),
+    DynamicFormDefFactory.buildSearchableDropdownDef( {
+      key: 'chainStoreId',
+      label: 'Chain store',
+      placeholder: 'Please select a chain store',
+      displayKey: 'name',
+      filterableProviderToken: filterableChainStoreProviderToken
     } )
   ]
 } );

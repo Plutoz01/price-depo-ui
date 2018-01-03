@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from '@angular/router';
@@ -11,15 +11,21 @@ import { DynamicFormModule } from "@price-depo-ui/dynamic-form/src/dynamic-form.
 import { ErrorHandlingModule } from "@price-depo-ui/error-handling/src/error-handling.module";
 import { NotificationsModule } from "@price-depo-ui/notifications";
 import { ProductModule } from "@price-depo-ui/product";
+import { ChainStoreHttpRepository } from "@price-depo-ui/product/src/services/repositories/chain-store.http.repository";
 import { SecurityModule } from "@price-depo-ui/security";
 import { SharedModule } from "@price-depo-ui/shared";
 import { environment } from '../environments/environment';
 import { appInitialState } from './+state/admin.init';
 import { adminReducer } from "./+state/admin.reducer";
 import { effects } from "./+state/effects";
-import { routes } from "./routes/admin.routes";
 import { components } from "./components";
 import { AppComponent } from "./components/app.component";
+import { routes } from "./routes/admin.routes";
+import { filterableChainStoreProviderToken } from "./tokens/filterable-provider.tokens";
+
+const filterableProviders: Provider[] = [
+  { provide: filterableChainStoreProviderToken, useExisting: ChainStoreHttpRepository }
+];
 
 @NgModule( {
   imports: [
@@ -44,7 +50,8 @@ import { AppComponent } from "./components/app.component";
   ],
   bootstrap: [ AppComponent ],
   providers: [
-    ...effects
+    ...effects,
+    ...filterableProviders
   ]
 } )
 export class AdminAppModule {
