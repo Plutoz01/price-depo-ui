@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl } from "@angular/forms";
-import { DynamicFormTextControlDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
+import { DynamicFormControlDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
 
 @Component({
   selector: 'pd-dynamic-form-text-input',
@@ -10,7 +10,7 @@ import { DynamicFormTextControlDef } from "@price-depo-ui/dynamic-form/src/model
 })
 export class DynamicFormTextInputComponent   {
 
-  @Input() controlDef: DynamicFormTextControlDef;
+  @Input() controlDef: DynamicFormControlDef;
   @Input() control: FormControl;
 
   constructor() { }

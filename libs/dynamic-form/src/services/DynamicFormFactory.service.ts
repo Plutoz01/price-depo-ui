@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from "@angular/forms";
-import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
 import {
-  AbstractDynamicFormElement, DynamicFormElementType, DynamicFormGroupDef, DynamicFormHiddenControlDef,
-  DynamicFormTextControlDef
+  AbstractDynamicFormElement, DynamicFormControlDef, DynamicFormElementType,
+  DynamicFormGroupDef
 } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
 import * as _ from 'lodash';
 
@@ -26,20 +25,20 @@ export class DynamicFormFactory {
     );
   }
 
-  buildControlByDefType( def: AbstractDynamicFormElement, value: any ): AbstractControl {
+  protected buildControlByDefType( def: AbstractDynamicFormElement, value: any ): AbstractControl {
     switch ( def.type ) {
       case DynamicFormElementType.group:
         return this.buildFormGroup( <DynamicFormGroupDef>def, value );
       case DynamicFormElementType.text:
-        return this.buildFormTextItem( <DynamicFormTextControlDef>def, value );
+        return this.buildFormTextItem( def, value );
       case DynamicFormElementType.hidden:
-        return this.buildHiddenItem( <DynamicFormHiddenControlDef>def, value );
+        return this.buildHiddenItem( def, value );
       default:
         throw new Error( 'unhandled formItemDef type: ' + def.type );
     }
   }
 
-  buildFormTextItem( formTextItemDef: DynamicFormTextControlDef, initialValue = '' ): FormControl {
+  buildFormTextItem( formTextItemDef: DynamicFormControlDef, initialValue: any ): FormControl {
     const validators: ValidatorFn[] = [];
     if ( formTextItemDef.required ) {
       validators.push( Validators.required );
@@ -47,7 +46,7 @@ export class DynamicFormFactory {
     return this.formBuilder.control( initialValue, validators );
   }
 
-  buildHiddenItem( hiddenItemDef: DynamicFormHiddenControlDef, initialValue: any ): FormControl {
+  buildHiddenItem( hiddenItemDef: DynamicFormControlDef, initialValue: any ): FormControl {
     return this.formBuilder.control( initialValue );
   }
 }
