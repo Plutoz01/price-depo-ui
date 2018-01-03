@@ -10,9 +10,9 @@ import * as _ from 'lodash';
 export class SearchableDropdownComponent<T extends Identifiable<any> | string> {
 
   @Input() results: T[] = [];
-  @Input() isLoading: boolean;
   @Input() selected?: T;
   @Input() displayKey = 'id';
+  @Input() selectionRemovable = true;
   @Output() search = new EventEmitter<string>();
   @Output() itemSelect = new EventEmitter<T>();
 
@@ -48,6 +48,14 @@ export class SearchableDropdownComponent<T extends Identifiable<any> | string> {
 
   getDisplayValueFrom( item: T ): any {
     return _.get( item, this.displayKey, item );
+  }
+
+  get removeButtonVisible(): boolean {
+    return this.selectionRemovable && !!this.selected;
+  }
+
+  onRemove() {
+    this.onSelect( undefined );
   }
 
 }

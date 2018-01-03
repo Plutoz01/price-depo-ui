@@ -3,8 +3,9 @@
   <pd-searchable-dropdown [selected]="selectedValue$ | async"
                           [displayKey]="controlDef.displayKey"
                           [results]="searchResults$ | async"
-  (search)="onSearch( $event )"
-  (itemSelect)="onSelect( $event )">
+                          [selectionRemovable]="!controlDef.required"
+                          (search)="onSearch( $event )"
+                          (itemSelect)="onSelect( $event )">
   </pd-searchable-dropdown>
 
   <small [attr.id]="controlDef.key + 'Help'" class="form-text text-muted" *ngIf="controlDef?.description">{{ controlDef.description }}

@@ -5,6 +5,10 @@
   </button>
 
   <div class="dropdown-menu" [class.show]="isOpen" (clickOutside)="onClose()" [exclude]="'.searchable-dropdown > .dropdown-button'">
+    <button class="btn btn-sm btn-outline-danger mb-2 remove-selected-button" *ngIf="removeButtonVisible" (click)="onRemove()">
+      <i class="fa fa-times" aria-hidden="true"></i> Remove selected
+    </button>
+
     <div class="input-group input-group-sm">
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="fa fa-search" aria-hidden="true"></i></span>

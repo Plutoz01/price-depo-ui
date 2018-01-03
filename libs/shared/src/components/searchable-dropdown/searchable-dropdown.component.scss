@@ -21,6 +21,10 @@
     width: 100%;
     margin-bottom: 3.5rem;
 
+    .remove-selected-button{
+      width: 100%;
+    }
+
     .result-list {
       overflow-y: auto;
       max-height: 12rem;

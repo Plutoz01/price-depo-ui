@@ -42,7 +42,7 @@ export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, 
   private selectedValueSource = new BehaviorSubject<T>( undefined );
   private searchExpressionSource = new Subject<string>();
   private searchProvider: SearchProvider<T, ID, any>;
-  private _onChange = ( _: ID ) => {
+  private _onChange = ( _: any ) => {
   };
 
   constructor( private readonly injector: Injector ) {
@@ -117,6 +117,6 @@ export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, 
 
   onSelect( selected: T ) {
     this.selectedValueSource.next( selected );
-    this._onChange( selected.id );
+    this._onChange( selected ? selected.id : selected );
   }
 }
