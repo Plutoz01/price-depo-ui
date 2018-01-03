@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
 import { PaginationInfo } from "@price-depo-ui/data-handling/src/models/pagination-info.interface";
 import { ColumnDefinition } from "@price-depo-ui/shared/src/models/column-definition.interface";
+import * as _ from 'lodash';
 
 @Component( {
   selector: 'pd-data-table',
@@ -19,8 +20,8 @@ export class DataTableComponent {
   @Output() select = new EventEmitter<Object | null>();
   @Output() pageTo = new EventEmitter<Pageable>();
 
-  getCellValue( item: Object, colName: string ): any {
-    return item[ colName ] || '';
+  getCellValue( item: Object, path: string ): any {
+    return _.get( item, path, '' );
   }
 
   onSelect( selectionIndex: number ) {

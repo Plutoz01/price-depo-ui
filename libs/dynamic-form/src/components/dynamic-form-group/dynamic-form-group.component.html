@@ -1,0 +1,29 @@
+<div class="dynamic-form-group">
+  <h5 *ngIf="formGroupDef?.label">{{ formGroupDef.label }}</h5>
+
+  <div class="members-container row">
+    <ng-container *ngFor="let def of formGroupDef?.members">
+      <ng-container [ngSwitch]="def.type">
+
+        <div *ngSwitchCase="formElementType.group" class="col-12">
+          <pd-dynamic-form-group [formGroupDef]="def" [control]="control.get( def.key )">
+          </pd-dynamic-form-group>
+        </div>
+
+        <div *ngSwitchCase="formElementType.text" class="col-md-6">
+          <pd-dynamic-form-text-input [controlDef]="def" [control]="control.get( def.key )">
+          </pd-dynamic-form-text-input>
+        </div>
+
+        <div *ngSwitchCase="formElementType.searchableDropdown" class="col-md-6">
+          <pd-dynamic-form-searchable-dropdown [controlDef]="def" [formControl]="control.get( def.key )">
+          </pd-dynamic-form-searchable-dropdown>
+        </div>
+
+        <ng-container *ngSwitchCase="formElementType.hidden"></ng-container>
+
+        <div *ngSwitchDefault>Unknown formDef type: {{ def.type }}</div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MasterDetailsComponent } from './master-details.component';
+import { SearchableDropdownComponent } from './searchable-dropdown.component';
 
-describe( 'MasterDetailsComponent', () => {
-  let component: MasterDetailsComponent<any>;
-  let fixture: ComponentFixture<MasterDetailsComponent<any>>;
+describe( 'SearchableDropdownComponent', () => {
+  let component: SearchableDropdownComponent<any>;
+  let fixture: ComponentFixture<SearchableDropdownComponent<any>>;
 
   beforeEach( async( () => {
     TestBed.configureTestingModule( {
-      declarations: [ MasterDetailsComponent ]
+      declarations: [ SearchableDropdownComponent ]
     } )
       .compileComponents();
   } ) );
 
   beforeEach( () => {
-    fixture = TestBed.createComponent( MasterDetailsComponent );
+    fixture = TestBed.createComponent( SearchableDropdownComponent );
     component = fixture.componentInstance;
     fixture.detectChanges();
   } );

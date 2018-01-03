@@ -1,0 +1,11 @@
+<div class="pd-dynamic-form-text-input form-group" [class.was-validated]="control.dirty">
+  <label [attr.for]="controlDef.key + 'Input'">{{ controlDef.label }}</label>
+  <!-- TODO: make all the ids unique -->
+  <input type="text" [formControl]="control" class="form-control"
+         [attr.id]="controlDef.key + 'Input'"
+         [attr.aria-describedby]="controlDef.key + 'Help'"
+         placeholder="{{ controlDef.placeholder }}"
+         [attr.required]="controlDef.required">
+  <small [attr.id]="controlDef.key + 'Help'" class="form-text text-muted" *ngIf="controlDef?.description">{{ controlDef.description }}
+  </small>
+</div>

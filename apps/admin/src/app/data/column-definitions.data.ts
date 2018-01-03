@@ -1,11 +1,17 @@
 import { ColumnDefinition } from "@price-depo-ui/shared/src/models/column-definition.interface";
 
 export const manufacturerColumnDefinitions: ColumnDefinition[] = [
-  { name: 'name', headerText: 'Name' },
-  { name: 'country', headerText: 'Country' }
+  { path: 'name', headerText: 'Name' },
+  { path: 'country', headerText: 'Country' }
 ];
 
 export const chainStoreColumnDefinitions: ColumnDefinition[] = [
-  { name: 'name', headerText: 'Name' },
-  { name: 'website', headerText: 'Website' }
+  { path: 'name', headerText: 'Name' },
+  { path: 'website', headerText: 'Website' }
+];
+
+export const shopColumnDefinitions: ColumnDefinition[] = [
+  { path: 'name', headerText: 'Name' },
+  { path: 'address.country', headerText: 'Country' },
+  { path: 'address.settlement', headerText: 'Settlement' }
 ];

@@ -1,4 +1,5 @@
 export enum AdminDataType {
   manufacturers = 'manufacturers',
-  chainStores = 'chainStores'
+  chainStores = 'chainStores',
+  shops = 'shops'
 }

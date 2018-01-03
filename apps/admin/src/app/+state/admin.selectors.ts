@@ -9,3 +9,6 @@ export const getManufacturerMasterDetailsStateSelector = createSelector( getAdmi
 export const getChainStoreMasterDetailsStateSelector = createSelector( getAdminAppStateSelector,
   ( state: AdminState ) => state.chainStores );
 
+export const getShopMasterDetailsStateSelector = createSelector( getAdminAppStateSelector,
+  ( state: AdminState ) => state.shops );
+

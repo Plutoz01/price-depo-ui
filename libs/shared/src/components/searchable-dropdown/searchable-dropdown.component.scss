@@ -1,0 +1,38 @@
+.searchable-dropdown {
+  .dropdown-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .selected-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    i.fa {
+      margin-left: 0.5rem;
+      margin-top: 0.25rem;
+    }
+  }
+
+  .dropdown-menu {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 100%;
+    margin-bottom: 3.5rem;
+
+    .remove-selected-button{
+      width: 100%;
+    }
+
+    .result-list {
+      overflow-y: auto;
+      max-height: 12rem;
+
+      .dropdown-item {
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

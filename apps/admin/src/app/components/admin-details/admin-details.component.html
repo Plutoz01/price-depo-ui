@@ -2,7 +2,7 @@
   <h3 *ngIf="item?.id">Edit selected</h3>
   <h3 *ngIf="!item?.id">Edit new</h3>
   <pd-dynamic-form [item]="item"
-                   [formDefinitions]="formElementDefinitions"
+                   [formDef]="formDefinition"
                    (save)="onSave( $event )"
                    (delete)="onDelete( $event )"
                    (back)="onNavigateBack()"
