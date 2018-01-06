@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { Effect } from "@ngrx/effects";
 import { DataPersistence } from "@nrwl/nx";
 import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
@@ -35,6 +36,7 @@ export class AdminCrudEffects {
 
 
   constructor( private readonly dataPersistence: DataPersistence<AdminAppState>,
+               private readonly router: Router,
                private readonly chainStoreRepository: ChainStoreHttpRepository,
                private readonly manufacturerRepository: ManufacturerHttpRepository,
                private readonly productRepository: ProductHttpRepository,
@@ -42,7 +44,6 @@ export class AdminCrudEffects {
   }
 
   getRepositoryByDataType( adminDataType: AdminDataType ): CrudRepository<Identifiable<any>, any> {
-    // TODO: get repositories dynamically from injector instead of hardcoded switch-case logic
     switch ( adminDataType ) {
       case AdminDataType.chainStores:
         return this.chainStoreRepository;
@@ -80,7 +81,13 @@ export class AdminCrudEffects {
       run: ( loadByIdAction: LoadByIdAction ) => {
         const repository = this.getRepositoryByDataType( loadByIdAction.dataType );
         return repository.getById( loadByIdAction.id )
-        // TODO: navigate to /404 if not found
+          .filter( loaded => {
+            if ( loaded === undefined ) {
+              this.router.navigate( [ '/404' ] );
+              return false;
+            }
+            return true;
+          } )
           .map( loadedItem => new LoadByIdSuccessAction( loadByIdAction.dataType, loadedItem ) );
       },
       onError: ErrorHandlingEffects.handleActionError
