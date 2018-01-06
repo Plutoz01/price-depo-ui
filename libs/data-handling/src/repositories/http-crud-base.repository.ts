@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
 import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
 import { PagedResponse } from "@price-depo-ui/data-handling/src/models/paged-response.interface";
 import { CrudRepository } from "@price-depo-ui/data-handling/src/repositories/crud-repository.interface";
@@ -28,7 +28,13 @@ export abstract class HttpCrudBaseRepository<T extends Identifiable<ID>, ID> imp
   }
 
   getById( id: ID ): Observable<T | undefined> {
-    return this.httpClient.get<T>( `${ this.getApiUrl() }/${ id }` );
+    return this.httpClient.get<T>( `${ this.getApiUrl() }/${ id }` )
+      .catch( ( error: HttpErrorResponse ) => {
+        if( error.status === 404 ) {
+          return Observable.of( undefined );
+        }
+        throw error;
+      } );
   }
 
   create( entity: T ): Observable<T> {

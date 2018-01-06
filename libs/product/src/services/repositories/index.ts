@@ -1,3 +1,4 @@
+import { ProductHttpRepository } from "@price-depo-ui/product/src/services/repositories/product.http.repository";
 import { ChainStoreHttpRepository } from "libs/product/src/services/repositories/chain-store.http.repository";
 import { ShopHttpRepository } from "libs/product/src/services/repositories/shop.http.repository";
 import { ManufacturerHttpRepository } from "libs/product/src/services/repositories/manufacturer.http.repository";
@@ -5,5 +6,6 @@ import { ManufacturerHttpRepository } from "libs/product/src/services/repositori
 export const repositories = [
   ChainStoreHttpRepository,
   ManufacturerHttpRepository,
+  ProductHttpRepository,
   ShopHttpRepository
 ];

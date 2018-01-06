@@ -4,7 +4,8 @@ import { AdminState, AdminAppState } from './admin.state';
 export const adminInitialState: AdminState = {
   manufacturers: createMasterDetailsInitialState(),
   chainStores: createMasterDetailsInitialState(),
-  shops: createMasterDetailsInitialState()
+  shops: createMasterDetailsInitialState(),
+  products: createMasterDetailsInitialState()
 };
 
 export const appInitialState: AdminAppState = {
