@@ -22,6 +22,7 @@ import { AppComponent } from "./components/app.component";
 import { routes } from "./routes/admin.routes";
 import { ChainStoreSearchProviderService } from "./services/search-providers/chain-store-search-provider.service";
 import { chainStoreSearchProviderToken } from "./tokens/search-provider.tokens";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const filterableProviders: Provider[] = [
   { provide: chainStoreSearchProviderToken, useClass: ChainStoreSearchProviderService }
@@ -31,6 +32,8 @@ const filterableProviders: Provider[] = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgbModule.forRoot(),
+
     SecurityModule,
     ProductModule,
     SharedModule,

@@ -1,20 +1,22 @@
-<nav id="page-header" class="pd-navbar fixed-top">
+<nav id="page-header" class="pd-navbar navbar-expand-sm fixed-top">
   <a class="navbar-brand" routerLink="/">Price depo admin</a>
+
   <ng-container *pdAuthenticated="false">
-    <span class="navbar-text"> Anonymous user</span>
+    <span class="navbar-text mr-2"> Anonymous user</span>
     <button class="btn btn-outline-success" (click)="switchToTestUser()">Login as admin user</button>
   </ng-container>
 
-    <ul id="navigation-link-container" class="navbar-nav" *pdAuthenticated>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/manufacturers">Manufacturers</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/chainStores">Chain stores</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/shops">Shops</a>
-      </li>
-    </ul>
+  <ul id="navigation-link-container" class="navbar-nav" *pdAuthenticated>
+    <li ngbDropdown placement="bottom" class="nav-item">
+      <a ngbDropdownToggle class="nav-link" aria-haspopup="true" aria-expanded="false">
+        Master data
+      </a>
+      <div ngbDropdownMenu>
+        <a class="dropdown-item" routerLink="/manufacturers" routerLinkActive="active">Manufacturers</a>
+        <a class="dropdown-item" routerLink="/chainStores" routerLinkActive="active">Chain stores</a>
+        <a class="dropdown-item" routerLink="/shops" routerLinkActive="active">Shops</a>
+      </div>
+    </li>
+  </ul>
 
 </nav>
