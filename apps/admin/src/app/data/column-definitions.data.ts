@@ -15,3 +15,8 @@ export const shopColumnDefinitions: ColumnDefinition[] = [
   { path: 'address.country', headerText: 'Country' },
   { path: 'address.settlement', headerText: 'Settlement' }
 ];
+
+export const productColumnDefinitions: ColumnDefinition[] = [
+  { path: 'name', headerText: 'Name' },
+  { path: 'barcode', headerText: 'Barcode' }
+];

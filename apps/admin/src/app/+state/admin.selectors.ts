@@ -12,3 +12,6 @@ export const getChainStoreMasterDetailsStateSelector = createSelector( getAdminA
 export const getShopMasterDetailsStateSelector = createSelector( getAdminAppStateSelector,
   ( state: AdminState ) => state.shops );
 
+export const getProductMasterDetailsStateSelector = createSelector( getAdminAppStateSelector,
+  ( state: AdminState ) => state.products );
+

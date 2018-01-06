@@ -6,15 +6,24 @@
     <button class="btn btn-outline-success" (click)="switchToTestUser()">Login as admin user</button>
   </ng-container>
 
-  <ul id="navigation-link-container" class="navbar-nav" *pdAuthenticated>
+  <ul id="navigation-link-container" class="navbar-nav" *pdHasPermission="'product.admin'">
     <li ngbDropdown placement="bottom" class="nav-item">
       <a ngbDropdownToggle class="nav-link" aria-haspopup="true" aria-expanded="false">
         Master data
       </a>
       <div ngbDropdownMenu>
-        <a class="dropdown-item" routerLink="/manufacturers" routerLinkActive="active">Manufacturers</a>
-        <a class="dropdown-item" routerLink="/chainStores" routerLinkActive="active">Chain stores</a>
-        <a class="dropdown-item" routerLink="/shops" routerLinkActive="active">Shops</a>
+        <a class="dropdown-item" routerLink="/chainStores" routerLinkActive="active" *pdHasPermission="'product.admin.chain-store'">
+          Chain stores
+        </a>
+        <a class="dropdown-item" routerLink="/manufacturers" routerLinkActive="active" *pdHasPermission="'product.admin.manufacturer'">
+          Manufacturers
+        </a>
+        <a class="dropdown-item" routerLink="/products" routerLinkActive="active" *pdHasPermission="'product.admin.product'">
+          Products
+        </a>
+        <a class="dropdown-item" routerLink="/shops" routerLinkActive="active" *pdHasPermission="'product.admin.shop'">
+          Shops
+        </a>
       </div>
     </li>
   </ul>

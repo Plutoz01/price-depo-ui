@@ -1,10 +1,15 @@
+<ng-container *pdHasPermission="'product.admin.chain-store'">
+  <a routerLink="chainStores">Chain store administration</a>
+  <hr>
+</ng-container>
+
 <ng-container *pdHasPermission="'product.admin.manufacturer'">
   <a routerLink="manufacturers">Manufacturer administration</a>
   <hr>
 </ng-container>
 
-<ng-container *pdHasPermission="'product.admin.chain-store'">
-  <a routerLink="chainStores">Chain store administration</a>
+<ng-container *pdHasPermission="'product.admin.product'">
+  <a routerLink="products">Product administration</a>
   <hr>
 </ng-container>
 

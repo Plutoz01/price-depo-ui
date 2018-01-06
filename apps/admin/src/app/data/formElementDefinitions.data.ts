@@ -1,5 +1,5 @@
 import { DynamicFormDefFactory } from "@price-depo-ui/dynamic-form/src/dynamicFormDefFactory";
-import { chainStoreSearchProviderToken } from "../tokens/search-provider.tokens";
+import { chainStoreSearchProviderToken, manufacturerSearchProviderToken } from "../tokens/search-provider.tokens";
 
 export const manufacturerFormDefinition = DynamicFormDefFactory.buildGroupDef( {
   members: [
@@ -93,3 +93,28 @@ export const shopFormDefinition = DynamicFormDefFactory.buildGroupDef( {
     } )
   ]
 } );
+
+export const productFormDefinition = DynamicFormDefFactory.buildGroupDef( {
+  members: [
+    DynamicFormDefFactory.buildHiddenControlDef( { key: 'id' } ),
+    DynamicFormDefFactory.buildTextControlDef( {
+      key: 'name',
+      label: 'Name',
+      placeholder: 'Enter product name',
+      required: true
+    } ),
+    DynamicFormDefFactory.buildSearchableDropdownDef( {
+      key: 'manufacturerId',
+      label: 'Manufacturer',
+      placeholder: 'Please select a manufacturer',
+      displayKey: 'name',
+      searchProviderToken: manufacturerSearchProviderToken
+    } ),
+    DynamicFormDefFactory.buildTextControlDef( {
+      key: 'barcode',
+      label: 'Barcode',
+      placeholder: 'Enter product barcode',
+      required: false
+    } ),
+  ]
+});

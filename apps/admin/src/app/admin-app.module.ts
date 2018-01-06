@@ -1,7 +1,8 @@
-import { NgModule, Provider } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
@@ -20,13 +21,7 @@ import { effects } from "./+state/effects";
 import { components } from "./components";
 import { AppComponent } from "./components/app.component";
 import { routes } from "./routes/admin.routes";
-import { ChainStoreSearchProviderService } from "./services/search-providers/chain-store-search-provider.service";
-import { chainStoreSearchProviderToken } from "./tokens/search-provider.tokens";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
-const filterableProviders: Provider[] = [
-  { provide: chainStoreSearchProviderToken, useClass: ChainStoreSearchProviderService }
-];
+import { filterableProviders } from "./services";
 
 @NgModule( {
   imports: [
