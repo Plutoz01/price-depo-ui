@@ -9,7 +9,7 @@ export interface MasterDetailsRouterData<T extends Identifiable<any>> {
   readonly dataType: AdminDataType;
   readonly title: string;
   readonly columnDefinitions: ColumnDefinition[];
-  readonly formDefinition: DynamicFormGroupDef;
+  readonly formDefinitionId: string;
   readonly masterDetailsStateSelector: Selector<State<any>, MasterDetailsState<T>>;
   readonly initialValue: T;
 }

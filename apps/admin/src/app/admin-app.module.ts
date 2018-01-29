@@ -21,7 +21,7 @@ import { effects } from "./+state/effects";
 import { components } from "./components";
 import { AppComponent } from "./components/app.component";
 import { routes } from "./routes/admin.routes";
-import { filterableProviders } from "./services";
+import { services } from "./services";
 
 @NgModule( {
   imports: [
@@ -49,7 +49,7 @@ import { filterableProviders } from "./services";
   bootstrap: [ AppComponent ],
   providers: [
     ...effects,
-    ...filterableProviders
+    ...services
   ]
 } )
 export class AdminAppModule {

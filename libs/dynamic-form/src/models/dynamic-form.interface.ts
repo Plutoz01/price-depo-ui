@@ -1,5 +1,4 @@
-import { InjectionToken } from "@angular/core";
-import { SearchProvider } from "@price-depo-ui/dynamic-form/src/models/search-provider.interface";
+import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
 
 export enum DynamicFormElementType {
   group = 'group',
@@ -24,7 +23,10 @@ export interface DynamicFormGroupDef extends AbstractDynamicFormElement {
   readonly members: AbstractDynamicFormElement[];
 }
 
+export interface DynamicFormDef extends Identifiable<string>, DynamicFormGroupDef {
+}
+
 export interface DynamicFormSearchableDropdownControlDef extends DynamicFormControlDef {
-  readonly searchProviderToken: InjectionToken<SearchProvider<any, any, any>>;
+  readonly searchProviderName: string;
   readonly displayKey?: string;
 }

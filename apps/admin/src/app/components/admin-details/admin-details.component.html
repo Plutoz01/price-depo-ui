@@ -1,8 +1,9 @@
 <ng-container *ngIf="( item$ | async ) as item">
   <h3 *ngIf="item?.id">Edit selected</h3>
   <h3 *ngIf="!item?.id">Edit new</h3>
-  <pd-dynamic-form [item]="item"
-                   [formDef]="formDefinition"
+  <pd-dynamic-form *ngIf="formDefinition$ | async as formDef"
+                   [item]="item"
+                   [formDef]="formDef"
                    (save)="onSave( $event )"
                    (delete)="onDelete( $event )"
                    (back)="onNavigateBack()"
