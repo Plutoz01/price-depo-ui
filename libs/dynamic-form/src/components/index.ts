@@ -3,7 +3,7 @@ import { DynamicFormComponent } from "@price-depo-ui/dynamic-form/src/components
 import {
   DynamicFormPredefinedMultiSelectComponent
 } from "@price-depo-ui/dynamic-form/src/components/predefined-multi-select/predefined-multi-select.component";
-import
+import {
   DynamicFormSearchableDropdownComponent
 } from "@price-depo-ui/dynamic-form/src/components/searchable-dropdown/searchable-dropdown.component";
 import { DynamicFormTextInputComponent } from "@price-depo-ui/dynamic-form/src/components/text-input/text-input.component";
