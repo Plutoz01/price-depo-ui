@@ -10,6 +10,6 @@ export class GlobalErrorHandlerService implements ErrorHandler {
   handleError( error: Error ) {
     console.error( 'Unexpected error: ', error );
 
-    this.store.dispatch( new ErrorThrownAction( 'Unexpected error', 'Please reload page and try again...' ) );
+    // this.store.dispatch( new ErrorThrownAction( 'Unexpected error', 'Please reload page and try again...' ) );
   }
 }
