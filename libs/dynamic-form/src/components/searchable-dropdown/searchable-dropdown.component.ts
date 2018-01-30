@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, forwardRef, Injector, Input, OnInit
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { FilterBase, FilterElement, FilterMatchType } from "@price-depo-ui/data-handling/src/models/filter.type";
 import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
-import { DynamicFormSearchableDropdownControlDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
+import { SearchableDropdownControlDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
 import { SearchProvider } from "@price-depo-ui/dynamic-form/src/models/search-provider.interface";
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/catch';
@@ -33,7 +33,7 @@ import { searchProviderTokens } from "../../../../../apps/admin/src/app/tokens/s
 } )
 export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, ID> implements OnInit, ControlValueAccessor {
 
-  @Input() controlDef: DynamicFormSearchableDropdownControlDef;
+  @Input() controlDef: SearchableDropdownControlDef;
   isDisabled = false;
 
 

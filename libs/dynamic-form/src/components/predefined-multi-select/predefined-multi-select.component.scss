@@ -1,0 +1,33 @@
+@import "../../../../../node_modules/bootstrap/scss/bootstrap";
+
+.multi-select-container {
+  border: $input-border-width solid $input-border-color;
+  @include border-radius($input-border-radius);
+  padding: 0.5em;
+
+  .badge-container {
+
+    background-color: $input-bg;
+    border: $input-border-width solid $input-border-color;
+    @include border-radius($input-border-radius);
+    padding: 0.25em;
+    margin-bottom: 0.5rem;
+
+    .badge-pill {
+      margin: 0.25em;
+      cursor: pointer;
+      padding: 0.5em 0.75em;
+      font-weight: normal;
+    }
+
+    &.disabled {
+      background-color: $input-disabled-bg;
+
+      .badge-pill {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+
