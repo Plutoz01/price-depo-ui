@@ -1,0 +1,34 @@
+<div class="pd-dynamic-form-predefined-multi-select-input form-group">
+  <label [attr.for]="controlDef.key + 'Input'">{{ controlDef.label }}</label>
+
+  <div class="multi-select-container">
+    <ng-container *ngIf="options?.length > 0">
+      <h6 class="small">Available:</h6>
+      <div class="badge-container" [ngClass]="{ disabled: isDisabled }">
+        <span *ngFor="let option of options" class="badge badge-pill badge-info"
+              title="click to add"
+              (click)="onSelect( option )">
+          {{ option }}
+        </span>
+      </div>
+    </ng-container>
+
+    <h6 class="small">Selected:</h6>
+    <div class="badge-container" [ngClass]="{ disabled: isDisabled }">
+      <ng-container *ngIf="selectedValues?.length > 0; else noItemsSelected">
+      <span *ngFor="let selected of selectedValues"
+            class="badge badge-pill badge-info"
+            title="click to remove"
+            (click)="onRemove( selected )">
+        {{ selected }}
+      </span>
+      </ng-container>
+      <ng-template #noItemsSelected>
+        <span>No items selected</span>
+      </ng-template>
+    </div>
+    <small [attr.id]="controlDef.key + 'Help'" class="form-text text-muted" *ngIf="controlDef?.description">{{ controlDef.description }}
+    </small>
+
+  </div>
+</div>

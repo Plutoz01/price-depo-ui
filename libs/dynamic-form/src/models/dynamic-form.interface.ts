@@ -4,7 +4,8 @@ export enum DynamicFormElementType {
   group = 'group',
   hidden = 'hidden',
   text = 'text',
-  searchableDropdown = 'searchableDropdown'
+  searchableDropdown = 'searchableDropdown',
+  predefinedMultiSelect = 'predefinedMultiSelect'
 }
 
 export interface AbstractDynamicFormElement {
@@ -26,7 +27,11 @@ export interface DynamicFormGroupDef extends AbstractDynamicFormElement {
 export interface DynamicFormDef extends Identifiable<string>, DynamicFormGroupDef {
 }
 
-export interface DynamicFormSearchableDropdownControlDef extends DynamicFormControlDef {
+export interface SearchableDropdownControlDef extends DynamicFormControlDef {
   readonly searchProviderName: string;
   readonly displayKey?: string;
+}
+
+export interface PredefinedMultiSelectControlDef extends DynamicFormControlDef {
+  options: string[];
 }

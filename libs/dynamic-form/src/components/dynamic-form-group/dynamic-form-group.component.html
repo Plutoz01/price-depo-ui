@@ -20,6 +20,11 @@
           </pd-dynamic-form-searchable-dropdown>
         </div>
 
+        <div *ngSwitchCase="formElementType.predefinedMultiSelect" class="col-md-6">
+          <pd-dynamic-form-predefined-multi-select [controlDef]="def" [formControl]="control.get( def.key )">
+          </pd-dynamic-form-predefined-multi-select>
+        </div>
+
         <ng-container *ngSwitchCase="formElementType.hidden"></ng-container>
 
         <div *ngSwitchDefault>Unknown formDef type: {{ def.type }}</div>
