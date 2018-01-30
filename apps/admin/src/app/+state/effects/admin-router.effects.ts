@@ -4,13 +4,17 @@ import { Actions, Effect } from "@ngrx/effects";
 import { DataPersistence } from "@nrwl/nx";
 import { MasterDetailsState } from "@price-depo-ui/data-handling/src/+state/master-details/master-details.state";
 import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
+import "rxjs/add/observable/from";
 import { Observable } from "rxjs/Observable";
 import { tap } from "rxjs/operators";
 import { AdminDetailsPageComponent } from "../../components/admin-details/admin-details.component";
 import { AdminListPageComponent } from "../../components/admin-list/admin-list.component";
 import { AdminDataType } from "../../models/admin-data-type.enum";
 import { MasterDetailsRouterData } from "../../models/master-details-router-data.interface";
-import { AdminActionType, CreateNewAction, DeleteSuccessAction, LoadAllAction, LoadByIdAction, SaveSuccessAction } from "../admin.actions";
+import {
+  AdminActionType, CreateNewAction, DeleteSuccessAction, LoadAllAction, LoadByIdAction, LoadDynamicFormDefAction,
+  SaveSuccessAction
+} from "../admin.actions";
 import { AdminAppState } from "../admin.state";
 
 @Injectable()
@@ -31,6 +35,19 @@ export class AdminRouterEffects {
   constructor( private readonly actions$: Actions,
                private readonly router: Router,
                private readonly dataPersistence: DataPersistence<AdminAppState> ) {
+  }
+
+  private static selectCreateOrLoadByIdAction( routeSnapshot: ActivatedRouteSnapshot,
+                                               options: MasterDetailsRouterData<any> ): CreateNewAction | LoadByIdAction {
+    const adminDataType: AdminDataType = options.dataType;
+
+    const isNew = routeSnapshot.data.hasOwnProperty( 'isNew' ) && routeSnapshot.data[ 'isNew' ] === true;
+    if ( isNew ) {
+      return new CreateNewAction( adminDataType, options.initialValue );
+    } else {
+      const id = routeSnapshot.params[ 'id' ];
+      return new LoadByIdAction( adminDataType, id );
+    }
   }
 
   buildLoadAllNavigationEffect(): Observable<any> {
@@ -70,15 +87,12 @@ export class AdminRouterEffects {
           throw new Error( 'MasterDetailsRouterData is required, but missing' );
         }
 
-        const adminDataType: AdminDataType = options.dataType;
+        const actions = [
+          AdminRouterEffects.selectCreateOrLoadByIdAction( routeSnapshot, options ),
+          new LoadDynamicFormDefAction( options.formDefId )
+        ];
 
-        const isNew = routeSnapshot.data.hasOwnProperty( 'isNew' ) && routeSnapshot.data[ 'isNew' ] === true;
-        if ( isNew ) {
-          return new CreateNewAction( adminDataType, options.initialValue );
-        } else {
-          const id = routeSnapshot.params[ 'id' ];
-          return new LoadByIdAction( adminDataType, id );
-        }
+        return Observable.from( actions );
       },
       onError: ( a: ActivatedRouteSnapshot, error ) => {
         console.error( 'Error', error );

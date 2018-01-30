@@ -16,6 +16,7 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
 import { ReplaySubject } from "rxjs/ReplaySubject";
 import { Subject } from "rxjs/Subject";
+import { searchProviderTokens } from "../../../../../apps/admin/src/app/tokens/search-provider.tokens";
 
 @Component( {
   selector: 'pd-dynamic-form-searchable-dropdown',
@@ -91,7 +92,11 @@ export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, 
   }
 
   ngOnInit() {
-    this.searchProvider = this.injector.get( this.controlDef.searchProviderToken );
+    const token = searchProviderTokens[ this.controlDef.searchProviderName ];
+    if( !token ) {
+      throw new Error( 'Unrecognized search provider name: ' + this.controlDef.searchProviderName );
+    }
+    this.searchProvider = this.injector.get( token );
   }
 
   writeValue( newValue: ID ): void {

@@ -5,7 +5,8 @@ export const adminInitialState: AdminState = {
   manufacturers: createMasterDetailsInitialState(),
   chainStores: createMasterDetailsInitialState(),
   shops: createMasterDetailsInitialState(),
-  products: createMasterDetailsInitialState()
+  products: createMasterDetailsInitialState(),
+  formDef: null
 };
 
 export const appInitialState: AdminAppState = {
