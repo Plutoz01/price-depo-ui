@@ -15,3 +15,6 @@ export const getShopMasterDetailsStateSelector = createSelector( getAdminAppStat
 export const getProductMasterDetailsStateSelector = createSelector( getAdminAppStateSelector,
   ( state: AdminState ) => state.products );
 
+export const getFormDefSelector = createSelector( getAdminAppStateSelector,
+  ( state: AdminState )  => state.formDef );
+

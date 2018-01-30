@@ -2,6 +2,7 @@ import { Action } from "@ngrx/store";
 import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
 import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
 import { PagedResponse } from "@price-depo-ui/data-handling/src/models/paged-response.interface";
+import { DynamicFormDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
 import { AdminDataType } from "../models/admin-data-type.enum";
 
 export enum AdminActionType {
@@ -13,7 +14,9 @@ export enum AdminActionType {
   save = 'ADMIN_SAVE',
   saveSuccess = 'ADMIN_SAVE_SUCCESS',
   delete = 'ADMIN_DELETE',
-  deleteSuccess = 'ADMIN_DELETE_SUCCESS'
+  deleteSuccess = 'ADMIN_DELETE_SUCCESS',
+  loadDynamicFormDef = 'ADMIN_LOAD_DYNAMIC_FORM_DEF',
+  loadDynamicFormDefSuccess= 'ADMIN_LOAD_DYNAMIC_FORM_DEF_SUCCESS'
 }
 
 export class LoadAllAction implements Action {
@@ -87,6 +90,20 @@ export class DeleteSuccessAction implements Action {
   }
 }
 
+export class LoadDynamicFormDefAction implements Action {
+  readonly type = AdminActionType.loadDynamicFormDef;
+
+  constructor( public readonly formDefId: string ){
+  }
+}
+
+export class LoadDynamicFormDefSuccessAction implements Action {
+  readonly type = AdminActionType.loadDynamicFormDefSuccess;
+
+  constructor( public readonly formDef: DynamicFormDef ){
+  }
+}
+
 
 export type AdminActions
   = LoadAllAction
@@ -97,4 +114,6 @@ export type AdminActions
   | SaveAction
   | SaveSuccessAction
   | DeleteAction
-  | DeleteSuccessAction;
+  | DeleteSuccessAction
+  | LoadDynamicFormDefAction
+  | LoadDynamicFormDefSuccessAction;

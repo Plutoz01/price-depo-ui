@@ -5,6 +5,7 @@ import { DataPersistence } from "@nrwl/nx";
 import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
 import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
 import { CrudRepository } from "@price-depo-ui/data-handling/src/repositories/crud-repository.interface";
+import { DynamicFormDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
 import { ErrorHandlingEffects } from "@price-depo-ui/error-handling/src/+state/error-handling.effects";
 import { ChainStoreHttpRepository } from "@price-depo-ui/product/src/services/repositories/chain-store.http.repository";
 import { ManufacturerHttpRepository } from "@price-depo-ui/product/src/services/repositories/manufacturer.http.repository";
@@ -13,8 +14,11 @@ import { ShopHttpRepository } from "@price-depo-ui/product/src/services/reposito
 import 'rxjs/add/operator/mergeMap';
 import { Observable } from "rxjs/Observable";
 import { AdminDataType } from "../../models/admin-data-type.enum";
+import { DynamicFormDefHttpRepository } from "../../services/dynamic-form-def.http.repository";
 import {
   AdminActionType, DeleteAction, DeleteSuccessAction, LoadAllAction, LoadAllSuccessAction, LoadByIdAction, LoadByIdSuccessAction,
+  LoadDynamicFormDefAction,
+  LoadDynamicFormDefSuccessAction,
   SaveAction, SaveSuccessAction
 } from "../admin.actions";
 import { AdminAppState } from "../admin.state";
@@ -34,9 +38,13 @@ export class AdminCrudEffects {
   @Effect()
   readonly save$: Observable<SaveSuccessAction> = this.buildSaveEffect();
 
+  @Effect()
+  readonly loadFormDefById$: Observable<LoadDynamicFormDefSuccessAction> = this.buildLoadFormDefByIdEffect();
+
 
   constructor( private readonly dataPersistence: DataPersistence<AdminAppState>,
                private readonly router: Router,
+               private readonly dynamicFormDefRepository: DynamicFormDefHttpRepository,
                private readonly chainStoreRepository: ChainStoreHttpRepository,
                private readonly manufacturerRepository: ManufacturerHttpRepository,
                private readonly productRepository: ProductHttpRepository,
@@ -113,6 +121,17 @@ export class AdminCrudEffects {
         return repository.remove( deletableId ).map( () => {
           return new DeleteSuccessAction( deleteAction.dataType, deletableId );
         } );
+      },
+      onError: ErrorHandlingEffects.handleActionError
+    } );
+  }
+
+  buildLoadFormDefByIdEffect(): Observable<LoadDynamicFormDefSuccessAction> {
+    return this.dataPersistence.fetch( AdminActionType.loadDynamicFormDef, {
+      run: ( loadDynamicFormDefAction: LoadDynamicFormDefAction ) => {
+        return this.dynamicFormDefRepository.getById( loadDynamicFormDefAction.formDefId )
+        // TODO: handle formDef not found
+          .map( ( loadedFormDef: DynamicFormDef ) => new LoadDynamicFormDefSuccessAction( loadedFormDef ) );
       },
       onError: ErrorHandlingEffects.handleActionError
     } );

@@ -21,7 +21,7 @@ export const manufacturerMasterDetailsRouterData: MasterDetailsRouterData<Manufa
   dataType: AdminDataType.manufacturers,
   title: 'Manufacturers',
   columnDefinitions: manufacturerColumnDefinitions,
-  formDefinitionId: 'manufacturer-admin-form',
+  formDefId: 'manufacturer-admin-form',
   masterDetailsStateSelector: getManufacturerMasterDetailsStateSelector,
   initialValue: initialManufacturer()
 };
@@ -30,7 +30,7 @@ export const chainStoreMasterDetailsRouterData: MasterDetailsRouterData<ChainSto
   dataType: AdminDataType.chainStores,
   title: 'Chain stores',
   columnDefinitions: chainStoreColumnDefinitions,
-  formDefinitionId: 'chain-store-admin-form',
+  formDefId: 'chain-store-admin-form',
   masterDetailsStateSelector: getChainStoreMasterDetailsStateSelector,
   initialValue: initialChainStore()
 };
@@ -39,7 +39,7 @@ export const shopMasterDetailsRouteData: MasterDetailsRouterData<Shop> = {
   dataType: AdminDataType.shops,
   title: 'Shops',
   columnDefinitions: shopColumnDefinitions,
-  formDefinitionId: 'shop-admin-form',
+  formDefId: 'shop-admin-form',
   masterDetailsStateSelector: getShopMasterDetailsStateSelector,
   initialValue: initialShop()
 };
@@ -48,7 +48,7 @@ export const productMasterDetailsRouteData: MasterDetailsRouterData<Product> = {
   dataType: AdminDataType.products,
   title: 'Products',
   columnDefinitions: productColumnDefinitions,
-  formDefinitionId: 'product-admin-form',
+  formDefId: 'product-admin-form',
   masterDetailsStateSelector: getProductMasterDetailsStateSelector,
   initialValue: initialProduct()
 };

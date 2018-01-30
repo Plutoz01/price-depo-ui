@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { DynamicFormGroupDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
+import { DynamicFormDef, DynamicFormGroupDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
 import { MasterDetailsRouterData } from "apps/admin/src/app/models/master-details-router-data.interface";
 import { Identifiable } from "libs/data-handling/src/models/identifiable.interface";
 import { Observable } from "rxjs/Observable";
 import { DeleteAction, SaveAction } from "../../+state/admin.actions";
+import { getFormDefSelector } from "../../+state/admin.selectors";
 import { AdminDataType } from "../../models/admin-data-type.enum";
-import { DynamicFormDefHttpRepository } from "../../services/dynamic-form-def.http.repository";
 
 @Component( {
   selector: 'pd-admin-details',
@@ -22,7 +22,6 @@ export class AdminDetailsPageComponent<T extends Identifiable<any>> {
 
   constructor( private store: Store<any>,
                private router: Router,
-               readonly dynamicFormDefHttpRepository: DynamicFormDefHttpRepository,
                private readonly route: ActivatedRoute ) {
     const options: MasterDetailsRouterData<T> = route.snapshot.data.masterDetails;
 
@@ -32,9 +31,11 @@ export class AdminDetailsPageComponent<T extends Identifiable<any>> {
     this.adminDataType = options.dataType;
     const masterDetailsStore = this.store.select( options.masterDetailsStateSelector );
     this.item$ = masterDetailsStore.select( 'selected' );
-
-    // TODO: get form Def from state instead of direct service call
-    this.formDefinition$ = dynamicFormDefHttpRepository.getById( options.formDefinitionId );
+    this.formDefinition$ = this.store.select( getFormDefSelector )
+    // Avoid to use potentionally outdated formDefs remained in state from previous usages
+    // TODO: remove this, after state will null after navigating out
+      .filter( Boolean )
+      .filter( ( formDef: DynamicFormDef ) => formDef.id === options.formDefId );
   }
 
   onSave( saveable: T ) {
