@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { HttpCrudBaseRepository } from "@price-depo-ui/data-handling";
-import { DynamicFormDef } from "@price-depo-ui/dynamic-form";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpCrudBaseRepository } from '@price-depo-ui/data-handling';
+import { DynamicFormDef } from '@price-depo-ui/dynamic-form';
 
 @Injectable()
 export class DynamicFormDefHttpRepository extends HttpCrudBaseRepository<DynamicFormDef, string> {

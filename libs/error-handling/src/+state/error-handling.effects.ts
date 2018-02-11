@@ -1,12 +1,12 @@
-import { HttpErrorResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Actions, Effect } from "@ngrx/effects";
-import { Action } from "@ngrx/store";
-import { Notification, NotificationCreateAction, NotificationLevel } from "@price-depo-ui/notification";
-import { Observable } from "rxjs/Observable";
-import { map } from "rxjs/operators";
+import { HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Actions, Effect } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
+import { Notification, NotificationCreateAction, NotificationLevel } from '@price-depo-ui/notification';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
-import { ErrorHandlingActionType, ErrorThrownAction } from "./error-handling.actions";
+import { ErrorHandlingActionType, ErrorThrownAction } from './error-handling.actions';
 
 @Injectable()
 export class ErrorHandlingEffects {

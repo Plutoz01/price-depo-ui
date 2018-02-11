@@ -1,4 +1,4 @@
-import { ColumnDefinition } from "@price-depo-ui/shared";
+import { ColumnDefinition } from '@price-depo-ui/shared';
 
 export const manufacturerColumnDefinitions: ColumnDefinition[] = [
   { path: 'name', headerText: 'Name' },

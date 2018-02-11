@@ -1,4 +1,4 @@
-import * as immutable from "immutable";
+import * as immutable from 'immutable';
 
 export class UserBase {
 
@@ -16,10 +16,10 @@ export class UserBase {
   }
 
   hasPermission( desiredPermission: string ): boolean {
-    return this.permissions.some( ( ownedPermission:string ) => ownedPermission === desiredPermission );
+    return this.permissions.some( ( ownedPermission: string ) => ownedPermission === desiredPermission );
   }
 
-  hasAnyRole( acceptedRoles: string[] ):boolean {
+  hasAnyRole( acceptedRoles: string[] ): boolean {
     return acceptedRoles.some( ( acceptedRole: string ) => this.roles.contains( acceptedRole ) );
   }
 }

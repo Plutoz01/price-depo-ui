@@ -1,15 +1,15 @@
-import { Action } from "@ngrx/store";
-import { Notification } from "../models/notification.class";
+import { Action } from '@ngrx/store';
+import { Notification } from '../models/notification.class';
 
 export enum NotificationsActionType {
   create = 'NOTIFICATIONS_CREATE',
   close = 'NOTIFICATIONS_CLOSE'
 }
 
-export class NotificationCreateAction implements Action{
+export class NotificationCreateAction implements Action {
   readonly type = NotificationsActionType.create;
 
-  constructor( public readonly newNotification: Notification ){}
+  constructor( public readonly newNotification: Notification ) {}
 }
 
 export class NotificationCloseAction implements Action {

@@ -1,16 +1,16 @@
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { Effect } from "@ngrx/effects";
-import { DataPersistence } from "@nrwl/nx";
-import { CrudRepository, Identifiable, Pageable } from "@price-depo-ui/data-handling";
-import { DynamicFormDef } from "@price-depo-ui/dynamic-form";
-import { ErrorHandlingEffects } from "@price-depo-ui/error-handling";
-import { ChainStoreHttpRepository, ManufacturerHttpRepository, ProductHttpRepository, ShopHttpRepository } from "@price-depo-ui/product";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Effect } from '@ngrx/effects';
+import { DataPersistence } from '@nrwl/nx';
+import { CrudRepository, Identifiable, Pageable } from '@price-depo-ui/data-handling';
+import { DynamicFormDef } from '@price-depo-ui/dynamic-form';
+import { ErrorHandlingEffects } from '@price-depo-ui/error-handling';
+import { ChainStoreHttpRepository, ManufacturerHttpRepository, ProductHttpRepository, ShopHttpRepository } from '@price-depo-ui/product';
 import 'rxjs/add/operator/mergeMap';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 
-import { AdminDataType } from "../../models/admin-data-type.enum";
-import { DynamicFormDefHttpRepository } from "../../services/dynamic-form-def.http.repository";
+import { AdminDataType } from '../../models/admin-data-type.enum';
+import { DynamicFormDefHttpRepository } from '../../services/dynamic-form-def.http.repository';
 import {
   AdminActionType,
   DeleteAction,
@@ -23,8 +23,8 @@ import {
   LoadDynamicFormDefSuccessAction,
   SaveAction,
   SaveSuccessAction
-} from "../admin.actions";
-import { AdminAppState } from "../admin.state";
+} from '../admin.actions';
+import { AdminAppState } from '../admin.state';
 
 @Injectable()
 export class AdminCrudEffects {

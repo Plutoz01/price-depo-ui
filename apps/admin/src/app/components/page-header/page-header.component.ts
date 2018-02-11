@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Store } from "@ngrx/store";
-import { AuthenticatedAction } from "@price-depo-ui/security";
+import { Store } from '@ngrx/store';
+import { AuthenticatedAction } from '@price-depo-ui/security';
 
-import { AdminAppState } from "../../+state/admin.state";
-import { testUserBob } from "../../data/dummy-user.data";
+import { AdminAppState } from '../../+state/admin.state';
+import { testUserBob } from '../../data/dummy-user.data';
 
 @Component( {
   selector: 'pd-page-header',

@@ -1,13 +1,13 @@
 import { Directive, Input, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
-import { Store } from "@ngrx/store";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Observable";
-import { Subscription } from "rxjs/Subscription";
-import "rxjs/add/observable/combineLatest";
+import { Store } from '@ngrx/store';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/observable/combineLatest';
 
-import { getUserSelector } from "../+state/security.selectors";
-import { SecurityState } from "../+state/security.state";
-import { UserBase } from "../models/user-base.class";
+import { getUserSelector } from '../+state/security.selectors';
+import { SecurityState } from '../+state/security.state';
+import { UserBase } from '../models/user-base.class';
 
 @Directive( {
   selector: '[pdHasPermission]'

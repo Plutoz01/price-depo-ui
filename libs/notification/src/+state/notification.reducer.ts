@@ -1,5 +1,5 @@
-import { NotificationCloseAction, NotificationCreateAction, NotificationsActions, NotificationsActionType } from "./notification.actions";
-import { NotificationsState } from "./notification.state";
+import { NotificationCloseAction, NotificationCreateAction, NotificationsActions, NotificationsActionType } from './notification.actions';
+import { NotificationsState } from './notification.state';
 
 export function notificationsReducer( state: NotificationsState, action: NotificationsActions ): NotificationsState {
   switch ( action.type ) {

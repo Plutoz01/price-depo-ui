@@ -1,4 +1,4 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 export const LOAD_DATA = 'action.admin.load-data';
 export const DATA_LOADED = 'action.admin.data-loaded';

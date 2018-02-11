@@ -1,5 +1,5 @@
-import { PaginationState } from "./pagination.state";
-import { Pageable } from "../../models/pageable.class";
+import { PaginationState } from './pagination.state';
+import { Pageable } from '../../models/pageable.class';
 
 export function createPaginationInitialState(): PaginationState {
   return {

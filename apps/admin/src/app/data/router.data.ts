@@ -1,17 +1,17 @@
 import {
   ChainStore, initialChainStore, initialManufacturer, initialProduct, initialShop, Manufacturer, Product,
   Shop
-} from "@price-depo-ui/product";
+} from '@price-depo-ui/product';
 import {
   getChainStoreMasterDetailsStateSelector, getManufacturerMasterDetailsStateSelector, getProductMasterDetailsStateSelector,
   getShopMasterDetailsStateSelector
-} from "../+state/admin.selectors";
-import { AdminDataType } from "../models/admin-data-type.enum";
-import { MasterDetailsRouterData } from "../models/master-details-router-data.interface";
+} from '../+state/admin.selectors';
+import { AdminDataType } from '../models/admin-data-type.enum';
+import { MasterDetailsRouterData } from '../models/master-details-router-data.interface';
 import {
   chainStoreColumnDefinitions, manufacturerColumnDefinitions, productColumnDefinitions,
   shopColumnDefinitions
-} from "./column-definitions.data";
+} from './column-definitions.data';
 
 export const manufacturerMasterDetailsRouterData: MasterDetailsRouterData<Manufacturer> = {
   dataType: AdminDataType.manufacturers,

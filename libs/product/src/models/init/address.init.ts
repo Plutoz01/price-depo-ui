@@ -1,4 +1,4 @@
-import { Address } from "../../models/address.interface";
+import { Address } from '../../models/address.interface';
 
 export function initialAddress(): Address {
   return {

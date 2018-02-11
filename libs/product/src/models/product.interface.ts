@@ -1,4 +1,4 @@
-import { Identifiable } from "@price-depo-ui/data-handling";
+import { Identifiable } from '@price-depo-ui/data-handling';
 
 export interface Product extends Identifiable<string> {
   name: string;

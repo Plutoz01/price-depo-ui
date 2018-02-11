@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { Actions, Effect } from "@ngrx/effects";
+import { Injectable } from '@angular/core';
+import { Actions, Effect } from '@ngrx/effects';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
-import { Observable } from "rxjs/Observable";
-import { filter, map, mergeMap } from "rxjs/operators";
-import { NotificationCloseAction, NotificationCreateAction, NotificationsActionType } from "./notification.actions";
+import { Observable } from 'rxjs/Observable';
+import { filter, map, mergeMap } from 'rxjs/operators';
+import { NotificationCloseAction, NotificationCreateAction, NotificationsActionType } from './notification.actions';
 
 @Injectable()
 export class NotificationsEffects {

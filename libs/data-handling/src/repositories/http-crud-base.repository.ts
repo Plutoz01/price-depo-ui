@@ -1,11 +1,11 @@
-import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/mapTo';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 
-import { Identifiable } from "../models/identifiable.interface";
-import { Pageable } from "../models/pageable.class";
-import { PagedResponse } from "../models/paged-response.interface";
-import { CrudRepository } from "../repositories/crud-repository.interface";
+import { Identifiable } from '../models/identifiable.interface';
+import { Pageable } from '../models/pageable.class';
+import { PagedResponse } from '../models/paged-response.interface';
+import { CrudRepository } from '../repositories/crud-repository.interface';
 
 export abstract class HttpCrudBaseRepository<T extends Identifiable<ID>, ID> implements CrudRepository<T, ID> {
 

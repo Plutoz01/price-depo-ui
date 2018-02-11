@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Pageable, PaginationInfo } from "@price-depo-ui/data-handling";
+import { Pageable, PaginationInfo } from '@price-depo-ui/data-handling';
 import * as _ from 'lodash';
 
-import { ColumnDefinition } from "../../models/column-definition.interface";
+import { ColumnDefinition } from '../../models/column-definition.interface';
 
 @Component( {
   selector: 'pd-data-table',

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Pageable } from "@price-depo-ui/data-handling";
+import { Pageable } from '@price-depo-ui/data-handling';
 
 @Component( {
   selector: 'pd-page-size-chooser',

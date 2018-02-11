@@ -1,9 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpFilterableCrudBaseRepository } from "@price-depo-ui/data-handling";
+import { HttpFilterableCrudBaseRepository } from '@price-depo-ui/data-handling';
 
-import { ChainStore } from "../../models/chain-store.interface";
-import { ChainStoreFilterKeys } from "../../models/filters/chain-store-filter.type";
+import { ChainStore } from '../../models/chain-store.interface';
+import { ChainStoreFilterKeys } from '../../models/filters/chain-store-filter.type';
 
 @Injectable()
 export class ChainStoreHttpRepository extends HttpFilterableCrudBaseRepository<ChainStore, string, ChainStoreFilterKeys> {

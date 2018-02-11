@@ -1,4 +1,4 @@
-import { PaginationInfo } from "../models/pagination-info.interface";
+import { PaginationInfo } from '../models/pagination-info.interface';
 
 export interface PagedResponse<T> extends PaginationInfo {
   readonly content: T[];

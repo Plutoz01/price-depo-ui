@@ -1,5 +1,5 @@
-import { UserBase } from "@price-depo-ui/security";
-import { ROLE_ADMIN } from "../models/UserRole.type";
+import { UserBase } from '@price-depo-ui/security';
+import { ROLE_ADMIN } from '../models/UserRole.type';
 
 export const testUserBob = new UserBase( [ ROLE_ADMIN ],
   [

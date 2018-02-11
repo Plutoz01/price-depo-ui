@@ -1,7 +1,7 @@
-import { Observable } from "rxjs/Observable";
-import { Identifiable } from "../models/identifiable.interface";
-import { Pageable } from "../models/pageable.class";
-import { PagedResponse } from "../models/paged-response.interface";
+import { Observable } from 'rxjs/Observable';
+import { Identifiable } from '../models/identifiable.interface';
+import { Pageable } from '../models/pageable.class';
+import { PagedResponse } from '../models/paged-response.interface';
 
 export interface CrudRepository<T extends Identifiable<ID>, ID> {
   getAll( pageable?: Pageable ): Observable<PagedResponse<T>>;

@@ -1,9 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpFilterableCrudBaseRepository } from "@price-depo-ui/data-handling";
+import { HttpFilterableCrudBaseRepository } from '@price-depo-ui/data-handling';
 
-import { ManufacturerFilterKeys } from "../../models/filters/manufacturer-filter.type";
-import { Manufacturer } from "../../models/manufacturer.interface";
+import { ManufacturerFilterKeys } from '../../models/filters/manufacturer-filter.type';
+import { Manufacturer } from '../../models/manufacturer.interface';
 
 @Injectable()
 export class ManufacturerHttpRepository extends HttpFilterableCrudBaseRepository<Manufacturer, string, ManufacturerFilterKeys> {

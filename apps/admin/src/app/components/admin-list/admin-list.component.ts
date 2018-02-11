@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Store } from "@ngrx/store";
-import { Identifiable, Pageable, PaginationInfo } from "@price-depo-ui/data-handling";
-import { ColumnDefinition } from "@price-depo-ui/shared";
-import { Observable } from "rxjs/Observable";
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Identifiable, Pageable, PaginationInfo } from '@price-depo-ui/data-handling';
+import { ColumnDefinition } from '@price-depo-ui/shared';
+import { Observable } from 'rxjs/Observable';
 
-import { MasterDetailsRouterData } from "../../models/master-details-router-data.interface";
+import { MasterDetailsRouterData } from '../../models/master-details-router-data.interface';
 
 @Component( {
   selector: 'pd-admin-list',

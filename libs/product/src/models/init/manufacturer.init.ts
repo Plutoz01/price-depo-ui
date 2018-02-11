@@ -1,4 +1,4 @@
-import { Manufacturer } from "../../models/manufacturer.interface";
+import { Manufacturer } from '../../models/manufacturer.interface';
 
 export function initialManufacturer(): Manufacturer {
   return {

@@ -1,8 +1,8 @@
-import { Action } from "@ngrx/store";
-import { Identifiable, Pageable, PagedResponse } from "@price-depo-ui/data-handling";
-import { DynamicFormDef } from "@price-depo-ui/dynamic-form";
+import { Action } from '@ngrx/store';
+import { Identifiable, Pageable, PagedResponse } from '@price-depo-ui/data-handling';
+import { DynamicFormDef } from '@price-depo-ui/dynamic-form';
 
-import { AdminDataType } from "../models/admin-data-type.enum";
+import { AdminDataType } from '../models/admin-data-type.enum';
 
 export enum AdminActionType {
   loadAll = 'ADMIN_LOAD_ALL',

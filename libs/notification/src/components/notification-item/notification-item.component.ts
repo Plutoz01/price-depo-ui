@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Store } from "@ngrx/store";
-import { NotificationCloseAction } from "../../+state/notification.actions";
-import { NotificationsState } from "../../+state/notification.state";
-import { Notification, NotificationLevel } from "../../models/notification.class";
+import { Store } from '@ngrx/store';
+import { NotificationCloseAction } from '../../+state/notification.actions';
+import { NotificationsState } from '../../+state/notification.state';
+import { Notification, NotificationLevel } from '../../models/notification.class';
 
 @Component( {
   selector: 'pd-notification-item',

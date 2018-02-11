@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { Store } from "@ngrx/store";
-import { Identifiable } from "@price-depo-ui/data-handling";
-import { DynamicFormDef, DynamicFormGroupDef } from "@price-depo-ui/dynamic-form";
-import { Observable } from "rxjs/Observable";
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Identifiable } from '@price-depo-ui/data-handling';
+import { DynamicFormDef, DynamicFormGroupDef } from '@price-depo-ui/dynamic-form';
+import { Observable } from 'rxjs/Observable';
 
-import { DeleteAction, SaveAction } from "../../+state/admin.actions";
-import { getFormDefSelector } from "../../+state/admin.selectors";
-import { AdminDataType } from "../../models/admin-data-type.enum";
-import { MasterDetailsRouterData } from "../../models/master-details-router-data.interface";
+import { DeleteAction, SaveAction } from '../../+state/admin.actions';
+import { getFormDefSelector } from '../../+state/admin.selectors';
+import { AdminDataType } from '../../models/admin-data-type.enum';
+import { MasterDetailsRouterData } from '../../models/master-details-router-data.interface';
 
 @Component( {
   selector: 'pd-admin-details',

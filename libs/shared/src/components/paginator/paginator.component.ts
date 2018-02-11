@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { PaginationInfo } from "@price-depo-ui/data-handling";
+import { PaginationInfo } from '@price-depo-ui/data-handling';
 import * as _ from 'lodash';
 
 @Component( {
@@ -26,7 +26,7 @@ export class PaginatorComponent {
   }
 
   onPageTo( targetPage: number ) {
-    if( this.paginationInfo.pageNumber !== targetPage ) {
+    if ( this.paginationInfo.pageNumber !== targetPage ) {
       this.pageTo.emit( targetPage );
     }
   }

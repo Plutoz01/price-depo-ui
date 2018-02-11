@@ -1,6 +1,6 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { NotificationsState } from "./notification.state";
-import { Notification } from "../models/notification.class";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { NotificationsState } from './notification.state';
+import { Notification } from '../models/notification.class';
 
 function getNotifications( state: NotificationsState ): Notification[] {
   return state.notifications;

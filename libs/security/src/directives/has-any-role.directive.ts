@@ -1,12 +1,12 @@
 import { Directive, Input, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs/Observable";
-import { Subscription } from "rxjs/Subscription";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-import { getUserSelector } from "../+state/security.selectors";
-import { SecurityState } from "../+state/security.state";
-import { UserBase } from "../models/user-base.class";
+import { getUserSelector } from '../+state/security.selectors';
+import { SecurityState } from '../+state/security.state';
+import { UserBase } from '../models/user-base.class';
 
 @Directive( {
   selector: '[pdHasAnyRole]'

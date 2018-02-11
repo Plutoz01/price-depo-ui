@@ -1,21 +1,21 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Injector, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { FilterBase, FilterElement, FilterMatchType, Identifiable } from "@price-depo-ui/data-handling";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FilterBase, FilterElement, FilterMatchType, Identifiable } from '@price-depo-ui/data-handling';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
-import "rxjs/add/operator/filter";
+import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
-import { Observable } from "rxjs/Observable";
-import { ReplaySubject } from "rxjs/ReplaySubject";
-import { Subject } from "rxjs/Subject";
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Subject } from 'rxjs/Subject';
 
-import { searchProviderTokens } from "../../../../../apps/admin/src/app/tokens/search-provider.tokens";
-import { SearchableDropdownControlDef } from "../../models/dynamic-form.interface";
-import { SearchProvider } from "../../models/search-provider.interface";
+import { searchProviderTokens } from '../../../../../apps/admin/src/app/tokens/search-provider.tokens';
+import { SearchableDropdownControlDef } from '../../models/dynamic-form.interface';
+import { SearchProvider } from '../../models/search-provider.interface';
 
 @Component( {
   selector: 'pd-dynamic-form-searchable-dropdown',

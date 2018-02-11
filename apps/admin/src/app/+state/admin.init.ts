@@ -1,4 +1,4 @@
-import { createMasterDetailsInitialState } from "@price-depo-ui/data-handling";
+import { createMasterDetailsInitialState } from '@price-depo-ui/data-handling';
 import { AdminState, AdminAppState } from './admin.state';
 
 export const adminInitialState: AdminState = {
