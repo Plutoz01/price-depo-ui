@@ -2,11 +2,11 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Actions, Effect } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
-import { ErrorHandlingActionType, ErrorThrownAction } from "./error-handling.actions";
-import { NotificationCreateAction } from "@price-depo-ui/notifications/src/+state/notifications.actions";
-import { Notification, NotificationLevel } from "@price-depo-ui/notifications/src/models/notification.class";
+import { Notification, NotificationCreateAction, NotificationLevel } from "@price-depo-ui/notification";
 import { Observable } from "rxjs/Observable";
 import { map } from "rxjs/operators";
+
+import { ErrorHandlingActionType, ErrorThrownAction } from "./error-handling.actions";
 
 @Injectable()
 export class ErrorHandlingEffects {
@@ -26,6 +26,9 @@ export class ErrorHandlingEffects {
       } )
     );
 
+  constructor( private actions$: Actions ) {
+  }
+
   static handleActionError( action: Action, error: Error ): ErrorThrownAction {
     console.error( `Action failed: ${ action.type }. Error: `, error );
 
@@ -35,8 +38,5 @@ export class ErrorHandlingEffects {
       title = 'Network error';
     }
     return new ErrorThrownAction( title );
-  }
-
-  constructor( private actions$: Actions ) {
   }
 }

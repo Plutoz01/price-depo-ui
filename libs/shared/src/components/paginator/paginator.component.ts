@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { PaginationInfo } from "libs/data-handling/src/models/pagination-info.interface";
+import { PaginationInfo } from "@price-depo-ui/data-handling";
 import * as _ from 'lodash';
 
 @Component( {

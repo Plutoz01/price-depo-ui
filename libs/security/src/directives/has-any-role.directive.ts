@@ -1,12 +1,12 @@
 import { Directive, Input, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Store } from "@ngrx/store";
-import { getUserSelector } from "@price-depo-ui/security/src/+state/security.selectors";
-import { SecurityState } from "@price-depo-ui/security/src/+state/security.state";
-import { UserBase } from "@price-depo-ui/security/src/models/user-base.class";
-import { UserRole } from "@price-depo-ui/security/src/models/user-role.enum";
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
+
+import { getUserSelector } from "../+state/security.selectors";
+import { SecurityState } from "../+state/security.state";
+import { UserBase } from "../models/user-base.class";
 
 @Directive( {
   selector: '[pdHasAnyRole]'
@@ -23,7 +23,7 @@ export class HasAnyRoleDirective implements OnDestroy {
     this.updateSubscription = Observable.combineLatest(
       this.store.select( getUserSelector ),
       this.acceptedRolesSource
-    ).subscribe( ( [ user, acceptedRoles ]: [ UserBase, UserRole[] ] ) => {
+    ).subscribe( ( [ user, acceptedRoles ]: [ UserBase, string[] ] ) => {
       const hasAnyRole = !!acceptedRoles && user.hasAnyRole( acceptedRoles );
       this.updateViewContainer( hasAnyRole );
     } );

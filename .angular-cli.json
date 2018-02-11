@@ -86,8 +86,8 @@
       "tsconfig": "tsconfig.app.json"
     },
     {
-      "name": "notifications",
-      "root": "libs/notifications/src",
+      "name": "notification",
+      "root": "libs/notification/src",
       "test": "../../../test.js",
       "appRoot": "",
       "tsconfig": "tsconfig.app.json"

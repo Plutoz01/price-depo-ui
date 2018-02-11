@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormGroup } from "@angular/forms";
-import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
-import { DynamicFormGroupDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
-import { DynamicFormFactory } from "@price-depo-ui/dynamic-form/src/services/DynamicFormFactory.service";
+import { Identifiable } from "@price-depo-ui/data-handling";
+
+import { DynamicFormGroupDef } from "../../models/dynamic-form.interface";
+import { DynamicFormFactory } from "../../services/DynamicFormFactory.service";
 
 @Component( {
   selector: 'pd-dynamic-form',

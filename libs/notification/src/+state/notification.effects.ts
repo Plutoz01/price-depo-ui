@@ -1,13 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect } from "@ngrx/effects";
-import {
-  NotificationCloseAction, NotificationCreateAction,
-  NotificationsActionType
-} from "@price-depo-ui/notifications/src/+state/notifications.actions";
-import { Observable } from "rxjs/Observable";
-import { map, filter, mergeMap } from "rxjs/operators";
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
+import { Observable } from "rxjs/Observable";
+import { filter, map, mergeMap } from "rxjs/operators";
+import { NotificationCloseAction, NotificationCreateAction, NotificationsActionType } from "./notification.actions";
 
 @Injectable()
 export class NotificationsEffects {

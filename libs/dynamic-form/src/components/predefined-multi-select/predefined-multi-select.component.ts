@@ -23,8 +23,7 @@ export class DynamicFormPredefinedMultiSelectComponent implements ControlValueAc
   isDisabled = false;
 
   selectedValues: string[] = [];
-  private _onChange = ( _: any ) => {
-  };
+  private _onChange: ( newValue: any ) => void = () => {};
 
   writeValue( newValues: string[] ) {
     if( newValues !== undefined && newValues !== null && Array.isArray( newValues ) ) {

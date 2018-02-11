@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { SecurityState } from "@price-depo-ui/security/src/+state/security.state";
-import { UserBase } from "@price-depo-ui/security/src/models/user-base.class";
+import { SecurityState } from "./security.state";
+import { UserBase } from "../models/user-base.class";
 
 const getUser = ( state: SecurityState ): UserBase => state.user;
 

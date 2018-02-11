@@ -1,4 +1,4 @@
-import { UserBase } from "../models/user-base.class";
+import { UserBase } from "@price-depo-ui/security";
 
 export interface SecurityState {
   readonly user: UserBase;

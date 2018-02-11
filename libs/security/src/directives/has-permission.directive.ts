@@ -5,9 +5,9 @@ import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 import "rxjs/add/observable/combineLatest";
 
-import { getUserSelector } from "@price-depo-ui/security/src/+state/security.selectors";
-import { SecurityState } from "@price-depo-ui/security/src/+state/security.state";
-import { UserBase } from "@price-depo-ui/security/src/models/user-base.class";
+import { getUserSelector } from "../+state/security.selectors";
+import { SecurityState } from "../+state/security.state";
+import { UserBase } from "../models/user-base.class";
 
 @Directive( {
   selector: '[pdHasPermission]'

@@ -6,7 +6,7 @@ import { AdminDataType } from "../models/admin-data-type.enum";
 
 export const productRoutes: Routes = [
   {
-    path: AdminDataType.products,
+    path: `${ AdminDataType.products }`,
     component: AdminListPageComponent,
     data: {
       masterDetails: productMasterDetailsRouteData

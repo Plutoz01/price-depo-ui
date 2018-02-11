@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { UserBase } from "@price-depo-ui/security/src/models/user-base.class";
+import { UserBase } from "../models/user-base.class";
 
 export const AUTHENTICATED = 'action.security.authenticated';
 

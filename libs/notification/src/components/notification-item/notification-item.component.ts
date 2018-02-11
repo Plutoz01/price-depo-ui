@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Store } from "@ngrx/store";
-import { NotificationCloseAction } from "@price-depo-ui/notifications/src/+state/notifications.actions";
-import { NotificationsState } from "@price-depo-ui/notifications/src/+state/notifications.state";
+import { NotificationCloseAction } from "../../+state/notification.actions";
+import { NotificationsState } from "../../+state/notification.state";
 import { Notification, NotificationLevel } from "../../models/notification.class";
 
 @Component( {
@@ -12,9 +12,10 @@ import { Notification, NotificationLevel } from "../../models/notification.class
 } )
 export class NotificationItemComponent {
 
-  constructor( private store: Store<NotificationsState> ){}
-
   @Input() notification: Notification;
+
+  constructor( private store: Store<NotificationsState> ) {
+  }
 
   get levelClass(): string {
     switch ( this.notification.level ) {
@@ -31,7 +32,7 @@ export class NotificationItemComponent {
     }
   }
 
-  onClose(){
+  onClose() {
     this.store.dispatch( new NotificationCloseAction( this.notification.id ) );
   }
 

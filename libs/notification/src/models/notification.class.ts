@@ -12,7 +12,7 @@ export class Notification {
   constructor( public readonly level: NotificationLevel,
                public readonly title: string,
                public readonly details?: string,
-               public readonly cloasable = true,
+               public readonly closeable = true,
                public readonly hideAfterSeconds?: number ) {
   }
 }

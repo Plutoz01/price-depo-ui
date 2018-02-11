@@ -1,8 +1,8 @@
 import { animate, style, transition, trigger } from "@angular/animations";
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from "@ngrx/store";
-import { getNotificationsListSelector } from "../../+state/notifications.selectors";
-import { NotificationsState } from "../../+state/notifications.state";
+import { getNotificationsListSelector } from "../../+state/notification.selectors";
+import { NotificationsState } from "../../+state/notification.state";
 import { Notification } from "../../models/notification.class";
 
 @Component( {

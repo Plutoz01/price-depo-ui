@@ -113,8 +113,7 @@
       true,
       {
         "lazyLoad": [
-          "profile",
-          "product"
+          "profile"
         ],
         "allow": []
       }

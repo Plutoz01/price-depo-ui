@@ -1,5 +1,6 @@
 import { InjectionToken } from "@angular/core";
-import { SearchProvider } from "@price-depo-ui/dynamic-form/src/models/search-provider.interface";
+import { SearchProvider } from "@price-depo-ui/dynamic-form";
+
 import { ChainStoreSearchProviderService } from "../services/search-providers/chain-store-search-provider.service";
 import { ManufacturerSearchProviderService } from "../services/search-providers/manufacturer-search-provider.service";
 

@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AdminDetailsPageComponent } from './admin-details.component';
 
 describe('AdminDetailsPageComponent', () => {
-  let component: AdminDetailsPageComponent;
-  let fixture: ComponentFixture<AdminDetailsPageComponent>;
+  let component: AdminDetailsPageComponent<any>;
+  let fixture: ComponentFixture<AdminDetailsPageComponent<any>>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

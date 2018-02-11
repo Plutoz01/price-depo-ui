@@ -5,7 +5,7 @@
 
   <p class="details" *ngIf="notification?.details">{{ notification.details }}</p>
 
-  <button *ngIf="notification?.cloasable" type="button" class="close" aria-label="Close" (click)="onClose()">
+  <button *ngIf="notification?.closeable" type="button" class="close" aria-label="Close" (click)="onClose()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>

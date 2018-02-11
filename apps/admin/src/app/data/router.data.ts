@@ -1,11 +1,7 @@
-import { ChainStore } from "@price-depo-ui/product/src/models/chain-store.interface";
-import { initialChainStore } from "@price-depo-ui/product/src/models/init/chain-store.init";
-import { initialManufacturer } from "@price-depo-ui/product/src/models/init/manufacturer.init";
-import { initialProduct } from "@price-depo-ui/product/src/models/init/product.init";
-import { initialShop } from "@price-depo-ui/product/src/models/init/shop.init";
-import { Manufacturer } from "@price-depo-ui/product/src/models/manufacturer.interface";
-import { Product } from "@price-depo-ui/product/src/models/product.interface";
-import { Shop } from "@price-depo-ui/product/src/models/shop.interface";
+import {
+  ChainStore, initialChainStore, initialManufacturer, initialProduct, initialShop, Manufacturer, Product,
+  Shop
+} from "@price-depo-ui/product";
 import {
   getChainStoreMasterDetailsStateSelector, getManufacturerMasterDetailsStateSelector, getProductMasterDetailsStateSelector,
   getShopMasterDetailsStateSelector
