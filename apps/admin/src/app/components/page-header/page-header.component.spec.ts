@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
+import { AuthenticatedDirective, HasPermissionDirective } from '@price-depo-ui/security';
 
 import { PageHeaderComponent } from './page-header.component';
 
@@ -8,7 +11,17 @@ describe( 'PageHeaderComponent', () => {
 
   beforeEach( async( () => {
     TestBed.configureTestingModule( {
-      declarations: [ PageHeaderComponent ]
+      imports: [
+        StoreModule.forRoot( {
+          // TODO: store slice with user for auth
+        } ),
+        NgbModule.forRoot()
+      ],
+      declarations: [
+        PageHeaderComponent,
+        AuthenticatedDirective,
+        HasPermissionDirective
+      ]
     } )
       .compileComponents();
   } ) );

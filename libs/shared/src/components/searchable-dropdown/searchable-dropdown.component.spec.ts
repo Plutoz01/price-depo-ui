@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 import { SearchableDropdownComponent } from './searchable-dropdown.component';
 
@@ -8,7 +9,12 @@ describe( 'SearchableDropdownComponent', () => {
 
   beforeEach( async( () => {
     TestBed.configureTestingModule( {
-      declarations: [ SearchableDropdownComponent ]
+      imports: [
+        ClickOutsideModule
+      ],
+      declarations: [
+        SearchableDropdownComponent
+      ]
     } )
       .compileComponents();
   } ) );

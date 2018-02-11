@@ -13,7 +13,9 @@ describe( 'AppEffects', () => {
   beforeEach( () => {
     TestBed.configureTestingModule( {
       imports: [
-        StoreModule.forRoot( {} ),
+        StoreModule.forRoot( {
+          // TODO: store slice with user for auth
+        } )
       ],
       providers: [
         AppEffects,

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { PaginationInfo } from '@price-depo-ui/data-handling';
+import { emptyPaginationInfo, PaginationInfo } from '@price-depo-ui/data-handling';
 import * as _ from 'lodash';
 
 @Component( {
@@ -11,7 +11,7 @@ import * as _ from 'lodash';
 export class PaginatorComponent {
   static readonly defaultPageRangeWidth = 2;
 
-  @Input() paginationInfo: PaginationInfo;
+  @Input() paginationInfo: PaginationInfo = emptyPaginationInfo();
   @Input() pageRangeWidth: number = PaginatorComponent.defaultPageRangeWidth;
   @Output() pageTo = new EventEmitter<number>();
 

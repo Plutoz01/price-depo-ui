@@ -5,6 +5,7 @@ export { FilterBase, FilterElement, FilterMatchType } from './src/models/filter.
 export { Pageable } from './src/models/pageable.class';
 export { PaginationInfo } from './src/models/pagination-info.interface';
 export { PagedResponse } from './src/models/paged-response.interface';
+export { emptyPaginationInfo } from './src/data/empty-pagination-info.data';
 
 export { CrudRepository } from './src/repositories/crud-repository.interface';
 export { HttpCrudBaseRepository } from './src/repositories/http-crud-base.repository';

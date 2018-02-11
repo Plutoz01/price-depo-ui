@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { StoreModule } from '@ngrx/store';
+import { MockComponent } from 'ng2-mock-component';
 
 import { NotificationContainerComponent } from './notification-container.component';
 
@@ -8,7 +10,15 @@ describe('NotificationContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationContainerComponent ]
+      imports: [
+        StoreModule.forRoot( {
+          // TODO: store slice with user for auth
+        } )
+      ],
+      declarations: [
+        NotificationContainerComponent,
+        MockComponent( { selector: 'pd-notification-item', inputs: [ 'notification' ] } )
+      ]
     })
     .compileComponents();
   }));
