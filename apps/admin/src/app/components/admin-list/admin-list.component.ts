@@ -1,12 +1,11 @@
-import { Component } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Store } from "@ngrx/store";
-import { Pageable } from "libs/data-handling/src/models/pageable.class";
-import { PaginationInfo } from "libs/data-handling/src/models/pagination-info.interface";
-import { MasterDetailsRouterData } from "apps/admin/src/app/models/master-details-router-data.interface";
-import { Observable } from "rxjs/Observable";
-import { Identifiable } from "../../../../../../libs/data-handling/src/models/identifiable.interface";
-import { ColumnDefinition } from "../../../../../../libs/shared/src/models/column-definition.interface";
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Identifiable, Pageable, PaginationInfo } from '@price-depo-ui/data-handling';
+import { ColumnDefinition } from '@price-depo-ui/shared';
+import { Observable } from 'rxjs/Observable';
+
+import { MasterDetailsRouterData } from '../../models/master-details-router-data.interface';
 
 @Component( {
   selector: 'pd-admin-list',
@@ -26,8 +25,8 @@ export class AdminListPageComponent<T extends Identifiable<any>> {
                private readonly route: ActivatedRoute ) {
     const options: MasterDetailsRouterData<T> = route.snapshot.data.masterDetails;
 
-    if( !options ) {
-      throw new Error(  'MasterDetailsRouterData is required, but missing' );
+    if ( !options ) {
+      throw new Error( 'MasterDetailsRouterData is required, but missing' );
     }
 
     this.title = options.title;

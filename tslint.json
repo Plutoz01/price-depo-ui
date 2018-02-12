@@ -1,4 +1,5 @@
 {
+  "extends": [ "tslint-angular" ],
   "rulesDirectory": [
     "node_modules/codelyzer",
     "node_modules/@nrwl/schematics/src/tslint"
@@ -11,6 +12,8 @@
       true,
       "check-space"
     ],
+    "max-classes-per-file": [false],
+    "use-view-encapsulation": false,
     "curly": true,
     "eofline": true,
     "forin": true,
@@ -83,7 +86,6 @@
       true,
       "allow-null-check"
     ],
-    "typeof-compare": true,
     "unified-signatures": true,
     "variable-name": false,
     "directive-selector": [
@@ -114,11 +116,13 @@
       true,
       {
         "lazyLoad": [
-          "profile",
-          "product"
+          "profile"
         ],
         "allow": []
       }
-    ]
+    ],
+    "deprecation": {
+      "severity": "warn"
+    }
   }
 }

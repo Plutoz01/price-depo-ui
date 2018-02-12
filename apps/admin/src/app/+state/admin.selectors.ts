@@ -1,5 +1,5 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { AdminState } from "./admin.state";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { AdminState } from './admin.state';
 
 export const getAdminAppStateSelector = createFeatureSelector( 'app' );
 

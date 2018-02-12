@@ -1,9 +1,10 @@
-import { Injectable } from "@angular/core";
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from "@angular/forms";
+import { Injectable } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+
 import {
   AbstractDynamicFormElement, DynamicFormControlDef, DynamicFormElementType,
   DynamicFormGroupDef
-} from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
+} from '../models/dynamic-form.interface';
 import * as _ from 'lodash';
 
 @Injectable()

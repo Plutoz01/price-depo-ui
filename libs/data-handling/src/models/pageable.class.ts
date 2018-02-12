@@ -11,7 +11,7 @@ export class Pageable {
     return new Pageable( page, size );
   }
 
-  private constructor( public readonly page = 0, public readonly size = Pageable.defaultPageSize ){
+  private constructor( public readonly page = 0, public readonly size = Pageable.defaultPageSize ) {
   }
 
   get firstIndex(): number {

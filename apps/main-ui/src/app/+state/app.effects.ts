@@ -9,7 +9,7 @@ import { AppState } from './app.interfaces';
 export class AppEffects {
   @Effect() loadData = this.dataPersistence.fetch( LOAD_DATA, {
     run: ( a: LoadData, state: AppState ) => {
-      console.log( "load data from effect" );
+      console.log( 'load data from effect' );
       return new DataLoaded();
     },
 

@@ -3,7 +3,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { StoreModule } from '@ngrx/store';
 import { DataPersistence } from '@nrwl/nx';
 import { hot, readAll } from '@nrwl/nx/testing';
-import { DATA_LOADED, LOAD_DATA } from "./app.actions";
+import { DATA_LOADED, LOAD_DATA } from './app.actions';
 import { AppEffects } from './app.effects';
 
 describe( 'AppEffects', () => {
@@ -13,7 +13,9 @@ describe( 'AppEffects', () => {
   beforeEach( () => {
     TestBed.configureTestingModule( {
       imports: [
-        StoreModule.forRoot( {} ),
+        StoreModule.forRoot( {
+          // TODO: store slice with user for auth
+        } )
       ],
       providers: [
         AppEffects,

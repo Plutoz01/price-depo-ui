@@ -1,22 +1,21 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Injector, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { FilterBase, FilterElement, FilterMatchType } from "@price-depo-ui/data-handling/src/models/filter.type";
-import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
-import { SearchableDropdownControlDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
-import { SearchProvider } from "@price-depo-ui/dynamic-form/src/models/search-provider.interface";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FilterBase, FilterElement, FilterMatchType, Identifiable } from '@price-depo-ui/data-handling';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
-import "rxjs/add/operator/filter";
+import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
-import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Subject } from 'rxjs/Subject';
 
-import { Observable } from "rxjs/Observable";
-import { ReplaySubject } from "rxjs/ReplaySubject";
-import { Subject } from "rxjs/Subject";
-import { searchProviderTokens } from "../../../../../apps/admin/src/app/tokens/search-provider.tokens";
+import { searchProviderTokens } from '../../../../../apps/admin/src/app/tokens/search-provider.tokens';
+import { SearchableDropdownControlDef } from '../../models/dynamic-form.interface';
+import { SearchProvider } from '../../models/search-provider.interface';
 
 @Component( {
   selector: 'pd-dynamic-form-searchable-dropdown',
@@ -43,8 +42,7 @@ export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, 
   private selectedValueSource = new BehaviorSubject<T>( undefined );
   private searchExpressionSource = new Subject<string>();
   private searchProvider: SearchProvider<T, ID, any>;
-  private _onChange = ( _: any ) => {
-  };
+  private _onChange: ( changed: any ) => void = ( _: any ) => {};
 
   constructor( private readonly injector: Injector ) {
     this.selectedValue$ = this.createSelectedValue$();
@@ -55,10 +53,10 @@ export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, 
     return Observable.merge(
       this.selectedValueSource.asObservable(),
       this.handleControlValueChange$()
-    );
+    ) as Observable<T>;
   }
 
-  handleControlValueChange$(): Observable<T | undefined> {
+  handleControlValueChange$(): Observable<T> {
     return this.controlValueSource.asObservable()
       .distinctUntilChanged()
       .switchMap( selectedId => this.searchProvider.getById( selectedId ) )
@@ -93,7 +91,7 @@ export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, 
 
   ngOnInit() {
     const token = searchProviderTokens[ this.controlDef.searchProviderName ];
-    if( !token ) {
+    if ( !token ) {
       throw new Error( 'Unrecognized search provider name: ' + this.controlDef.searchProviderName );
     }
     this.searchProvider = this.injector.get( token );

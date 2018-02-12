@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
-import { PageFooterComponent } from "./page-footer/page-footer.component";
-import { PageHeaderComponent } from "./page-header/page-header.component";
+import { PageFooterComponent } from './page-footer/page-footer.component';
+import { PageHeaderComponent } from './page-header/page-header.component';
 
 describe( 'AppComponent', () => {
   let component: AppComponent;

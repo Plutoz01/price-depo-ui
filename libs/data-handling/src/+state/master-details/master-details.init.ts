@@ -1,5 +1,5 @@
-import { MasterDetailsState } from "@price-depo-ui/data-handling/src/+state/master-details/master-details.state";
-import { createPaginationInitialState } from "@price-depo-ui/data-handling/src/+state/pagination/pagination.init";
+import { MasterDetailsState } from './master-details.state';
+import { createPaginationInitialState } from '../pagination/pagination.init';
 
 export function createMasterDetailsInitialState(): MasterDetailsState<any> {
   return {

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { Store } from "@ngrx/store";
-import { DynamicFormDef, DynamicFormGroupDef } from "@price-depo-ui/dynamic-form/src/models/dynamic-form.interface";
-import { MasterDetailsRouterData } from "apps/admin/src/app/models/master-details-router-data.interface";
-import { Identifiable } from "libs/data-handling/src/models/identifiable.interface";
-import { Observable } from "rxjs/Observable";
-import { DeleteAction, SaveAction } from "../../+state/admin.actions";
-import { getFormDefSelector } from "../../+state/admin.selectors";
-import { AdminDataType } from "../../models/admin-data-type.enum";
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Identifiable } from '@price-depo-ui/data-handling';
+import { DynamicFormDef, DynamicFormGroupDef } from '@price-depo-ui/dynamic-form';
+import { Observable } from 'rxjs/Observable';
+
+import { DeleteAction, SaveAction } from '../../+state/admin.actions';
+import { getFormDefSelector } from '../../+state/admin.selectors';
+import { AdminDataType } from '../../models/admin-data-type.enum';
+import { MasterDetailsRouterData } from '../../models/master-details-router-data.interface';
 
 @Component( {
   selector: 'pd-admin-details',
@@ -32,14 +33,14 @@ export class AdminDetailsPageComponent<T extends Identifiable<any>> {
     const masterDetailsStore = this.store.select( options.masterDetailsStateSelector );
     this.item$ = masterDetailsStore.select( 'selected' );
     this.formDefinition$ = this.store.select( getFormDefSelector )
-    // Avoid to use potentionally outdated formDefs remained in state from previous usages
+    // Avoid to use potentially outdated formDefs remained in state from previous usages
     // TODO: remove this, after state will null after navigating out
       .filter( Boolean )
       .filter( ( formDef: DynamicFormDef ) => formDef.id === options.formDefId );
   }
 
-  onSave( saveable: T ) {
-    this.store.dispatch( new SaveAction( this.adminDataType, saveable ) );
+  onSave( savable: T ) {
+    this.store.dispatch( new SaveAction( this.adminDataType, savable ) );
   }
 
   onDelete( deletable: T ) {

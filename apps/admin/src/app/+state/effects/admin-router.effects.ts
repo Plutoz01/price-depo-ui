@@ -1,21 +1,25 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, Router } from "@angular/router";
-import { Actions, Effect } from "@ngrx/effects";
-import { DataPersistence } from "@nrwl/nx";
-import { MasterDetailsState } from "@price-depo-ui/data-handling/src/+state/master-details/master-details.state";
-import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
-import "rxjs/add/observable/from";
-import { Observable } from "rxjs/Observable";
-import { tap } from "rxjs/operators";
-import { AdminDetailsPageComponent } from "../../components/admin-details/admin-details.component";
-import { AdminListPageComponent } from "../../components/admin-list/admin-list.component";
-import { AdminDataType } from "../../models/admin-data-type.enum";
-import { MasterDetailsRouterData } from "../../models/master-details-router-data.interface";
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
+import { Actions, Effect } from '@ngrx/effects';
+import { DataPersistence } from '@nrwl/nx';
+import { MasterDetailsState, Pageable } from '@price-depo-ui/data-handling';
+import 'rxjs/add/observable/from';
+import { Observable } from 'rxjs/Observable';
+import { tap } from 'rxjs/operators';
+import { AdminDetailsPageComponent } from '../../components/admin-details/admin-details.component';
+import { AdminListPageComponent } from '../../components/admin-list/admin-list.component';
+import { AdminDataType } from '../../models/admin-data-type.enum';
+import { MasterDetailsRouterData } from '../../models/master-details-router-data.interface';
 import {
-  AdminActionType, CreateNewAction, DeleteSuccessAction, LoadAllAction, LoadByIdAction, LoadDynamicFormDefAction,
+  AdminActionType,
+  CreateNewAction,
+  DeleteSuccessAction,
+  LoadAllAction,
+  LoadByIdAction,
+  LoadDynamicFormDefAction,
   SaveSuccessAction
-} from "../admin.actions";
-import { AdminAppState } from "../admin.state";
+} from '../admin.actions';
+import { AdminAppState } from '../admin.state';
 
 @Injectable()
 export class AdminRouterEffects {

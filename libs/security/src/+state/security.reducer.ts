@@ -1,5 +1,5 @@
-import { AuthenticatedAction, AUTHENTICATED, SecurityAction } from "@price-depo-ui/security/src/+state/security.actions";
-import { SecurityState } from "@price-depo-ui/security/src/+state/security.state";
+import { AuthenticatedAction, AUTHENTICATED, SecurityAction } from './security.actions';
+import { SecurityState } from './security.state';
 
 export function securityReducer( state: SecurityState, action: SecurityAction ): SecurityState {
   switch ( action.type ) {

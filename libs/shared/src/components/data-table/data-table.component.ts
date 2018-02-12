@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Pageable } from "@price-depo-ui/data-handling/src/models/pageable.class";
-import { PaginationInfo } from "@price-depo-ui/data-handling/src/models/pagination-info.interface";
-import { ColumnDefinition } from "@price-depo-ui/shared/src/models/column-definition.interface";
+import { Pageable, PaginationInfo } from '@price-depo-ui/data-handling';
 import * as _ from 'lodash';
+
+import { ColumnDefinition } from '../../models/column-definition.interface';
 
 @Component( {
   selector: 'pd-data-table',
@@ -45,7 +45,7 @@ export class DataTableComponent {
   onPageTo( pageNumber: number, pageSize: number ) {
     let pageable = Pageable.of( pageNumber, pageSize );
 
-    if ( pageable.firstIndex > ( this.paginationInfo.totalItems - 1 ) ) {
+    if ( pageable.firstIndex > (this.paginationInfo.totalItems - 1) ) {
       pageable = Pageable.of( 0, pageSize );
     }
 

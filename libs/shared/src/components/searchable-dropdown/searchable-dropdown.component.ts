@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { Identifiable } from "@price-depo-ui/data-handling/src/models/identifiable.interface";
+import { Identifiable } from '@price-depo-ui/data-handling';
 import * as _ from 'lodash';
 
 @Component( {

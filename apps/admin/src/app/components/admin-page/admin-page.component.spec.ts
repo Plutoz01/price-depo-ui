@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { StoreModule } from '@ngrx/store';
+import { HasPermissionDirective } from '@price-depo-ui/security';
+import { MockComponent } from 'ng2-mock-component';
 
 import { AdminPageComponent } from './admin-page.component';
 
@@ -8,9 +11,14 @@ describe( 'AdminPageComponent', () => {
 
   beforeEach( async( () => {
     TestBed.configureTestingModule( {
-      declarations: [ AdminPageComponent ]
-    } )
-      .compileComponents();
+      imports: [
+        StoreModule.forRoot( {} )
+      ],
+      declarations: [
+        AdminPageComponent,
+        HasPermissionDirective
+      ]
+    } ).compileComponents();
   } ) );
 
   beforeEach( () => {

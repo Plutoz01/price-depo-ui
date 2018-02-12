@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { EffectsModule } from "@ngrx/effects";
-import { ErrorHandlingEffects } from "@price-depo-ui/error-handling/src/+state/error-handling.effects";
-import { GlobalErrorHandlerService } from "@price-depo-ui/error-handling/src/services/global-error-handler.service";
-import { NotificationsModule } from "../../notifications";
+import { EffectsModule } from '@ngrx/effects';
+import { ErrorHandlingEffects } from './+state/error-handling.effects';
+import { GlobalErrorHandlerService } from './services/global-error-handler.service';
+import { NotificationsModule } from '../../notification';
 
 @NgModule( {
   imports: [

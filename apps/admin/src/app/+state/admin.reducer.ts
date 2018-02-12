@@ -1,11 +1,14 @@
-import { MasterDetailsState } from "@price-depo-ui/data-handling/src/+state/master-details/master-details.state";
-import { handlePaginationChange } from "@price-depo-ui/data-handling/src/+state/pagination/pagination.handlers";
-import { AdminDataType } from "../models/admin-data-type.enum";
+import { handlePaginationChange, MasterDetailsState } from '@price-depo-ui/data-handling';
+import { AdminDataType } from '../models/admin-data-type.enum';
 import {
-  AdminActions, AdminActionType, CreateNewAction, LoadAllSuccessAction, LoadByIdSuccessAction,
+  AdminActions,
+  AdminActionType,
+  CreateNewAction,
+  LoadAllSuccessAction,
+  LoadByIdSuccessAction,
   LoadDynamicFormDefSuccessAction
-} from "./admin.actions";
-import { adminInitialState } from "./admin.init";
+} from './admin.actions';
+import { adminInitialState } from './admin.init';
 import { AdminState } from './admin.state';
 
 export function adminReducer( state: AdminState = adminInitialState, action: AdminActions ): AdminState {

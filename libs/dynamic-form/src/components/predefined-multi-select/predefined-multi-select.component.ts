@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { PredefinedMultiSelectControlDef } from "../../models/dynamic-form.interface";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { PredefinedMultiSelectControlDef } from '../../models/dynamic-form.interface';
 import * as _ from 'lodash';
 
 // TODO: validation functionality is missing
@@ -23,11 +23,10 @@ export class DynamicFormPredefinedMultiSelectComponent implements ControlValueAc
   isDisabled = false;
 
   selectedValues: string[] = [];
-  private _onChange = ( _: any ) => {
-  };
+  private _onChange: ( newValue: any ) => void = () => {};
 
   writeValue( newValues: string[] ) {
-    if( newValues !== undefined && newValues !== null && Array.isArray( newValues ) ) {
+    if ( newValues !== undefined && newValues !== null && Array.isArray( newValues ) ) {
       this.selectedValues = newValues;
     }
   }
@@ -44,14 +43,14 @@ export class DynamicFormPredefinedMultiSelectComponent implements ControlValueAc
   }
 
   onSelect( selected: string ) {
-    if( !this.isDisabled ) {
+    if ( !this.isDisabled ) {
       this.selectedValues.push( selected );
       this._onChange( this.selectedValues );
     }
   }
 
   onRemove( toRemove: string ) {
-    if( !this.isDisabled ) {
+    if ( !this.isDisabled ) {
       _.pull( this.selectedValues, toRemove );
       this._onChange( this.selectedValues );
     }

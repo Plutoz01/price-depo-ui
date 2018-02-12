@@ -3,7 +3,7 @@
   "project": {
     "name": "price-depo-ui",
     "npmScope": "price-depo-ui",
-    "latestMigration": "20171205-remove-npmscope-from-tslintjson"
+    "latestMigration": "20180130-angular-devkit-schematics"
   },
   "apps": [
     {
@@ -51,7 +51,7 @@
       "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "../../../test.js",
-      "tsconfig": "../../../tsconfig.app.json",
+      "tsconfig": "tsconfig.app.json",
       "testTsconfig": "../../../tsconfig.spec.json",
       "prefix": "pd",
       "styles": [
@@ -68,49 +68,57 @@
       "name": "data-handling",
       "root": "libs/data-handling/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     },
     {
       "name": "dynamic-form",
       "root": "libs/dynamic-form/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     },
     {
       "name": "error-handling",
       "root": "libs/error-handling/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     },
     {
-      "name": "notifications",
-      "root": "libs/notifications/src",
+      "name": "notification",
+      "root": "libs/notification/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     },
     {
       "name": "product",
       "root": "libs/product/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     },
     {
       "name": "profile",
       "root": "libs/profile/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     },
     {
       "name": "security",
       "root": "libs/security/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     },
     {
       "name": "shared",
       "root": "libs/shared/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json"
     }
   ],
   "e2e": {
@@ -120,20 +128,23 @@
   },
   "lint": [
     {
-      "project": "./tsconfig.app.json"
-    },
-    {
-      "project": "./tsconfig.spec.json"
-    },
-    {
-      "project": "./tsconfig.e2e.json"
-    },
-    {
-      "project": "apps/admin/src/tsconfig.app.json",
+      "project": "./tsconfig.spec.json",
       "exclude": "**/node_modules/**"
     },
     {
-      "project": "apps/admin/e2e/tsconfig.e2e.json",
+      "project": "./apps/admin/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "./apps/admin/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "./apps/main-ui/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "./apps/main-ui/e2e/tsconfig.e2e.json",
       "exclude": "**/node_modules/**"
     }
   ],
