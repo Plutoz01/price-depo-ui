@@ -11,6 +11,6 @@ describe( 'core App', () => {
   it( 'should display profile page by default', async () => {
     await page.navigateTo();
     const currentUrl = await page.getCurrentUrl();
-    expect( currentUrl ).toEqual(  browser.baseUrl + 'profile' );
+    expect( currentUrl ).toEqual( browser.baseUrl + 'profile' );
   } );
 } );

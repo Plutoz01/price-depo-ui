@@ -1,4 +1,4 @@
-import { AuthenticatedAction, AUTHENTICATED, SecurityAction } from './security.actions';
+import { AUTHENTICATED, AuthenticatedAction, SecurityAction } from './security.actions';
 import { SecurityState } from './security.state';
 
 export function securityReducer( state: SecurityState, action: SecurityAction ): SecurityState {

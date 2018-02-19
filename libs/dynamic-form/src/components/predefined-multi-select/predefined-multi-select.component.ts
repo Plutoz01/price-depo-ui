@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { PredefinedMultiSelectControlDef } from '../../models/dynamic-form.interface';
 import * as _ from 'lodash';
+import { PredefinedMultiSelectControlDef } from '../../models/dynamic-form.interface';
 
 // TODO: validation functionality is missing
-@Component({
+@Component( {
   selector: 'pd-dynamic-form-predefined-multi-select',
   templateUrl: './predefined-multi-select.component.html',
-  styleUrls: ['./predefined-multi-select.component.scss'],
+  styleUrls: [ './predefined-multi-select.component.scss' ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -16,14 +16,18 @@ import * as _ from 'lodash';
     }
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
-})
+} )
 export class DynamicFormPredefinedMultiSelectComponent implements ControlValueAccessor {
-
   @Input() controlDef: PredefinedMultiSelectControlDef;
   isDisabled = false;
 
   selectedValues: string[] = [];
-  private _onChange: ( newValue: any ) => void = () => {};
+  private _onChange: ( newValue: any ) => void = () => {
+  };
+
+  get options(): string[] {
+    return _.difference( this.controlDef.options, this.selectedValues );
+  }
 
   writeValue( newValues: string[] ) {
     if ( newValues !== undefined && newValues !== null && Array.isArray( newValues ) ) {
@@ -55,10 +59,4 @@ export class DynamicFormPredefinedMultiSelectComponent implements ControlValueAc
       this._onChange( this.selectedValues );
     }
   }
-
-
-  get options(): string[] {
-    return _.difference(  this.controlDef.options, this.selectedValues );
-  }
-
 }

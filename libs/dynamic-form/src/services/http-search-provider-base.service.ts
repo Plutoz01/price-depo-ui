@@ -5,7 +5,6 @@ import { SearchProvider } from '../models/search-provider.interface';
 
 export abstract class HttpSearchProviderBaseService<T extends Identifiable<ID>, ID, FK extends string>
   implements SearchProvider<T, ID, FK> {
-
   constructor( private readonly repository: HttpFilterableCrudBaseRepository<T, ID, FK> ) {
   }
 

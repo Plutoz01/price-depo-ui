@@ -12,7 +12,6 @@ import { DynamicFormFactory } from '../../services/DynamicFormFactory.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 } )
 export class DynamicFormComponent<T extends Identifiable<any>> implements OnChanges {
-
   @Input() item?: T;
   @Input() formDef: DynamicFormGroupDef;
   @Output() save = new EventEmitter<T>();
@@ -52,5 +51,4 @@ export class DynamicFormComponent<T extends Identifiable<any>> implements OnChan
       this.delete.emit( this.item );
     }
   }
-
 }

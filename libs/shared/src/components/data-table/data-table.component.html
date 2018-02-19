@@ -25,7 +25,8 @@
         <div class="d-flex flex-column flex-sm-row">
           <pd-paginator [paginationInfo]="paginationInfo" (pageTo)="onPageNumberChange( $event )" class="m-1"></pd-paginator>
 
-          <pd-page-size-chooser [choices]="pageSizes" [selected]="paginationInfo.pageSize" (select)="onPageSizeChange( $event )" class="m-1">
+          <pd-page-size-chooser [choices]="pageSizes" [selected]="paginationInfo.pageSize" (select)="onPageSizeChange( $event )"
+                                class="m-1">
           </pd-page-size-chooser>
         </div>
       </div>

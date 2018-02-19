@@ -12,7 +12,6 @@ import { UserBase } from '../models/user-base.class';
   selector: '[pdAuthenticated]'
 } )
 export class AuthenticatedDirective implements OnDestroy {
-
   private readonly updateSubscription: Subscription;
   private readonly shouldAuthenticatedSource = new BehaviorSubject<boolean>( true );
   private hasView = false;
@@ -28,7 +27,8 @@ export class AuthenticatedDirective implements OnDestroy {
     } );
   }
 
-  @Input() set pdAuthenticated( shouldAuthenticated: boolean ) {
+  @Input()
+  set pdAuthenticated( shouldAuthenticated: boolean ) {
     this.shouldAuthenticatedSource.next( shouldAuthenticated );
   }
 

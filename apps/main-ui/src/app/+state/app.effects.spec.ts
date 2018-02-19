@@ -17,11 +17,7 @@ describe( 'AppEffects', () => {
           // TODO: store slice with user for auth
         } )
       ],
-      providers: [
-        AppEffects,
-        DataPersistence,
-        provideMockActions( () => actions )
-      ],
+      providers: [ AppEffects, DataPersistence, provideMockActions( () => actions ) ]
     } );
 
     effects = TestBed.get( AppEffects );
@@ -30,9 +26,7 @@ describe( 'AppEffects', () => {
   describe( 'someEffect', () => {
     it( 'should work', async () => {
       actions = hot( '-a-|', { a: { type: LOAD_DATA } } );
-      expect( await readAll( effects.loadData ) ).toEqual( [
-        { type: DATA_LOADED, payload: {} }
-      ] );
+      expect( await readAll( effects.loadData ) ).toEqual( [ { type: DATA_LOADED, payload: {} } ] );
     } );
   } );
 } );

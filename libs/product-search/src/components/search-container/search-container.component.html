@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row mt-4 mb-4">
+    <div class="col-12">
+      <pd-product-search-box (search)="onSearch( $event )"></pd-product-search-box>
+    </div>
+  </div>
+  <div class="row" *ngIf="hasSearchExpression$ | async">
+    <div class="col-12">
+      <pd-product-search-result-list [items]="searchResults$ | async"></pd-product-search-result-list>
+    </div>
+  </div>
+</div>

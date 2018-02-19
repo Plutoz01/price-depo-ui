@@ -16,15 +16,16 @@ import { AppComponent } from './components/app.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/profile',
+    redirectTo: '/search',
     pathMatch: 'full'
   },
   {
     path: 'profile',
     loadChildren: '@price-depo-ui/profile#ProfileModule'
-  }, {
-    path: 'product',
-    loadChildren: '@price-depo-ui/product#ProductModule'
+  },
+  {
+    path: 'search',
+    loadChildren: '@price-depo-ui/product-search#ProductSearchModule'
   }
 ];
 
@@ -41,7 +42,7 @@ const routes: Routes = [
   ],
   declarations: [ ...Components ],
   bootstrap: [ AppComponent ],
-  providers: [ AppEffects ],
+  providers: [ AppEffects ]
 } )
 export class AppModule {
 }

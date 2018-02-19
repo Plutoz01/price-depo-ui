@@ -6,8 +6,9 @@ import { ChainStore } from '../../models/chain-store.interface';
 import { ChainStoreFilterKeys } from '../../models/filters/chain-store-filter.type';
 
 @Injectable()
-export class ChainStoreHttpRepository extends HttpFilterableCrudBaseRepository<ChainStore, string, ChainStoreFilterKeys> {
-
+export class ChainStoreHttpRepository extends HttpFilterableCrudBaseRepository<ChainStore,
+  string,
+  ChainStoreFilterKeys> {
   constructor( httpClient: HttpClient ) {
     super( httpClient );
   }

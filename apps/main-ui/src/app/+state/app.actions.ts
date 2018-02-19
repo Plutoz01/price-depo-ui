@@ -10,9 +10,8 @@ export class LoadData implements Action {
 export class DataLoaded implements Action {
   readonly type = DATA_LOADED;
 
-  constructor( public readonly payload: Object = {} ) {}
-
+  constructor( public readonly payload: Object = {} ) {
+  }
 }
 
 export type MainUiAction = LoadData | DataLoaded;
-

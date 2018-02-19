@@ -9,18 +9,17 @@ describe( 'AdminDetailsPageComponent', () => {
   let component: AdminDetailsPageComponent<any>;
   let fixture: ComponentFixture<AdminDetailsPageComponent<any>>;
 
-  beforeEach( async( () => {
-    TestBed.configureTestingModule( {
-      imports: [
-        StoreModule.forRoot({}),
-        RouterTestingModule
-      ],
-      declarations: [
-        AdminDetailsPageComponent,
-        MockComponent( { selector: 'pd-dynamic-form', inputs: [ 'item', 'formDef' ] } )
-      ]
-    } ).compileComponents();
-  } ) );
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        imports: [ StoreModule.forRoot( {} ), RouterTestingModule ],
+        declarations: [
+          AdminDetailsPageComponent,
+          MockComponent( { selector: 'pd-dynamic-form', inputs: [ 'item', 'formDef' ] } )
+        ]
+      } ).compileComponents();
+    } )
+  );
 
   beforeEach( () => {
     fixture = TestBed.createComponent( AdminDetailsPageComponent );

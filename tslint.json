@@ -1,5 +1,7 @@
 {
-  "extends": [ "tslint-angular" ],
+  "extends": [
+    "tslint-angular"
+  ],
   "rulesDirectory": [
     "node_modules/codelyzer",
     "node_modules/@nrwl/schematics/src/tslint"
@@ -12,7 +14,9 @@
       true,
       "check-space"
     ],
-    "max-classes-per-file": [false],
+    "max-classes-per-file": [
+      false
+    ],
     "use-view-encapsulation": false,
     "curly": true,
     "eofline": true,
@@ -116,7 +120,8 @@
       true,
       {
         "lazyLoad": [
-          "profile"
+          "profile",
+          "product-search"
         ],
         "allow": []
       }

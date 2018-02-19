@@ -5,7 +5,10 @@
     "module": "es2015"
   },
   "include": [
-    "**/*.ts"
+    "**/*.ts",
+    "../../../libs/profile/index.ts",
+    "../../../libs/product-search/index.ts"
+
     /* add all lazy-loaded libraries here: "../../../libs/my-lib/index.ts" */
   ],
   "exclude": [

@@ -1,8 +1,8 @@
 import { Directive, Input, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { getUserSelector } from '../+state/security.selectors';
 import { SecurityState } from '../+state/security.state';
@@ -12,7 +12,6 @@ import { UserBase } from '../models/user-base.class';
   selector: '[pdHasAnyRole]'
 } )
 export class HasAnyRoleDirective implements OnDestroy {
-
   private updateSubscription: Subscription;
   private acceptedRolesSource = new BehaviorSubject<string[]>( [] );
   private hasView = false;
@@ -29,7 +28,8 @@ export class HasAnyRoleDirective implements OnDestroy {
     } );
   }
 
-  @Input() set pdHasAnyRole( acceptedRoles: string[] ) {
+  @Input()
+  set pdHasAnyRole( acceptedRoles: string[] ) {
     this.acceptedRolesSource.next( acceptedRoles );
   }
 
@@ -46,5 +46,4 @@ export class HasAnyRoleDirective implements OnDestroy {
       this.hasView = false;
     }
   }
-
 }

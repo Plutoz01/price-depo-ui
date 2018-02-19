@@ -10,7 +10,6 @@ import { ColumnDefinition } from '../../models/column-definition.interface';
   styleUrls: [ './data-table.component.scss' ]
 } )
 export class DataTableComponent {
-
   selectedIndex?: number;
 
   @Input() items: Object[] = [];
@@ -45,7 +44,7 @@ export class DataTableComponent {
   onPageTo( pageNumber: number, pageSize: number ) {
     let pageable = Pageable.of( pageNumber, pageSize );
 
-    if ( pageable.firstIndex > (this.paginationInfo.totalItems - 1) ) {
+    if ( pageable.firstIndex > this.paginationInfo.totalItems - 1 ) {
       pageable = Pageable.of( 0, pageSize );
     }
 
@@ -53,5 +52,4 @@ export class DataTableComponent {
       this.pageTo.emit( pageable );
     }
   }
-
 }

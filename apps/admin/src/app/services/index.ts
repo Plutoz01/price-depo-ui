@@ -15,7 +15,4 @@ const searchProviders: Provider[] = [
   }
 ];
 
-export const services: Provider[] = [
-  ...searchProviders,
-  DynamicFormDefHttpRepository
-];
+export const services: Provider[] = [ ...searchProviders, DynamicFormDefHttpRepository ];

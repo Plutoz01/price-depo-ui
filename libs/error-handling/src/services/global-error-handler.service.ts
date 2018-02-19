@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 
 @Injectable()
 export class GlobalErrorHandlerService implements ErrorHandler {
-
-  constructor( private store: Store<any> ) {}
+  constructor( private store: Store<any> ) {
+  }
 
   handleError( error: Error ) {
     console.error( 'Unexpected error: ', error );

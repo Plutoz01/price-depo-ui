@@ -18,10 +18,7 @@ export function notificationsReducer( state: NotificationsState, action: Notific
 function handleNotificationCreate( state: NotificationsState, action: NotificationCreateAction ): NotificationsState {
   return {
     ...state,
-    notifications: [
-      ...state.notifications,
-      action.newNotification
-    ]
+    notifications: [ ...state.notifications, action.newNotification ]
   };
 }
 

@@ -9,7 +9,7 @@ export enum SearchProviderTokenKey {
   manufacturer = 'manufacturerSearchProvider'
 }
 
-export const searchProviderTokens: { [ key: string ]: InjectionToken<SearchProvider<any, any, any>> } = {
+export const searchProviderTokens: { [key: string]: InjectionToken<SearchProvider<any, any, any>> } = {
   chainStoreSearchProvider: new InjectionToken<ChainStoreSearchProviderService>( 'chainStoreSearchProvider' ),
   manufacturerSearchProvider: new InjectionToken<ManufacturerSearchProviderService>( 'manufacturerSearchProvider' )
 };

@@ -6,6 +6,7 @@ export enum NotificationLevel {
   warning = 'warning',
   error = 'error'
 }
+
 export class Notification {
   readonly id = uuidv4();
 

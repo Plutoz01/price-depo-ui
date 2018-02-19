@@ -1,10 +1,8 @@
 import * as immutable from 'immutable';
 
 export class UserBase {
-
   readonly roles: immutable.Set<string>;
   readonly permissions: immutable.Set<string>;
-
 
   constructor( roles?: string[], permissions?: string[] ) {
     this.roles = immutable.Set( roles || [] );

@@ -7,17 +7,14 @@ describe( 'SearchableDropdownComponent', () => {
   let component: SearchableDropdownComponent<any>;
   let fixture: ComponentFixture<SearchableDropdownComponent<any>>;
 
-  beforeEach( async( () => {
-    TestBed.configureTestingModule( {
-      imports: [
-        ClickOutsideModule
-      ],
-      declarations: [
-        SearchableDropdownComponent
-      ]
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        imports: [ ClickOutsideModule ],
+        declarations: [ SearchableDropdownComponent ]
+      } ).compileComponents();
     } )
-      .compileComponents();
-  } ) );
+  );
 
   beforeEach( () => {
     fixture = TestBed.createComponent( SearchableDropdownComponent );

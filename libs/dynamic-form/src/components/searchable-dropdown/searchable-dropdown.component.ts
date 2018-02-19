@@ -30,11 +30,10 @@ import { SearchProvider } from '../../models/search-provider.interface';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 } )
-export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, ID> implements OnInit, ControlValueAccessor {
-
+export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, ID>
+  implements OnInit, ControlValueAccessor {
   @Input() controlDef: SearchableDropdownControlDef;
   isDisabled = false;
-
 
   selectedValue$: Observable<T>;
   searchResults$: Observable<T[]>;
@@ -42,7 +41,8 @@ export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, 
   private selectedValueSource = new BehaviorSubject<T>( undefined );
   private searchExpressionSource = new Subject<string>();
   private searchProvider: SearchProvider<T, ID, any>;
-  private _onChange: ( changed: any ) => void = ( _: any ) => {};
+  private _onChange: ( changed: any ) => void = ( _: any ) => {
+  };
 
   constructor( private readonly injector: Injector ) {
     this.selectedValue$ = this.createSelectedValue$();
@@ -50,21 +50,20 @@ export class DynamicFormSearchableDropdownComponent<T extends Identifiable<ID>, 
   }
 
   createSelectedValue$(): Observable<T> {
-    return Observable.merge(
-      this.selectedValueSource.asObservable(),
-      this.handleControlValueChange$()
-    ) as Observable<T>;
+    return Observable.merge( this.selectedValueSource.asObservable(), this.handleControlValueChange$() ) as Observable<T>;
   }
 
   handleControlValueChange$(): Observable<T> {
-    return this.controlValueSource.asObservable()
+    return this.controlValueSource
+      .asObservable()
       .distinctUntilChanged()
       .switchMap( selectedId => this.searchProvider.getById( selectedId ) )
       .catch( () => Observable.of( undefined ) );
   }
 
   createSearchResult$(): Observable<T[]> {
-    return this.searchExpressionSource.asObservable()
+    return this.searchExpressionSource
+      .asObservable()
       .debounceTime( 300 )
       .distinctUntilChanged()
       .map( ( searchExpression: string ): FilterBase<any> => {

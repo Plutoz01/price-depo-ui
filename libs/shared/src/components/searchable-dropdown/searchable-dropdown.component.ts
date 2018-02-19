@@ -8,7 +8,6 @@ import * as _ from 'lodash';
   styleUrls: [ './searchable-dropdown.component.scss' ]
 } )
 export class SearchableDropdownComponent<T extends Identifiable<any> | string> {
-
   @Input() results: T[] = [];
   @Input() selected?: T;
   @Input() displayKey = 'id';
@@ -22,6 +21,10 @@ export class SearchableDropdownComponent<T extends Identifiable<any> | string> {
 
   get searchInputElement(): HTMLInputElement {
     return this.searchInputRef.nativeElement as HTMLInputElement;
+  }
+
+  get removeButtonVisible(): boolean {
+    return this.selectionRemovable && !!this.selected;
   }
 
   onSearchChange( text: string ) {
@@ -50,12 +53,7 @@ export class SearchableDropdownComponent<T extends Identifiable<any> | string> {
     return _.get( item, this.displayKey, item );
   }
 
-  get removeButtonVisible(): boolean {
-    return this.selectionRemovable && !!this.selected;
-  }
-
   onRemove() {
     this.onSelect( undefined );
   }
-
 }

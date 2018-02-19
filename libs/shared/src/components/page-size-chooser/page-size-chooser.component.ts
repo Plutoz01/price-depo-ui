@@ -8,7 +8,6 @@ import { Pageable } from '@price-depo-ui/data-handling';
   changeDetection: ChangeDetectionStrategy.OnPush
 } )
 export class PageSizeChooserComponent {
-
   @Input() choices: number[] = Pageable.defaultPageSizes;
   @Input() selected: number;
   @Output() select = new EventEmitter<number>();
@@ -18,7 +17,4 @@ export class PageSizeChooserComponent {
       this.select.emit( newSelection );
     }
   }
-
 }
-
-

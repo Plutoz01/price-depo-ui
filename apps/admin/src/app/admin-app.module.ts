@@ -41,16 +41,11 @@ import { services } from './services';
     StoreModule.forRoot( { app: adminReducer }, { initialState: appInitialState } ),
     EffectsModule.forRoot( effects ),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule
   ],
-  declarations: [
-    ...components
-  ],
+  declarations: [ ...components ],
   bootstrap: [ AppComponent ],
-  providers: [
-    ...effects,
-    ...services
-  ]
+  providers: [ ...effects, ...services ]
 } )
 export class AdminAppModule {
 }

@@ -7,7 +7,6 @@ import { Product } from '../../models/product.interface';
 
 @Injectable()
 export class ProductHttpRepository extends HttpFilterableCrudBaseRepository<Product, string, ProductFilterKeys> {
-
   constructor( httpClient: HttpClient ) {
     super( httpClient );
   }

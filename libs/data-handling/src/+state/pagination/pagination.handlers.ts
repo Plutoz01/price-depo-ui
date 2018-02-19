@@ -1,5 +1,5 @@
-import { PaginationState } from '../pagination/pagination.state';
 import { PaginationInfo } from '../../models/pagination-info.interface';
+import { PaginationState } from '../pagination/pagination.state';
 
 export function handlePaginationChange( state: PaginationState, paginationInfo: PaginationInfo ): PaginationState {
   return {
@@ -9,7 +9,6 @@ export function handlePaginationChange( state: PaginationState, paginationInfo: 
     hasNextPage: paginationInfo.hasNextPage,
     hasPreviousPage: paginationInfo.hasPreviousPage,
     totalPages: paginationInfo.totalPages,
-    totalItems: paginationInfo.totalItems,
+    totalItems: paginationInfo.totalItems
   };
-
 }

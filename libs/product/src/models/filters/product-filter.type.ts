@@ -1,1 +1,1 @@
-export type ProductFilterKeys = 'name' | 'manufacturerId';
+export type ProductFilterKeys = 'name' | 'manufacturerId' | 'barcode';

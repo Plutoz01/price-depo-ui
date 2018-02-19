@@ -1,9 +1,9 @@
 import { Directive, Input, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
+import 'rxjs/add/observable/combineLatest';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/observable/combineLatest';
 
 import { getUserSelector } from '../+state/security.selectors';
 import { SecurityState } from '../+state/security.state';
@@ -13,7 +13,6 @@ import { UserBase } from '../models/user-base.class';
   selector: '[pdHasPermission]'
 } )
 export class HasPermissionDirective implements OnDestroy {
-
   private readonly updateSubscription: Subscription;
   private readonly desiredPermissionSource = new BehaviorSubject<string>( '' );
   private hasView = false;
@@ -30,7 +29,8 @@ export class HasPermissionDirective implements OnDestroy {
     } );
   }
 
-  @Input() set pdHasPermission( desiredPermission: string ) {
+  @Input()
+  set pdHasPermission( desiredPermission: string ) {
     this.desiredPermissionSource.next( desiredPermission );
   }
 
@@ -47,5 +47,4 @@ export class HasPermissionDirective implements OnDestroy {
       this.hasView = false;
     }
   }
-
 }

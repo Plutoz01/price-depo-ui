@@ -1,10 +1,10 @@
-import {MainUiState} from './app.interfaces';
-import { MainUiAction, DATA_LOADED } from './app.actions';
+import { DATA_LOADED, MainUiAction } from './app.actions';
+import { MainUiState } from './app.interfaces';
 
-export function appReducer( state: MainUiState, action: MainUiAction): MainUiState {
-  switch (action.type) {
+export function appReducer( state: MainUiState, action: MainUiAction ): MainUiState {
+  switch ( action.type ) {
     case DATA_LOADED: {
-      return {...state, ...action.payload};
+      return { ...state, ...action.payload };
     }
     default: {
       return state;

@@ -7,19 +7,10 @@ import { directives } from './directives';
 import { guards } from './guards';
 
 @NgModule( {
-  imports: [
-    CommonModule,
-    StoreModule.forFeature( 'security', securityReducer, { initialState: securityInitState } ),
-  ],
-  declarations: [
-    ...directives,
-  ],
-  providers: [
-    ...guards
-  ],
-  exports: [
-    ...directives
-  ]
+  imports: [ CommonModule, StoreModule.forFeature( 'security', securityReducer, { initialState: securityInitState } ) ],
+  declarations: [ ...directives ],
+  providers: [ ...guards ],
+  exports: [ ...directives ]
 } )
 export class SecurityModule {
 }

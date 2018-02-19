@@ -7,7 +7,6 @@ import { Shop } from '../../models/shop.interface';
 
 @Injectable()
 export class ShopHttpRepository extends HttpFilterableCrudBaseRepository<Shop, string, ShopFilterKeys> {
-
   constructor( httpClient: HttpClient ) {
     super( httpClient );
   }

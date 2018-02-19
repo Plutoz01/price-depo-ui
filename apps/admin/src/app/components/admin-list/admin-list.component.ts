@@ -13,16 +13,13 @@ import { MasterDetailsRouterData } from '../../models/master-details-router-data
   styleUrls: [ './admin-list.component.scss' ]
 } )
 export class AdminListPageComponent<T extends Identifiable<any>> {
-
   readonly title: string;
   readonly columnDefinitions: ColumnDefinition[];
 
   readonly items$: Observable<T[]>;
   readonly paginationInfo$: Observable<PaginationInfo>;
 
-  constructor( readonly store: Store<any>,
-               private readonly router: Router,
-               private readonly route: ActivatedRoute ) {
+  constructor( readonly store: Store<any>, private readonly router: Router, private readonly route: ActivatedRoute ) {
     const options: MasterDetailsRouterData<T> = route.snapshot.data.masterDetails;
 
     if ( !options ) {
@@ -38,7 +35,7 @@ export class AdminListPageComponent<T extends Identifiable<any>> {
   }
 
   onSelect( selected: T ) {
-    this.router.navigate( [ `./${ selected.id }` ], {
+    this.router.navigate( [ `./${selected.id}` ], {
       relativeTo: this.route
     } );
   }

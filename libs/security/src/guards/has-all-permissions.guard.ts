@@ -15,7 +15,6 @@ export class HasAllPermissionsGuard implements CanActivate {
   constructor( private store: Store<SecurityState> ) {
   }
 
-
   canActivate( route: ActivatedRouteSnapshot ): Observable<boolean> | boolean {
     const requiredPermissions = route.data[ HasAllPermissionsGuard.permissionsKey ] || [];
 
@@ -23,8 +22,10 @@ export class HasAllPermissionsGuard implements CanActivate {
       return true;
     }
 
-    return this.store.select( getUserSelector ).map( ( user: UserBase ) =>
-      requiredPermissions.every( ( requiredPermission: string ) => user.hasPermission( requiredPermission ) )
-    );
+    return this.store
+      .select( getUserSelector )
+      .map( ( user: UserBase ) =>
+        requiredPermissions.every( ( requiredPermission: string ) => user.hasPermission( requiredPermission ) )
+      );
   }
 }

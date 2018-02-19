@@ -11,22 +11,15 @@ import { Notification } from '../../models/notification.class';
   styleUrls: [ './notification-container.component.scss' ],
   animations: [
     trigger( 'rollInOut', [
-      transition( ':enter', [
-        style( { transform: 'translateX(100%)' } ),
-        animate( 200 )
-      ] ),
-      transition( ':leave', [
-        animate( 200, style( { transform: 'translateX(100%)' } ) )
-      ] )
+      transition( ':enter', [ style( { transform: 'translateX(100%)' } ), animate( 200 ) ] ),
+      transition( ':leave', [ animate( 200, style( { transform: 'translateX(100%)' } ) ) ] )
     ] )
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 } )
 export class NotificationContainerComponent {
-
   readonly items$: Store<Notification[]> = this.store.select( getNotificationsListSelector );
 
   constructor( private store: Store<NotificationsState> ) {
   }
-
 }

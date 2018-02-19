@@ -5,12 +5,13 @@ describe( 'ProfilePageComponent', () => {
   let component: ProfilePageComponent;
   let fixture: ComponentFixture<ProfilePageComponent>;
 
-  beforeEach( async( () => {
-    TestBed.configureTestingModule( {
-      declarations: [ ProfilePageComponent ]
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        declarations: [ ProfilePageComponent ]
+      } ).compileComponents();
     } )
-      .compileComponents();
-  } ) );
+  );
 
   beforeEach( () => {
     fixture = TestBed.createComponent( ProfilePageComponent );

@@ -5,7 +5,6 @@ import { DynamicFormDef } from '@price-depo-ui/dynamic-form';
 
 @Injectable()
 export class DynamicFormDefHttpRepository extends HttpCrudBaseRepository<DynamicFormDef, string> {
-
   constructor( httpClient: HttpClient ) {
     super( httpClient );
   }

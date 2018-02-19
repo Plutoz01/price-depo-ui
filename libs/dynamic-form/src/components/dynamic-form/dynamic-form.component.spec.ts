@@ -6,12 +6,13 @@ describe( 'DynamicFormComponent', () => {
   let component: DynamicFormComponent<any>;
   let fixture: ComponentFixture<DynamicFormComponent<any>>;
 
-  beforeEach( async( () => {
-    TestBed.configureTestingModule( {
-      declarations: [ DynamicFormComponent ]
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        declarations: [ DynamicFormComponent ]
+      } ).compileComponents();
     } )
-      .compileComponents();
-  } ) );
+  );
 
   beforeEach( () => {
     fixture = TestBed.createComponent( DynamicFormComponent );

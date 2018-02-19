@@ -6,14 +6,14 @@ import { AdminDataType } from '../models/admin-data-type.enum';
 
 export const manufacturerRoutes: Routes = [
   {
-    path: `${ AdminDataType.manufacturers }`,
+    path: `${AdminDataType.manufacturers}`,
     component: AdminListPageComponent,
     data: {
       masterDetails: manufacturerMasterDetailsRouterData
     }
   },
   {
-    path: `${ AdminDataType.manufacturers }/new`,
+    path: `${AdminDataType.manufacturers}/new`,
     component: AdminDetailsPageComponent,
     data: {
       masterDetails: manufacturerMasterDetailsRouterData,
@@ -21,7 +21,7 @@ export const manufacturerRoutes: Routes = [
     }
   },
   {
-    path: `${ AdminDataType.manufacturers }/:id`,
+    path: `${AdminDataType.manufacturers}/:id`,
     component: AdminDetailsPageComponent,
     data: {
       masterDetails: manufacturerMasterDetailsRouterData

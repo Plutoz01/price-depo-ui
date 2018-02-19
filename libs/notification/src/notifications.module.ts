@@ -13,15 +13,9 @@ import { components } from './components';
     StoreModule.forFeature( 'notification', notificationsReducer, { initialState: notificationsInitState } ),
     EffectsModule.forFeature( [ NotificationsEffects ] )
   ],
-  declarations: [
-    ...components
-  ],
-  exports: [
-    ...components
-  ],
-  providers: [
-    NotificationsEffects
-  ]
+  declarations: [ ...components ],
+  exports: [ ...components ],
+  providers: [ NotificationsEffects ]
 } )
 export class NotificationsModule {
 }

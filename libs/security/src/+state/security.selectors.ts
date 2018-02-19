@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { SecurityState } from './security.state';
 import { UserBase } from '../models/user-base.class';
+import { SecurityState } from './security.state';
 
 const getUser = ( state: SecurityState ): UserBase => state.user;
 

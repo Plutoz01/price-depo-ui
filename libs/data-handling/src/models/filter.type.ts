@@ -9,6 +9,4 @@ export interface FilterElement {
   matchType: FilterMatchType;
 }
 
-export type FilterBase<T extends string> = {
-  [ K in T ]: FilterElement;
-};
+export type FilterBase<T extends string> = { [K in T]?: FilterElement };

@@ -8,9 +8,7 @@ import { NotificationCloseAction, NotificationCreateAction, NotificationsActionT
 
 @Injectable()
 export class NotificationsEffects {
-
-  @Effect()
-  readonly delayedClose$: Observable<NotificationCloseAction>;
+  @Effect() readonly delayedClose$: Observable<NotificationCloseAction>;
 
   constructor( actions$: Actions ) {
     this.delayedClose$ = actions$.ofType<NotificationCreateAction>( NotificationsActionType.create ).pipe(
@@ -24,5 +22,4 @@ export class NotificationsEffects {
       map( notificationId => new NotificationCloseAction( notificationId ) )
     );
   }
-
 }

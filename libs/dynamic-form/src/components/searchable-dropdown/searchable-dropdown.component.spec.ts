@@ -7,12 +7,13 @@ describe( 'DynamicFormSearchableDropdownComponent', () => {
   let component: DynamicFormSearchableDropdownComponent<TestClass, string>;
   let fixture: ComponentFixture<DynamicFormSearchableDropdownComponent<TestClass, string>>;
 
-  beforeEach( async( () => {
-    TestBed.configureTestingModule( {
-      declarations: [ DynamicFormSearchableDropdownComponent ]
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        declarations: [ DynamicFormSearchableDropdownComponent ]
+      } ).compileComponents();
     } )
-      .compileComponents();
-  } ) );
+  );
 
   beforeEach( () => {
     fixture = TestBed.createComponent( DynamicFormSearchableDropdownComponent );
@@ -28,4 +29,3 @@ describe( 'DynamicFormSearchableDropdownComponent', () => {
 class TestClass implements Identifiable<string> {
   id: string;
 }
-

@@ -8,6 +8,8 @@ export { Manufacturer } from './src/models/manufacturer.interface';
 export { Product } from './src/models/product.interface';
 export { Shop } from './src/models/shop.interface';
 
+export { ProductFilterKeys } from './src/models/filters/product-filter.type';
+
 export { initialChainStore } from './src/models/init/chain-store.init';
 export { initialManufacturer } from './src/models/init/manufacturer.init';
 export { initialProduct } from './src/models/init/product.init';

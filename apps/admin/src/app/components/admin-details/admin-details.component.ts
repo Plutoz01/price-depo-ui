@@ -16,14 +16,11 @@ import { MasterDetailsRouterData } from '../../models/master-details-router-data
   styleUrls: [ './admin-details.component.scss' ]
 } )
 export class AdminDetailsPageComponent<T extends Identifiable<any>> {
-
   readonly formDefinition$: Observable<DynamicFormGroupDef>;
   readonly item$: Observable<T>;
   readonly adminDataType: AdminDataType;
 
-  constructor( private store: Store<any>,
-               private router: Router,
-               private readonly route: ActivatedRoute ) {
+  constructor( private store: Store<any>, private router: Router, private readonly route: ActivatedRoute ) {
     const options: MasterDetailsRouterData<T> = route.snapshot.data.masterDetails;
 
     if ( !options ) {
@@ -32,9 +29,10 @@ export class AdminDetailsPageComponent<T extends Identifiable<any>> {
     this.adminDataType = options.dataType;
     const masterDetailsStore = this.store.select( options.masterDetailsStateSelector );
     this.item$ = masterDetailsStore.select( 'selected' );
-    this.formDefinition$ = this.store.select( getFormDefSelector )
-    // Avoid to use potentially outdated formDefs remained in state from previous usages
-    // TODO: remove this, after state will null after navigating out
+    this.formDefinition$ = this.store
+      .select( getFormDefSelector )
+      // Avoid to use potentially outdated formDefs remained in state from previous usages
+      // TODO: remove this, after state will null after navigating out
       .filter( Boolean )
       .filter( ( formDef: DynamicFormDef ) => formDef.id === options.formDefId );
   }
@@ -50,5 +48,4 @@ export class AdminDetailsPageComponent<T extends Identifiable<any>> {
   onNavigateBack() {
     this.router.navigate( [ '../' ], { relativeTo: this.route } );
   }
-
 }

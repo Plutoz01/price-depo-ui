@@ -11,7 +11,6 @@ import { Notification, NotificationLevel } from '../../models/notification.class
   changeDetection: ChangeDetectionStrategy.OnPush
 } )
 export class NotificationItemComponent {
-
   @Input() notification: Notification;
 
   constructor( private store: Store<NotificationsState> ) {
@@ -35,5 +34,4 @@ export class NotificationItemComponent {
   onClose() {
     this.store.dispatch( new NotificationCloseAction( this.notification.id ) );
   }
-
 }

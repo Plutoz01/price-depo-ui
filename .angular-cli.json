@@ -100,6 +100,12 @@
       "tsconfig": "tsconfig.app.json"
     },
     {
+      "name": "product-search",
+      "root": "libs/product-search/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "profile",
       "root": "libs/profile/src",
       "test": "../../../test.js",

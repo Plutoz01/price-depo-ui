@@ -7,5 +7,6 @@ export enum ErrorHandlingActionType {
 export class ErrorThrownAction implements Action {
   readonly type = ErrorHandlingActionType.errorThrown;
 
-  constructor( public readonly title: string, public readonly description?: string ) {}
+  constructor( public readonly title: string, public readonly description?: string ) {
+  }
 }

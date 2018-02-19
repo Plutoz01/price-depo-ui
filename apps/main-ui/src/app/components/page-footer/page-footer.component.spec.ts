@@ -6,12 +6,13 @@ describe( 'PageFooterComponent', () => {
   let component: PageFooterComponent;
   let fixture: ComponentFixture<PageFooterComponent>;
 
-  beforeEach( async( () => {
-    TestBed.configureTestingModule( {
-      declarations: [ PageFooterComponent ]
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        declarations: [ PageFooterComponent ]
+      } ).compileComponents();
     } )
-      .compileComponents();
-  } ) );
+  );
 
   beforeEach( () => {
     fixture = TestBed.createComponent( PageFooterComponent );

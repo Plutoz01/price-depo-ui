@@ -5,17 +5,9 @@ import { ClickOutsideModule } from 'ng-click-outside';
 import { components } from './components';
 
 @NgModule( {
-  imports: [
-    CommonModule,
-    ClickOutsideModule,
-    DataHandlingModule
-  ],
-  declarations: [
-    ...components
-  ],
-  exports: [
-    ...components
-  ]
+  imports: [ CommonModule, ClickOutsideModule, DataHandlingModule ],
+  declarations: [ ...components ],
+  exports: [ ...components ]
 } )
 export class SharedModule {
 }

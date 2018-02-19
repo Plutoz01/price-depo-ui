@@ -7,16 +7,17 @@ describe( 'DataTableComponent', () => {
   let component: DataTableComponent;
   let fixture: ComponentFixture<DataTableComponent>;
 
-  beforeEach( async( () => {
-    TestBed.configureTestingModule( {
-      declarations: [
-        DataTableComponent,
-        MockComponent( { selector: 'pd-paginator', inputs: [ 'paginationInfo' ] } ),
-        MockComponent( { selector: 'pd-page-size-chooser', inputs: [ 'choices', 'selected' ] })
-      ]
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        declarations: [
+          DataTableComponent,
+          MockComponent( { selector: 'pd-paginator', inputs: [ 'paginationInfo' ] } ),
+          MockComponent( { selector: 'pd-page-size-chooser', inputs: [ 'choices', 'selected' ] } )
+        ]
+      } ).compileComponents();
     } )
-      .compileComponents();
-  } ) );
+  );
 
   beforeEach( () => {
     fixture = TestBed.createComponent( DataTableComponent );

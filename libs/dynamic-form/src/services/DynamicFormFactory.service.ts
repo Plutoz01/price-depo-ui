@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import * as _ from 'lodash';
 
 import {
-  AbstractDynamicFormElement, DynamicFormControlDef, DynamicFormElementType,
+  AbstractDynamicFormElement,
+  DynamicFormControlDef,
+  DynamicFormElementType,
   DynamicFormGroupDef
 } from '../models/dynamic-form.interface';
-import * as _ from 'lodash';
 
 @Injectable()
 export class DynamicFormFactory {
-
   constructor( private formBuilder: FormBuilder ) {
   }
 
@@ -26,6 +27,18 @@ export class DynamicFormFactory {
     );
   }
 
+  buildDefaultControlItem( formTextItemDef: DynamicFormControlDef, initialValue: any ): FormControl {
+    const validators: ValidatorFn[] = [];
+    if ( formTextItemDef.required ) {
+      validators.push( Validators.required );
+    }
+    return this.formBuilder.control( initialValue, validators );
+  }
+
+  buildHiddenItem( hiddenItemDef: DynamicFormControlDef, initialValue: any ): FormControl {
+    return this.formBuilder.control( initialValue );
+  }
+
   protected buildControlByDefType( def: AbstractDynamicFormElement, value: any ): AbstractControl {
     switch ( def.type ) {
       case DynamicFormElementType.group:
@@ -39,17 +52,5 @@ export class DynamicFormFactory {
       default:
         throw new Error( 'unhandled formItemDef type: ' + def.type );
     }
-  }
-
-  buildDefaultControlItem( formTextItemDef: DynamicFormControlDef, initialValue: any ): FormControl {
-    const validators: ValidatorFn[] = [];
-    if ( formTextItemDef.required ) {
-      validators.push( Validators.required );
-    }
-    return this.formBuilder.control( initialValue, validators );
-  }
-
-  buildHiddenItem( hiddenItemDef: DynamicFormControlDef, initialValue: any ): FormControl {
-    return this.formBuilder.control( initialValue );
   }
 }

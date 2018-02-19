@@ -9,17 +9,14 @@ describe( 'AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
-  beforeEach( async( () => {
-    TestBed.configureTestingModule( {
-      imports: [ RouterTestingModule ],
-      declarations: [
-        AppComponent,
-        PageHeaderComponent,
-        PageFooterComponent
-      ]
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        imports: [ RouterTestingModule ],
+        declarations: [ AppComponent, PageHeaderComponent, PageFooterComponent ]
+      } ).compileComponents();
     } )
-      .compileComponents();
-  } ) );
+  );
 
   beforeEach( () => {
     fixture = TestBed.createComponent( AppComponent );

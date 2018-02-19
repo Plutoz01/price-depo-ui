@@ -6,14 +6,14 @@ import { AdminDataType } from '../models/admin-data-type.enum';
 
 export const chainStoreRoutes: Routes = [
   {
-    path: `${ AdminDataType.chainStores }`,
+    path: `${AdminDataType.chainStores}`,
     component: AdminListPageComponent,
     data: {
       masterDetails: chainStoreMasterDetailsRouterData
     }
   },
   {
-    path: `${ AdminDataType.chainStores }/new`,
+    path: `${AdminDataType.chainStores}/new`,
     component: AdminDetailsPageComponent,
     data: {
       masterDetails: chainStoreMasterDetailsRouterData,
@@ -21,7 +21,7 @@ export const chainStoreRoutes: Routes = [
     }
   },
   {
-    path: `${ AdminDataType.chainStores }/:id`,
+    path: `${AdminDataType.chainStores}/:id`,
     component: AdminDetailsPageComponent,
     data: {
       masterDetails: chainStoreMasterDetailsRouterData

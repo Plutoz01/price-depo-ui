@@ -11,8 +11,6 @@ import { testUserBob } from '../../data/dummy-user.data';
   styleUrls: [ './page-header.component.scss' ]
 } )
 export class PageHeaderComponent {
-
-
   constructor( private store: Store<AdminAppState> ) {
   }
 

@@ -3,12 +3,12 @@ import { FormGroup } from '@angular/forms';
 
 import { DynamicFormElementType, DynamicFormGroupDef } from '../../models/dynamic-form.interface';
 
-@Component({
+@Component( {
   selector: 'pd-dynamic-form-group',
   templateUrl: './dynamic-form-group.component.html',
-  styleUrls: ['./dynamic-form-group.component.scss'],
+  styleUrls: [ './dynamic-form-group.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
-})
+} )
 export class DynamicFormGroupComponent {
   readonly formElementType = DynamicFormElementType;
 

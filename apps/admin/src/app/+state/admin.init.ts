@@ -1,5 +1,5 @@
 import { createMasterDetailsInitialState } from '@price-depo-ui/data-handling';
-import { AdminState, AdminAppState } from './admin.state';
+import { AdminAppState, AdminState } from './admin.state';
 
 export const adminInitialState: AdminState = {
   manufacturers: createMasterDetailsInitialState(),

@@ -1,4 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/mapTo';
 import { Observable } from 'rxjs/Observable';
 
@@ -8,7 +9,6 @@ import { PagedResponse } from '../models/paged-response.interface';
 import { CrudRepository } from '../repositories/crud-repository.interface';
 
 export abstract class HttpCrudBaseRepository<T extends Identifiable<ID>, ID> implements CrudRepository<T, ID> {
-
   constructor( protected httpClient: HttpClient ) {
   }
 
@@ -29,37 +29,33 @@ export abstract class HttpCrudBaseRepository<T extends Identifiable<ID>, ID> imp
 
   getAll( pageable: Pageable ): Observable<PagedResponse<T>> {
     const pageParams: HttpParams = HttpCrudBaseRepository.convertPageableToHttpParams( pageable );
-    return this.httpClient.get<PagedResponse<T>>( `${ this.getApiUrl() }`, { params: pageParams } );
+    return this.httpClient.get<PagedResponse<T>>( `${this.getApiUrl()}`, { params: pageParams } );
   }
 
   getById( id: ID ): Observable<T | undefined> {
-    return this.httpClient.get<T>( `${ this.getApiUrl() }/${ id }` )
-      .catch( ( error: HttpErrorResponse ) => {
-        if ( error.status === 404 ) {
-          return Observable.of( undefined );
-        }
-        throw error;
-      } );
+    return this.httpClient.get<T>( `${this.getApiUrl()}/${id}` ).catch( ( error: HttpErrorResponse ) => {
+      if ( error.status === 404 ) {
+        return Observable.of( undefined );
+      }
+      throw error;
+    } );
   }
 
   create( entity: T ): Observable<T> {
-    return this.httpClient.post<T>( `${ this.getApiUrl() }`, entity );
+    return this.httpClient.post<T>( `${this.getApiUrl()}`, entity );
   }
 
   update( entity: T ): Observable<T> {
-    return this.httpClient.put<T>( `${ this.getApiUrl() }/${ entity.id }`, entity );
+    return this.httpClient.put<T>( `${this.getApiUrl()}/${entity.id}`, entity );
   }
 
   save( entity: T ): Observable<T> {
-    return this.isEntityNew( entity ) ?
-      this.create( entity ) :
-      this.update( entity );
+    return this.isEntityNew( entity ) ? this.create( entity ) : this.update( entity );
   }
 
   remove( id: ID ): Observable<void> {
-    return this.httpClient.delete( `${ this.getApiUrl() }/${ id }` ).mapTo( null );
+    return this.httpClient.delete( `${this.getApiUrl()}/${id}` ).mapTo( null );
   }
-
 
   protected abstract getApiUrl(): string;
 

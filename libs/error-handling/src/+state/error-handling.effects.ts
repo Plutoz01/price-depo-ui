@@ -13,15 +13,17 @@ export class ErrorHandlingEffects {
   static readonly errorMessageAutoHideAfterSeconds = 15;
 
   @Effect()
-  readonly notificationOnError: Observable<NotificationCreateAction> =
-    this.actions$.ofType<ErrorThrownAction>( ErrorHandlingActionType.errorThrown ).pipe(
+  readonly notificationOnError: Observable<NotificationCreateAction> = this.actions$
+    .ofType<ErrorThrownAction>( ErrorHandlingActionType.errorThrown )
+    .pipe(
       map( ( action: ErrorThrownAction ) => {
         const notification = new Notification(
           NotificationLevel.error,
           action.title,
           action.description,
           true,
-          ErrorHandlingEffects.errorMessageAutoHideAfterSeconds );
+          ErrorHandlingEffects.errorMessageAutoHideAfterSeconds
+        );
         return new NotificationCreateAction( notification );
       } )
     );
@@ -30,7 +32,7 @@ export class ErrorHandlingEffects {
   }
 
   static handleActionError( action: Action, error: Error ): ErrorThrownAction {
-    console.error( `Action failed: ${ action.type }. Error: `, error );
+    console.error( `Action failed: ${action.type}. Error: `, error );
 
     let title = 'Unexpected error';
 

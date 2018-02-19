@@ -7,7 +7,8 @@ import { AppState } from './app.interfaces';
 
 @Injectable()
 export class AppEffects {
-  @Effect() loadData = this.dataPersistence.fetch( LOAD_DATA, {
+  @Effect()
+  loadData = this.dataPersistence.fetch( LOAD_DATA, {
     run: ( a: LoadData, state: AppState ) => {
       console.log( 'load data from effect' );
       return new DataLoaded();

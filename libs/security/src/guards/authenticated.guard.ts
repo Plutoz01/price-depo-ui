@@ -10,7 +10,6 @@ import { UserBase } from '../models/user-base.class';
 
 @Injectable()
 export class AuthenticatedGuard implements CanActivate {
-
   constructor( private store: Store<SecurityState> ) {
   }
 

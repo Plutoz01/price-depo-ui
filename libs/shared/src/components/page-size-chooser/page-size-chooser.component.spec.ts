@@ -2,24 +2,25 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PageSizeChooserComponent } from './page-size-chooser.component';
 
-describe('PageSizeChooserComponent', () => {
+describe( 'PageSizeChooserComponent', () => {
   let component: PageSizeChooserComponent;
   let fixture: ComponentFixture<PageSizeChooserComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PageSizeChooserComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        declarations: [ PageSizeChooserComponent ]
+      } ).compileComponents();
+    } )
+  );
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PageSizeChooserComponent);
+  beforeEach( () => {
+    fixture = TestBed.createComponent( PageSizeChooserComponent );
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  } );
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  it( 'should create', () => {
+    expect( component ).toBeTruthy();
+  } );
+} );

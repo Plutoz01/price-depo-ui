@@ -14,7 +14,7 @@ export const routes: Routes = [
   },
   {
     path: '404',
-    component: NotFoundPageComponent,
+    component: NotFoundPageComponent
   },
   ...manufacturerRoutes,
   ...chainStoreRoutes,

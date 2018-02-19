@@ -9,7 +9,6 @@ import { AppState } from '../../+state/app.interfaces';
   styleUrls: [ './page-header.component.scss' ]
 } )
 export class PageHeaderComponent {
-
   constructor( private store: Store<AppState> ) {
   }
 

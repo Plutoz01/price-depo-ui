@@ -10,17 +10,14 @@ describe( 'DynamicFormTextInputComponent', () => {
   let component: DynamicFormTextInputComponent;
   let wrapperFixture: ComponentFixture<TestWrapperComponent>;
 
-  beforeEach( async( () => {
-    TestBed.configureTestingModule( {
-      imports: [
-        ReactiveFormsModule
-      ],
-      declarations: [
-        TestWrapperComponent,
-        DynamicFormTextInputComponent
-      ]
-    } ).compileComponents();
-  } ) );
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        imports: [ ReactiveFormsModule ],
+        declarations: [ TestWrapperComponent, DynamicFormTextInputComponent ]
+      } ).compileComponents();
+    } )
+  );
 
   beforeEach( () => {
     wrapperFixture = TestBed.createComponent( TestWrapperComponent );

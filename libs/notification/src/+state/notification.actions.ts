@@ -9,13 +9,15 @@ export enum NotificationsActionType {
 export class NotificationCreateAction implements Action {
   readonly type = NotificationsActionType.create;
 
-  constructor( public readonly newNotification: Notification ) {}
+  constructor( public readonly newNotification: Notification ) {
+  }
 }
 
 export class NotificationCloseAction implements Action {
   readonly type = NotificationsActionType.close;
 
-  constructor( public readonly notificationId: string ) {}
+  constructor( public readonly notificationId: string ) {
+  }
 }
 
 export type NotificationsActions = NotificationCreateAction | NotificationCloseAction;

@@ -8,21 +8,10 @@ import { components } from './components';
 import { DynamicFormFactory } from './services/DynamicFormFactory.service';
 
 @NgModule( {
-  imports: [
-    CommonModule,
-    DataHandlingModule,
-    SharedModule,
-    ReactiveFormsModule
-  ],
-  declarations: [
-    ...components
-  ],
-  providers: [
-    DynamicFormFactory
-  ],
-  exports: [
-    ...components
-  ]
+  imports: [ CommonModule, DataHandlingModule, SharedModule, ReactiveFormsModule ],
+  declarations: [ ...components ],
+  providers: [ DynamicFormFactory ],
+  exports: [ ...components ]
 } )
 export class DynamicFormModule {
 }

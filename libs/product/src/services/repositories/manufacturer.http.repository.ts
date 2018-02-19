@@ -6,8 +6,9 @@ import { ManufacturerFilterKeys } from '../../models/filters/manufacturer-filter
 import { Manufacturer } from '../../models/manufacturer.interface';
 
 @Injectable()
-export class ManufacturerHttpRepository extends HttpFilterableCrudBaseRepository<Manufacturer, string, ManufacturerFilterKeys> {
-
+export class ManufacturerHttpRepository extends HttpFilterableCrudBaseRepository<Manufacturer,
+  string,
+  ManufacturerFilterKeys> {
   constructor( httpClient: HttpClient ) {
     super( httpClient );
   }

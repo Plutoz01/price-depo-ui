@@ -28,22 +28,15 @@ import { AdminAppState } from '../admin.state';
 
 @Injectable()
 export class AdminCrudEffects {
+  @Effect() readonly loadAll$: Observable<LoadAllSuccessAction> = this.buildLoadAllEffect$();
 
-  @Effect()
-  readonly loadAll$: Observable<LoadAllSuccessAction> = this.buildLoadAllEffect$();
+  @Effect() readonly loadById$: Observable<LoadByIdSuccessAction> = this.buildLoadByIdEffect$();
 
-  @Effect()
-  readonly loadById$: Observable<LoadByIdSuccessAction> = this.buildLoadByIdEffect$();
+  @Effect() readonly delete$: Observable<DeleteSuccessAction> = this.buildDeleteEffect();
 
-  @Effect()
-  readonly delete$: Observable<DeleteSuccessAction> = this.buildDeleteEffect();
+  @Effect() readonly save$: Observable<SaveSuccessAction> = this.buildSaveEffect();
 
-  @Effect()
-  readonly save$: Observable<SaveSuccessAction> = this.buildSaveEffect();
-
-  @Effect()
-  readonly loadFormDefById$: Observable<LoadDynamicFormDefSuccessAction> = this.buildLoadFormDefByIdEffect();
-
+  @Effect() readonly loadFormDefById$: Observable<LoadDynamicFormDefSuccessAction> = this.buildLoadFormDefByIdEffect();
 
   constructor( private readonly dataPersistence: DataPersistence<AdminAppState>,
                private readonly router: Router,
@@ -73,15 +66,18 @@ export class AdminCrudEffects {
     return this.dataPersistence.fetch( AdminActionType.loadAll, {
       run: ( loadAllAction: LoadAllAction ) => {
         const repository = this.getRepositoryByDataType( loadAllAction.dataType );
-        return repository.getAll( loadAllAction.pageable )
-        // start a new request with page==0 if actual page is greater than response.totalPages
-          .mergeMap( pagedResponse => {
-            if ( loadAllAction.pageable.page > (pagedResponse.totalPages - 1) ) {
-              return repository.getAll( Pageable.of( 0, loadAllAction.pageable.size ) );
-            }
-            return Observable.of( pagedResponse );
-          } )
-          .map( pagedResponse => new LoadAllSuccessAction( loadAllAction.dataType, pagedResponse ) );
+        return (
+          repository
+            .getAll( loadAllAction.pageable )
+            // start a new request with page==0 if actual page is greater than response.totalPages
+            .mergeMap( pagedResponse => {
+              if ( loadAllAction.pageable.page > pagedResponse.totalPages - 1 ) {
+                return repository.getAll( Pageable.of( 0, loadAllAction.pageable.size ) );
+              }
+              return Observable.of( pagedResponse );
+            } )
+            .map( pagedResponse => new LoadAllSuccessAction( loadAllAction.dataType, pagedResponse ) )
+        );
       },
       onError: ErrorHandlingEffects.handleActionError
     } );
@@ -91,7 +87,8 @@ export class AdminCrudEffects {
     return this.dataPersistence.fetch( AdminActionType.loadById, {
       run: ( loadByIdAction: LoadByIdAction ) => {
         const repository = this.getRepositoryByDataType( loadByIdAction.dataType );
-        return repository.getById( loadByIdAction.id )
+        return repository
+          .getById( loadByIdAction.id )
           .filter( loaded => {
             if ( loaded === undefined ) {
               this.router.navigate( [ '/404' ] );
@@ -109,8 +106,7 @@ export class AdminCrudEffects {
     return this.dataPersistence.pessimisticUpdate( AdminActionType.save, {
       run: ( saveAction: SaveAction ) => {
         const repository = this.getRepositoryByDataType( saveAction.dataType );
-        return repository.save( saveAction.savable )
-          .map( saved => new SaveSuccessAction( saveAction.dataType, saved ) );
+        return repository.save( saveAction.savable ).map( saved => new SaveSuccessAction( saveAction.dataType, saved ) );
       },
       onError: ErrorHandlingEffects.handleActionError
     } );
@@ -132,9 +128,12 @@ export class AdminCrudEffects {
   buildLoadFormDefByIdEffect(): Observable<LoadDynamicFormDefSuccessAction> {
     return this.dataPersistence.fetch( AdminActionType.loadDynamicFormDef, {
       run: ( loadDynamicFormDefAction: LoadDynamicFormDefAction ) => {
-        return this.dynamicFormDefRepository.getById( loadDynamicFormDefAction.formDefId )
-        // TODO: handle formDef not found
-          .map( ( loadedFormDef: DynamicFormDef ) => new LoadDynamicFormDefSuccessAction( loadedFormDef ) );
+        return (
+          this.dynamicFormDefRepository
+            .getById( loadDynamicFormDefAction.formDefId )
+            // TODO: handle formDef not found
+            .map( ( loadedFormDef: DynamicFormDef ) => new LoadDynamicFormDefSuccessAction( loadedFormDef ) )
+        );
       },
       onError: ErrorHandlingEffects.handleActionError
     } );

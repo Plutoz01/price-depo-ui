@@ -3,10 +3,7 @@ import { NgModule } from '@angular/core';
 import { ErrorHandlingModule } from '@price-depo-ui/error-handling';
 
 @NgModule( {
-  imports: [
-    HttpClientModule,
-    ErrorHandlingModule
-  ]
+  imports: [ HttpClientModule, ErrorHandlingModule ]
 } )
 export class DataHandlingModule {
 }

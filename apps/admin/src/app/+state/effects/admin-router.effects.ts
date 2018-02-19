@@ -23,12 +23,9 @@ import { AdminAppState } from '../admin.state';
 
 @Injectable()
 export class AdminRouterEffects {
+  @Effect() readonly loadAllNavigation$ = this.buildLoadAllNavigationEffect();
 
-  @Effect()
-  readonly loadAllNavigation$ = this.buildLoadAllNavigationEffect();
-
-  @Effect()
-  readonly loadByIdNavigation$ = this.buildLoadByIdNavigationEffect();
+  @Effect() readonly loadByIdNavigation$ = this.buildLoadByIdNavigationEffect();
 
   @Effect( { dispatch: false } )
   readonly navigateOnSaveSucceeded$ = this.buildNavigationSaveEffect();
@@ -74,7 +71,6 @@ export class AdminRouterEffects {
           size = masterDetailsState.pagination.pageSize;
         }
         return new LoadAllAction( adminDataType, Pageable.of( page, size ) );
-
       },
       onError: ( a: ActivatedRouteSnapshot, error ) => {
         // TODO: refactor to use ErrorHandlingEffects.handleNavigationError

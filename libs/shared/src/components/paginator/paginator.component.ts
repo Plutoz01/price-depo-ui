@@ -54,5 +54,4 @@ export class PaginatorComponent {
       this.pageTo.emit( this.paginationInfo.totalPages - 1 );
     }
   }
-
 }

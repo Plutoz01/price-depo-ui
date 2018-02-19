@@ -9,22 +9,19 @@ describe( 'PageHeaderComponent', () => {
   let component: PageHeaderComponent;
   let fixture: ComponentFixture<PageHeaderComponent>;
 
-  beforeEach( async( () => {
-    TestBed.configureTestingModule( {
-      imports: [
-        StoreModule.forRoot( {
-          // TODO: store slice with user for auth
-        } ),
-        NgbModule.forRoot()
-      ],
-      declarations: [
-        PageHeaderComponent,
-        AuthenticatedDirective,
-        HasPermissionDirective
-      ]
+  beforeEach(
+    async( () => {
+      TestBed.configureTestingModule( {
+        imports: [
+          StoreModule.forRoot( {
+            // TODO: store slice with user for auth
+          } ),
+          NgbModule.forRoot()
+        ],
+        declarations: [ PageHeaderComponent, AuthenticatedDirective, HasPermissionDirective ]
+      } ).compileComponents();
     } )
-      .compileComponents();
-  } ) );
+  );
 
   beforeEach( () => {
     fixture = TestBed.createComponent( PageHeaderComponent );
